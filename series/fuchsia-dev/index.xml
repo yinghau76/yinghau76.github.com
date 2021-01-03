@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fuchsia Dev on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/series/fuchsia-dev/</link>
+    <description>Recent content in Fuchsia Dev on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 06 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/series/fuchsia-dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setup Fuchsia Rust Development on macOS</title>
+      <link>https://blog.simplypatrick.com/posts/2019/06-06-setup-fuchsia-rust-dev/</link>
+      <pubDate>Thu, 06 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2019/06-06-setup-fuchsia-rust-dev/</guid>
+      <description>基本上照著官方的指引 Rust Editor Configuration，設置 Fuchsia OS 開發的 Rust 開發環境主要就兩個步驟:
+ 產生 Cargo.toml 設定編輯器使用 Rust 的 Language Server (RLS)  產生 Cargo.toml 很簡單，就是用 fx gen-cargo //garnet/foo/path/to/target:label 產生對應的 Cargo.toml。例如 fx gen-cargo //garnet/bin/log_listener:bin 會產生 /garnet/bin/log_listener/Cargo.toml。
+設定 RLS 官方文檔提到要先把 Fuchsia 自帶的 Rust 連結到 rustup，並且設成預設的 toolchain:
+$ rustup toolchain link fuchsia /&amp;lt;your Fuchsia root&amp;gt;/buildtools/&amp;lt;platform&amp;gt;/rust $ rustup default fuchsia 我是有做第一步，但第二步我比較持保留態度，之後試過似乎不做也沒影響，我會建議跳過這一步。
+Vim 跟 C++ 類似，只是 Language Server 我們必須從 clangd 換成 RLS，所以可以在 Vim 裡用 :CocInstall coc-rls 來安裝 coc-rls extension，如果你系統之前就有裝過 RLS 的話，在 Vim 裡打開對應的目錄就會有 code completion 的功能了。</description>
+    </item>
+    
+    <item>
+      <title>Setup Fuchsia C&#43;&#43; Development on macOS</title>
+      <link>https://blog.simplypatrick.com/posts/2019/06-05-setup-fuchsia-c&#43;&#43;-dev/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2019/06-05-setup-fuchsia-c&#43;&#43;-dev/</guid>
+      <description>關於 Fuchsia Fuchsia 是 Google 開發中的新作業系統，它的底層原始碼可以到 https://fuchsia.googlesource.com 公開下載。雖然 Google 對外宣稱 Fuchsia 是個實驗性質的專案，但蠻多人認為它有潛力成為 Google 的大一統 OS，慢慢取代掉 Android 或 Chrome OS，姑且不論這是否會發生，對於喜歡研究系統軟體或嵌入式軟體技術的開發人員，Fuchsia 可以讓你一窺如何打造一個現代化的 OS。
+Fuchsia 的開發環境 目前 Fuchsia OS 可以在 Linux 或 macOS 上編譯，這篇主要是分享在 macOS 上建置 C++ 的 OS 開發環境的經驗，包括:
+ 基本的編輯器 (Vim 及 Visual Studio Code) 設置 Code completion 的設置 使用 direnv 來實現設置自動化  編輯器選擇 我的環境建置基本是根據這份官方提供的 C++ Editor/IDE Setup 指南，裡面有提到 CLion, Vim, 以及 Visual Studio Code，試用過後個人推薦 Vim &amp;gt; VS Code &amp;raquo; CLion，主要還是因為個人開發時通常只會需要修改全部 code base 的極小一部份，小巧的編輯器使用體驗會比較流暢，也不會耗用太多的機器資源去處理不會修改的部份。</description>
+    </item>
+    
+  </channel>
+</rss>

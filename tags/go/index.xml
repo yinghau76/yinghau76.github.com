@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/go/</link>
+    <description>Recent content in go on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 05 May 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Useful Go Channel Types</title>
+      <link>https://blog.simplypatrick.com/posts/2014/05-05-golang-channels/</link>
+      <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/05-05-golang-channels/</guid>
+      <description>CloudFlare 的 John Graham-Cumming 在 GopherCon 2014 給了一個 A Channel Compendium 的演講，其中介紹了:
+ 利用 channel 來通知事件 (Signalling) 利用 channel 來隱藏狀態 (Hide state) Nil channels 及 closed channels 的特性 利用 channel 來實現 timer  整個 talk 的結尾下的非常好：
+ The Go Way: &amp;ldquo;small sequential pieces joined by channels&amp;rdquo;
+ 可以說 Go 的重點特色就是 concurrency programming 的支援，而善用 channel 則是實現 concurrency 的重要能力。
+對於剛接觸 go concurrency programming 的開發者，分享一下兩個簡單但好用的 channel 類型: channel of error 及 channel of function。</description>
+    </item>
+    
+    <item>
+      <title>Book for Golang Learning</title>
+      <link>https://blog.simplypatrick.com/posts/2014/03-19-go-book/</link>
+      <pubDate>Wed, 19 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/03-19-go-book/</guid>
+      <description>學習一個新的程式語言我習慣先看網路上的 tutorial 或 get started guide 入門，然後用看官方文件或是搜索網路資源的方式來學習，等到有了手感後，就會找本好的書來進一步提昇自己的程度，用畫的來表示大概是這樣：
+就學習 Go 而言，我認爲那本書就是 Mark Summerfield 的 Programming in Go: Creating Applications for the 21st Century:
+這本書不適合程式設計的初學者，而是適合已經精通其它程式語言的開發者。例如一般的 if 及 for 的用法直到第五章才有詳細介紹，但對有經驗的開發者絕對是 OK 的。
+我推薦的原因是書中的範例程式都很高水準，看得出來是作者精心設計過的，示範如何用 Go 來解決實際會遇到的問題，解法都很漂亮並符合 Go 的風格。這種採用最佳示範的方法可以讓你快速學會 Go 的精華而不是一直停留在初學者階段。
+另外書中也有提供了不少有用的建議做法：
+ 實現可選參數的推薦做法 實現泛型的替代做法 常用的並發模式  這本書也有簡中翻譯版本可以買，有一些翻譯、排版、拼字錯誤，但整體來說翻譯品質還不錯，不會影響你對 Go 的學習。</description>
+    </item>
+    
+    <item>
+      <title>Page Scrapping By Go</title>
+      <link>https://blog.simplypatrick.com/posts/2014/01-07-page-scrapping-by-go/</link>
+      <pubDate>Tue, 07 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/01-07-page-scrapping-by-go/</guid>
+      <description>分享一下怎麼用 Go 爬網頁：
+先 import 之後步驟會用到的 package:
+import( &amp;#34;code.google.com/p/cascadia&amp;#34; &amp;#34;code.google.com/p/go.net/html&amp;#34; &amp;#34;code.google.com/p/go.text/encoding/traditionalchinese&amp;#34; &amp;#34;code.google.com/p/go.text/transform&amp;#34; ) 第一步當然是用 http.Get 把網頁抓回來：
+resp, err := http.Get(url) if err != nil { log.Println(&amp;#34;Failed to download:&amp;#34;, err.Error()) return } defer resp.Body.Close() 第二步: 如果網頁內容不是 UTF-8 encoding 要做一下轉換，go.text 包有提供編碼轉換及 Big 的支援，然後用 go.net/html 包提供的 HTML parser 來輸出(非標準) DOM tree：
+big5Reader := transform.NewReader(resp.Body, traditionalchinese.Big5.NewDecoder()) doc, err := html.Parse(big5Reader) if err != nil { log.Println(&amp;#34;Failed to parse:&amp;#34;, err.Error()) return } 再來要從 doc 中撈出資訊則可以使用 cascadia 包提供的 CSS selector 來做：</description>
+    </item>
+    
+    <item>
+      <title>Go on Heroku</title>
+      <link>https://blog.simplypatrick.com/posts/2013/12-15-go-on-heroku/</link>
+      <pubDate>Sun, 15 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2013/12-15-go-on-heroku/</guid>
+      <description>要將 Go app 放到 Heroku 上執行基本上並不複雜，只要依照這篇 Getting Started With Go on Heroku 一步一步照著做就行了，如果出了問題可以查一下是否是下列幾個原因造成的：
+ .godir 要設定成你的 package 路徑，例如你的程式是放在 $GOPATH/src/simplypatrick/flights，那 package 路徑就是 simplypatrick/flights。 Procfile 裡的 web:  後面是接執行檔的路徑，我目前試驗的結果是放在 bin/ 裡面，所以以我的例子要設定成 web: bin/flights Heroku 目前預設好像都不會把 web process 跑起來，所以需要執行 heroku ps:scale web=1 來啟動 web process。  話說回來，目前 Heroku 目前並沒有正式支援 Go，目前能夠放 Go app 上去跑其實是透過 custom buildpack 完成的。要怎麼創建自己的 buildpack 可以參考 Run Anything on Heroku with Custom Buildpacks，例如前面例子的 Go buildpack 是用 Go 1.1.2，如果你想改成用 Go 1.2 可以自己 fork 一份 buildpack 來改。</description>
+    </item>
+    
+    <item>
+      <title>My Go Development Environment</title>
+      <link>https://blog.simplypatrick.com/posts/2013/12-14-my-go-development-environment/</link>
+      <pubDate>Sat, 14 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2013/12-14-my-go-development-environment/</guid>
+      <description>分享一下我的 Go 開發環境。
+作業系統: Mac OS X 10.9 在 Mac 上要使用 Go 的最簡單方式是用 Homebrew 來安裝:
+$ brew install go 安裝成功後，查看一下注意事項：
+$ brew info go go: stable 1.2 (bottled), HEAD http://golang.org /usr/local/Cellar/go/1.2 (3980 files, 115M) * Poured from bottle From: https://github.com/mxcl/homebrew/commits/master/Library/Formula/go.rb ==&amp;gt; Options --cross-compile-all Build the cross-compilers and runtime support for all supported platforms --cross-compile-common Build the cross-compilers and runtime support for darwin, linux and windows --without-cgo Build without cgo ==&amp;gt; Caveats As of go 1.</description>
+    </item>
+    
+  </channel>
+</rss>

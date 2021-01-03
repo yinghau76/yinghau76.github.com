@@ -1,0 +1,2049 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/categories/programming/</link>
+    <description>Recent content in programming on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 02 Jan 2021 18:42:35 -0800</lastBuildDate><atom:link href="https://blog.simplypatrick.com/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>建置 Jupyter Notebook 的 Rust 運作環境</title>
+      <link>https://blog.simplypatrick.com/posts/2021/01-02-rust-jupyter-notebook/</link>
+      <pubDate>Sat, 02 Jan 2021 18:42:35 -0800</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2021/01-02-rust-jupyter-notebook/</guid>
+      <description>最近重新安裝了 macOS Big Sur，也順便想試試 Jupyter Notebook 的 Rust 運作環境，再加上這幾天放假比較有時間，就把安裝的過程記錄下來。
+安裝 Miniconda 過去一直覺得 Anaconda 有點肥大，所以這次決定先從安裝比較精簡的 miniconda 開始:
+$ brew install --cask miniconda 新增 conda-forge channel 等下才能安裝一些需要的套件如 jupyterlab:
+$ conda config --add channels conda-forge $ conda config --set channel_priority strict 然後需要初始化 conda 的 base 環境，一般都是跑 conda init，但它會加一段不是很通用的設定到我個人的 .zshrc，我不是很喜歡這種做法，所以就先只套用在目前的 shell 裡:
+$ eval `conda shell.zsh hook` 創建新的 conda 環境 創建一個新的環境叫 rust-notebook:
+(base) $ conda create -n rust-notebook python=3 (base) $ conda activate rust-notebook 安裝 JupyterLab 在新的環境指定安裝 jupyterlab 版本 2.</description>
+    </item>
+    
+    <item>
+      <title>看 log 的好工具: klogg</title>
+      <link>https://blog.simplypatrick.com/posts/2019/12-25-klogg/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2019/12-25-klogg/</guid>
+      <description>工作上常需要看 log 解決問題，推薦一個好用的工具 klogg:</description>
+    </item>
+    
+    <item>
+      <title>Setup Fuchsia Rust Development on macOS</title>
+      <link>https://blog.simplypatrick.com/posts/2019/06-06-setup-fuchsia-rust-dev/</link>
+      <pubDate>Thu, 06 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2019/06-06-setup-fuchsia-rust-dev/</guid>
+      <description>基本上照著官方的指引 Rust Editor Configuration，設置 Fuchsia OS 開發的 Rust 開發環境主要就兩個步驟:
+ 產生 Cargo.toml 設定編輯器使用 Rust 的 Language Server (RLS)  產生 Cargo.toml 很簡單，就是用 fx gen-cargo //garnet/foo/path/to/target:label 產生對應的 Cargo.toml。例如 fx gen-cargo //garnet/bin/log_listener:bin 會產生 /garnet/bin/log_listener/Cargo.toml。
+設定 RLS 官方文檔提到要先把 Fuchsia 自帶的 Rust 連結到 rustup，並且設成預設的 toolchain:
+$ rustup toolchain link fuchsia /&amp;lt;your Fuchsia root&amp;gt;/buildtools/&amp;lt;platform&amp;gt;/rust $ rustup default fuchsia 我是有做第一步，但第二步我比較持保留態度，之後試過似乎不做也沒影響，我會建議跳過這一步。
+Vim 跟 C++ 類似，只是 Language Server 我們必須從 clangd 換成 RLS，所以可以在 Vim 裡用 :CocInstall coc-rls 來安裝 coc-rls extension，如果你系統之前就有裝過 RLS 的話，在 Vim 裡打開對應的目錄就會有 code completion 的功能了。</description>
+    </item>
+    
+    <item>
+      <title>Setup Fuchsia C&#43;&#43; Development on macOS</title>
+      <link>https://blog.simplypatrick.com/posts/2019/06-05-setup-fuchsia-c&#43;&#43;-dev/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2019/06-05-setup-fuchsia-c&#43;&#43;-dev/</guid>
+      <description>關於 Fuchsia Fuchsia 是 Google 開發中的新作業系統，它的底層原始碼可以到 https://fuchsia.googlesource.com 公開下載。雖然 Google 對外宣稱 Fuchsia 是個實驗性質的專案，但蠻多人認為它有潛力成為 Google 的大一統 OS，慢慢取代掉 Android 或 Chrome OS，姑且不論這是否會發生，對於喜歡研究系統軟體或嵌入式軟體技術的開發人員，Fuchsia 可以讓你一窺如何打造一個現代化的 OS。
+Fuchsia 的開發環境 目前 Fuchsia OS 可以在 Linux 或 macOS 上編譯，這篇主要是分享在 macOS 上建置 C++ 的 OS 開發環境的經驗，包括:
+ 基本的編輯器 (Vim 及 Visual Studio Code) 設置 Code completion 的設置 使用 direnv 來實現設置自動化  編輯器選擇 我的環境建置基本是根據這份官方提供的 C++ Editor/IDE Setup 指南，裡面有提到 CLion, Vim, 以及 Visual Studio Code，試用過後個人推薦 Vim &amp;gt; VS Code &amp;raquo; CLion，主要還是因為個人開發時通常只會需要修改全部 code base 的極小一部份，小巧的編輯器使用體驗會比較流暢，也不會耗用太多的機器資源去處理不會修改的部份。</description>
+    </item>
+    
+    <item>
+      <title>Learning Rust</title>
+      <link>https://blog.simplypatrick.com/posts/2019/04-08-learning-rust/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2019/04-08-learning-rust/</guid>
+      <description>關於 Rust 會知道 Rust 是因為之前公司團隊的工作是跟瀏覽器引擎 (Webkit/Blink) 的優化有關，那時只知道 Mozilla 正在用 Rust 這個新的程式語言實驗性地開發 Servo 引擎。同時間 Go 已經到達 1.0 的里程碑，同時有著優異的編譯及執行效能，很快地 Go 就變成我個人主要使用的程式語言，工作上需要的一些小工具也都是用 Go 來實現。
+開始對 Rust 重新關注大概是它在 2015 年釋放 1.0 版本後，那時只稍微了解一下語法及主要的語言特性，當時覺得這程式語言的學習曲線蠻陡峭的，必須全面地對所有的語言特性有一定了解後才能駕馭它。那時 Go 用的正是順手，所以就沒什麼動力把 Rust 完整學起來。
+去年開始工作上需要了解 Fuchsia OS 的實作，赫然發現裡面蠻多系統服務都是用 Rust 開發的，數量上甚至比 Google 自家的 Go 還多，這也是我決定多投入時間學習 Rust 的轉捩點。
+學習資源 我主要使用下列幾本書來學習 Rust：
+ 深入浅出 Rust 這本書的電子版: 它的特色是側重於解釋 Rust 主要概念的設計思想，而不只是單純語法或用法的說明；且因為是中文的緣故，讀起來速度還是比較快，比較像是 Rust 的內功心法入門。 30 天深入淺出 Rust 系列 則是以淺顯易懂的範例把 Rust 主要的特色講解了一遍，內容適合對於想要快速地對 Rust 有個全面性的概觀的人。 對 Rust 有了基本的了解後，A Gentle Introduction to Rust 則是適合有 C/C++ 經驗的開發者來學習如何寫 idiomatic Rust。  至於最經典的 The Rust Programming Language 呢?</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; 套件管理: 使用 Conan</title>
+      <link>https://blog.simplypatrick.com/posts/2018/03-12-c&#43;&#43;-conan/</link>
+      <pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/03-12-c&#43;&#43;-conan/</guid>
+      <description>手動管理 C/C++ 套件 想像你需要使用 LLVM 開發一個程式，如果在 macOS 上，最簡單的安裝方法是用 Homebrew，一行就搞定: brew install llvm。但 Homebrew 上的版本不一定是最新的而且也無法同時安裝不同的版本 (例如 LLVM 5.0/6.0 共存) 或同版本但不同設置（例如 LLVM 6.0 的 debug/release 版本)；而在 Linux 及 Windows 上也有各自不同的安裝問題。
+安裝完畢後，麻煩才剛開始：通常第一步是設置編譯環境的 CPPFLAGS 及 LDFLAGS:
+For compilers to find this software you may need to set: LDFLAGS: -L/usr/local/opt/llvm/lib CPPFLAGS: -I/usr/local/opt/llvm/include 根據不同的開發環境或編譯器，設置的方法也都不同。最後設置完後編譯及連結也不一定能成功，因為 LLVM 本身可能又依賴其他套件，還需要把它的 dependencies 一一安裝及設置。
+Conan 介紹 Conan 企圖幫助 C/C++ 脫離這個窘境：沒有一個像樣的套件管理 (package management) 工具。
+我建議先讀一下 Conan 的文檔來了解如何安裝 Conan 以及利用 Conan 來使用現成的程式庫。
+如果你是使用 CMake，事情會簡單一些，因為 Conan 提供的 CMake 整合還算好用，使用範例可以參考這個基於 LLVM 的小程式: clike。</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; 單元測試: 使用 Catch2</title>
+      <link>https://blog.simplypatrick.com/posts/2018/03-10-catch2/</link>
+      <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/03-10-catch2/</guid>
+      <description>Catch2 介紹 介紹一下最近有在使用的一個 C++ test framework, Catch2，它對自己的描述是:
+ A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD - using C++11, C++14, C++17 and later (or C++03 on the Catch1.x branch)
+ 我主要的用途是做一些 C++ 小程式的簡單驗證，因此簡單易用是我首要的選擇條件，而 Catch2 應該是目前找的到最好的選擇，例如這是個 Huffman coding 的測試代碼:
+TEST_CASE(&amp;#34;HuffmanEncoding&amp;#34;) { vector&amp;lt;Symbol&amp;gt; symbols{ {&amp;#39;a&amp;#39;, 8.17}, {&amp;#39;b&amp;#39;, 1.49}, {&amp;#39;c&amp;#39;, 2.78}, {&amp;#39;d&amp;#39;, 4.25}, {&amp;#39;e&amp;#39;, 12.7}, {&amp;#39;f&amp;#39;, 2.23}, {&amp;#39;g&amp;#39;, 2.02}, {&amp;#39;h&amp;#39;, 6.09}, {&amp;#39;i&amp;#39;, 6.97}, {&amp;#39;j&amp;#39;, 0.15}, {&amp;#39;k&amp;#39;, 0.77}, {&amp;#39;l&amp;#39;, 4.03}, {&amp;#39;m&amp;#39;, 2.</description>
+    </item>
+    
+    <item>
+      <title>Kotlin Coroutines and Threads</title>
+      <link>https://blog.simplypatrick.com/posts/2018/02-14-kotlin-coroutines-and-threads/</link>
+      <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/02-14-kotlin-coroutines-and-threads/</guid>
+      <description>Coroutine 跟 thread 的關係 Coroutine 通常可以理解成輕量化的 thread，但實際運作還是需要被排程到作業系統層級的 thread，然後再被排程到某個 CPU來執行：
+相對於 thread，使用 coroutine 的好處是， coroutine 之間的切換快速，需要耗用的系統資源也比較小。
+Coroutine 如何排程？ Kotlin 的 coroutine 會被分派到那個 thread 是由呼叫 coroutine builder 時提供的 CoroutineContext 參數來決定。
+透過觀察這個範例的輸出，我們可以了解不同 CoroutineContext 的行為：
+class CoroutineContextActivity : ConsoleActivity() { override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) logThread(&amp;#34;Begin onCreate&amp;#34;) launch(UI) { logThread(&amp;#34;Begin launch(UI)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(UI)&amp;#34;) } launch(CommonPool) { logThread(&amp;#34;Begin launch(CommonPool)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(CommonPool)&amp;#34;) } launch(Unconfined) { logThread(&amp;#34;Begin launch(Unconfined)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(Unconfined)&amp;#34;) } launch(newSingleThreadContext(&amp;#34;MyOwnThread&amp;#34;)) { logThread(&amp;#34;Begin launch(newSingleThreadContext)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(newSingleThreadContext)&amp;#34;) } logThread(&amp;#34;End onCreate&amp;#34;) } fun logThread(msg: String) { println(&amp;#34;$msg: ${Thread.</description>
+    </item>
+    
+    <item>
+      <title>Kotlin Coroutine API</title>
+      <link>https://blog.simplypatrick.com/posts/2018/02-13-kotlin-coroutines-api/</link>
+      <pubDate>Tue, 13 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/02-13-kotlin-coroutines-api/</guid>
+      <description>Kotlin Coroutine 的架構 Kotlin 從 1.1 版開始實驗性地支援 coroutine，主要的目標是簡化非同步編程的複雜度。Diving deep into Kotlin Coroutines 解釋了 coroutine 跟一般常用的 callback 及目前蠻多人在用的 reactive 模式有何不同。
+由於目前 kotlinx-coroutines-core 的實現包含了不同抽象程度的 API，初學者建議可以用下面這張圖來學習如何使用 Kotlin coroutine：
+範例分析 套用下面這個範例來理解:
+suspend fun sendEmail(r: String, msg: String): Boolean { // 3  delay(2000) // 4  println(&amp;#34;Sent &amp;#39;$msg&amp;#39; to $r&amp;#34;) return true } suspend fun getReceiverAddressFromDatabase(): String { // 3  delay(1000) // 4  return &amp;#34;coroutine@kotlin.org&amp;#34; } suspend fun sendEmailSuspending(): Boolean { // 3  val msg = /* 1 */ async(CommonPool) { // 2  delay(500) &amp;#34;The message content&amp;#34; } val recipient = /* 1 */ async(CommonPool) { // 2  getReceiverAddressFromDatabase() } println(&amp;#34;Waiting for email data&amp;#34;) val sendStatus = /* 1 */ async(CommonPool) { // 2  sendEmail(recipient.</description>
+    </item>
+    
+    <item>
+      <title>Devdocs Desktop</title>
+      <link>https://blog.simplypatrick.com/posts/2018/01-22-devdocs-desktop/</link>
+      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/01-22-devdocs-desktop/</guid>
+      <description>寫(code)之前先讀(API) 當一個軟體開發者，需要花蠻多時間來閱讀文檔以便了解如何使用某個 API 以及各種情況下它會表現的行為，因此學習如何有效率地查詢及閱讀了解 API 是蠻重要的能力。基本上如果某個 library 是你工作上常用到的，我會建議你從頭到尾把所有文件至少讀一遍，而不是需要用到時才去查。
+Dash 好用，但是&amp;hellip; 在 macOS 上，我過去是習慣使用 Dash 這工具來查詢 API，一是它整合了蠻多常用的 API 文檔，二來它查詢的速度還不錯，就個人使用上算是很好的投資，所以當時就在 App Store 買了正式版。然而好景不常，當 Dash 3 出來後，2.x 版本就常發生文件顯示不出來的問題，讓我有點惱火:angry:，這樣的品質再加上發生 被 App Store 下架 的事件，要我再付錢買 3.x 版本是不可能的事。
+Zeal 是 Linux 或 Windows 上不錯的選擇 之前找到比較好的替代方案是 Zeal, 但是 Zeal 的 docset 是 Dash 提供的，道義上不能跟 Dash 打對台，因此官方並不提供 macOS 的版本。建議的解決方案是用 Wine 在 macOS 上執行 Windows 版本的 Zeal，我試過是可行的，搞定一些小問題後運作上還算正常。
+devdocs.io 更棒 另一個更好的選擇是 devdocs.io，無須安裝直接網頁打開就可查詢。想要 desktop 版本? 沒問題! 這種網站最適合用 Electron 來包了: DevDocs Desktop。這是我目前最推薦的 API 文檔工具，跨 macOS, Linux, Windows 都可以使用且免費，太佛心了。</description>
+    </item>
+    
+    <item>
+      <title>Better Way to Request Runtime Permissions</title>
+      <link>https://blog.simplypatrick.com/posts/2016/05-30-requesting-runtime-permission/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/05-30-requesting-runtime-permission/</guid>
+      <description>If you are an Android developer, you definitely know an important change beginning in Android 6.0 (API 23) is run time permission: users grant permissions to apps while the app is running, not when they install the app. This official training guide explains clearly how you can check for permission and request them at runtime.
+Let me list the sample code in the training guide so that you can understand what improvements I would like to do with them:</description>
+    </item>
+    
+    <item>
+      <title>The Elements of Good Commit Messages</title>
+      <link>https://blog.simplypatrick.com/posts/2016/05-12-the-elements-of-good-commit-messages/</link>
+      <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/05-12-the-elements-of-good-commit-messages/</guid>
+      <description>通常從 commit messages 就可以看出一個軟體開發團隊是否有紀律、注重品質、並且彼此溝通良好。
+ The importance of commit messages Crafting Commits and the Importance of Commit Messages Why commit messages matter  如何寫好 commit message 這是我去年在公司內部做的一個 presentation，目的是讓大家知道要在 commit message 寫那些東西:
+ 負面範例 請至少避免寫這些沒有意義的 commit message。</description>
+    </item>
+    
+    <item>
+      <title>在 Android 上使用 OpenCV 的臉部偵測及辨識</title>
+      <link>https://blog.simplypatrick.com/posts/2016/03-05-face-detection-with-opencv-on-android/</link>
+      <pubDate>Sat, 05 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/03-05-face-detection-with-opencv-on-android/</guid>
+      <description>兩年多前研究了一下在 Android 上如何用 OpenCV 做臉部偵測及辨識。主要的使用情境如下圖:
+因為輸入來源是攝影機的視訊，當時的想法是初步的偵測及辨識還是由裝置執行，比較複雜的計算再上傳到 server 執行：
+這幾年許多大廠例如 Google, Facebook, 及 Microsoft 都積極投入發展人工智慧及臉部辨識技術，現在臉部辨識已經是 Mobile OS 上的必備功能:
+ Face API of Microsoft Project Oxford Face API of Mobile Video from Google Detecting Faces in an Image on Apple iOS  當時只是簡單弄了一個 prototype，現在回頭看，大致上設計沒有差太多，倒是 API 設計上可以多跟人家學習學習:
+public class Tracker&amp;lt;T&amp;gt; { public Tracker() {} public void onNewItem(int id, T item) {} public void onUpdate(Detections&amp;lt;T&amp;gt; detections, T item) {} public void onMissing(Detections&amp;lt;T&amp;gt; detections) {} public void onDone() {} } </description>
+    </item>
+    
+    <item>
+      <title>Redesign Listener with RxJava on Android</title>
+      <link>https://blog.simplypatrick.com/posts/2016/03-04-using-rxjava-on-android/</link>
+      <pubDate>Fri, 04 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/03-04-using-rxjava-on-android/</guid>
+      <description>Background In my Android app, I used the following typical Listener pattern to monitor updates from models:
+public interface Listener { void onUpdate(List&amp;lt;Item&amp;gt; list); } public interface Model { void addListener(Listener l); void removeListener(Listener l); } Listeners are implemented by several Fragments that expect update notifications coming from a global model object. The updating may be triggered manually by user or periodically by a scheduler.
+After learning RxJava, I would like to simplify the model interface and at the same time remove the boilerplate of maintaining listener list in model implementation:</description>
+    </item>
+    
+    <item>
+      <title>Running Android Studio with Custom JDK</title>
+      <link>https://blog.simplypatrick.com/posts/2016/02-28-running-android-studio-with-custom-jdk/</link>
+      <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/02-28-running-android-studio-with-custom-jdk/</guid>
+      <description>IntelliJ is certainly the best Java IDE ever. However, IntelliJ-based Android Studio really bothers me much because it fails to render font antialiasing correctly compared with older version on OS X:
+Google&amp;rsquo;s suggestion to this issue is to use Oracle JDK 1.6 but I don&amp;rsquo;t like the idea to stick with out-of-dated JDK.
+Recently IntelliJ 15 fixed this issue by bundling custom JDK. After realizing the same fix is probably not on the priority list of Android Studio 2.</description>
+    </item>
+    
+    <item>
+      <title>GN (Generate Ninja) 使用入門</title>
+      <link>https://blog.simplypatrick.com/posts/2016/01-23-gn/</link>
+      <pubDate>Sat, 23 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/01-23-gn/</guid>
+      <description>2018/06/30 補充: Brett Wilson 的 Using GN build 是我目前看過對 GN 最棒的介紹，強力推薦!
+好久之前介紹過 Ninja, 當時有提到 Ninja 通常是搭配 meta-build system (例如 CMake 或是 GYP) 來使用，這次要介紹的 GN 則是 Chromium project 用來取代 GYP 的新工具。
+由於 GN 是用 C++ 撰寫，比起用 Python 寫的 GYP 快了將近 20 倍，GN 新的 DSL 的語法也被認為是比較好讀及維護的。
+安裝 GN 由於 gn 目前還依賴 Chromium 裡的一些函式庫，目前比較方便的方式還是從 source 編譯，Linux/Mac 上可以依照下列步驟：
+ 基本範例 建立 .gn 在 source project 的根目錄新增一個 .gn 檔，內容如下：
+ .gn 檔所在的目錄會被 GN 工具認定是 project 的 source root，.</description>
+    </item>
+    
+    <item>
+      <title>CMake 筆記</title>
+      <link>https://blog.simplypatrick.com/posts/2015/06-19-cmake-notes/</link>
+      <pubDate>Fri, 19 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2015/06-19-cmake-notes/</guid>
+      <description>動機 因爲某種原因，我最近又開始寫起 C++ 程式，除了要熟悉 C++ 11/14 的新特性外，比較頭疼的是 Makefile 的撰寫。
+C/C++ 開發者了解基本的 Makefile 寫法是有必要的，但是大多數情況下，我認為使用 autotools 或是 CMake 這類 Makefile generator 是比較合理的選擇，因爲這些工具可以幫你產生出專家等級的 Makefile 並且處理可能的跨平台問題。至於 autotools 或是 CMake 的選擇，對我來說是很明顯的：autotools 是出了名的難用，而 CMake 是相對容易的。
+本文嘗試整理一些網路上的 CMake 教學資源，並且加上自己的一些心得。
+CMake 入門 我會建議先看 Eric Noulard 的 CMake tutorial presentation，相當地棒：
+ 然後你會需要實際動手演練一下，有下面幾個選擇：
+ CMake 官網上的基本範例：文字說明比較少，但可以讓你先感覺一下 CMake 的運作方式。我自己根據這個範例建了這個 GitHub project 來練習。 維基教科書上的 CMake 入門 John Lamp 的 CMake Tutorial 提供了一個更實際的範例讓你練習，並且詳細解釋了每一行用到的 CMake 指令。  CMake 基礎知識 再來就是要花時間把官網的這篇 cmake-buildsystem(7) 讀一讀，有幾個重點要搞懂：
+ 如何使用 add_library 及 add_executable 來新增 build target － 了解 STATIC, SHARED, MODULE, 以及 OBJECT library 的差異 了解 build specification:  INCLUDE_DIRECTORIES, COMPILE_DEFINITIONS 以及 COMPILE_OPTIONS 的意義   了解 usage requirement:  INTERFACE_INCLUDE_DIRECTORIES, INTERFACE_COMPILE_DEFINITIONS 及 INTERFACE_COMPILE_OPTIONS 的意義   如何使用 target_include_directories(), target_compile_definitions() 及 target_compile_options() 來修改 build specification 及 usage requirement  了解 PRIVATE, PUBLIC 及 INTERFACE mode 的差異 跟 directory-scoped 命令的差異: include_directories(), add_definitions(), 及 add_compile_options()   常用的內建變數  CMAKE_CURRENT_SOURCE_DIR CMAKE_CURRENT_BINARY_DIR   如何使用 set_target_properties 來修改 target property 了解 generator expression 的用法  上面提到的這些重要觀念可以參考 Introduction to CMake in 30 Minutes 的說明。</description>
+    </item>
+    
+    <item>
+      <title>About Code Review</title>
+      <link>https://blog.simplypatrick.com/posts/2015/06-12-about-code-review/</link>
+      <pubDate>Fri, 12 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2015/06-12-about-code-review/</guid>
+      <description>著重品質及效率的軟體開發團隊一定會做 code review，因為它是開發流程裡唯一讓開發人員有機會針對代碼進行深入討論的關鍵活動。
+因爲不同的團隊會用不同的方式執行 code review，並沒有一套固定的方法可以適用所有情況，所以我試著根據過去的經驗，整理我心中認為理想的 code review 運作方式。
+要用什麼工具？ 我認為使用 code review system 這類的工具是必須的，否則管理版本修改 (patches) 或是追蹤 reviewer 給的建議 (comments) 就會太過費力，反而削減了 code review 帶來的好處。
+免費的選擇我會推薦 Gerrit 或是 Phabricator ，架設其實都蠻簡單的。
+Gerrit 的使用建議可以參考：
+ Gerrit and Code Review Best Practices Gerrit Best Practices  Review 那些東西？ 以下是我認為除了 bug 以外需要檢查的部分，依照重要程度列舉如下：
+ 符合原始架構設計 API 設計 易讀性及可維護性 安全性 代碼風格  有幾個原則可以遵循：
+ 團隊應該有一致的代碼標準 (coding standards)，這樣比較不會有爭議。 盡量使用代碼檢查工具 (static analysis) 來代替人工的檢查。 善用 astyle 或是 uncrustify 這類的 code formatting 工具來維持代碼風格的一致性。  如何有效溝通？  Commit message 很重要，好的 commit message 可以讓 review 快速理解為什麼這個改動是必要的。 Review 的改動不應該太大，一次改個上千行是很難仔細檢查的，所以 reviewer 有權利退回太大的改動。   Ask a programmer to review 10 lines of code, he&amp;rsquo;ll find 10 issues.</description>
+    </item>
+    
+    <item>
+      <title>Using OpenGrok on Mac OS X</title>
+      <link>https://blog.simplypatrick.com/posts/2015/01-16-opengrok-on-mac-osx/</link>
+      <pubDate>Fri, 16 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2015/01-16-opengrok-on-mac-osx/</guid>
+      <description>OpenGrok is Awesome OpenGrok is an awesome and handy tool for analyzing complex software system. As it claims, it is a fast source code search and cross reference engine using famous Lucene. For Android developers, you may have known AndroidXref which is built using OpenGrok.
+This short guide shows a minimized steps to get OpenGrok up and running on Mac OS X. I prefers this kind of quick-and-dirty way for browsing source code on my desktop or laptop.</description>
+    </item>
+    
+    <item>
+      <title>Useful Go Channel Types</title>
+      <link>https://blog.simplypatrick.com/posts/2014/05-05-golang-channels/</link>
+      <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/05-05-golang-channels/</guid>
+      <description>CloudFlare 的 John Graham-Cumming 在 GopherCon 2014 給了一個 A Channel Compendium 的演講，其中介紹了:
+ 利用 channel 來通知事件 (Signalling) 利用 channel 來隱藏狀態 (Hide state) Nil channels 及 closed channels 的特性 利用 channel 來實現 timer  整個 talk 的結尾下的非常好：
+ The Go Way: &amp;ldquo;small sequential pieces joined by channels&amp;rdquo;
+ 可以說 Go 的重點特色就是 concurrency programming 的支援，而善用 channel 則是實現 concurrency 的重要能力。
+對於剛接觸 go concurrency programming 的開發者，分享一下兩個簡單但好用的 channel 類型: channel of error 及 channel of function。</description>
+    </item>
+    
+    <item>
+      <title>RubyMotion v.s. Xcode &#43; Objective-C</title>
+      <link>https://blog.simplypatrick.com/posts/2014/03-27-rubymotion-vs-xcode-objective-c/</link>
+      <pubDate>Thu, 27 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/03-27-rubymotion-vs-xcode-objective-c/</guid>
+      <description>優點 RubyMotion 的優點說穿了就是儘量讓你不會碰到 Objective-C, Xcode, 及 iOS API 的摧殘：
+使用 Ruby 語法 應該不是只有我覺得 Objective-C 的語法很醜，Cocoa/iOS 的 API 也都是囉嗦的長， 但相對地 Ruby 就有漂亮易讀的語法及好用的內建 library。
+與其要寫：
+NSMutableArray *array = [NSMutableArray arrayWithObjects: @&amp;#34;one&amp;#34;, @&amp;#34;two&amp;#34;, @&amp;#34;three&amp;#34;, @&amp;#34;four&amp;#34;, nil]; NSArray *newAdditions = [NSArray arrayWithObjects: @&amp;#34;a&amp;#34;, @&amp;#34;b&amp;#34;, nil]; NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1,newAdditions.count)]; [array insertObjects:newAdditions atIndexes:indexes]; 我更喜歡寫：
+array = %w{one two three four} newAdditions = %w{a b} array.insert(1, *newAdditions) 可利用 RubyMotion gems 在 RubyMotion Wrappers 可以找到許多專爲 RubyMotion 設計的 gem，通常是把 iOS API 或是有名 的 library (例如 AFNetworking 或 Cocos2D) 包裝成 Ruby 的慣用方式，例如 SugarCube 可以把：</description>
+    </item>
+    
+    <item>
+      <title>Book for Golang Learning</title>
+      <link>https://blog.simplypatrick.com/posts/2014/03-19-go-book/</link>
+      <pubDate>Wed, 19 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/03-19-go-book/</guid>
+      <description>學習一個新的程式語言我習慣先看網路上的 tutorial 或 get started guide 入門，然後用看官方文件或是搜索網路資源的方式來學習，等到有了手感後，就會找本好的書來進一步提昇自己的程度，用畫的來表示大概是這樣：
+就學習 Go 而言，我認爲那本書就是 Mark Summerfield 的 Programming in Go: Creating Applications for the 21st Century:
+這本書不適合程式設計的初學者，而是適合已經精通其它程式語言的開發者。例如一般的 if 及 for 的用法直到第五章才有詳細介紹，但對有經驗的開發者絕對是 OK 的。
+我推薦的原因是書中的範例程式都很高水準，看得出來是作者精心設計過的，示範如何用 Go 來解決實際會遇到的問題，解法都很漂亮並符合 Go 的風格。這種採用最佳示範的方法可以讓你快速學會 Go 的精華而不是一直停留在初學者階段。
+另外書中也有提供了不少有用的建議做法：
+ 實現可選參數的推薦做法 實現泛型的替代做法 常用的並發模式  這本書也有簡中翻譯版本可以買，有一些翻譯、排版、拼字錯誤，但整體來說翻譯品質還不錯，不會影響你對 Go 的學習。</description>
+    </item>
+    
+    <item>
+      <title>第一次在淘寶上買書</title>
+      <link>https://blog.simplypatrick.com/posts/2014/03-18-buying-books-in-taobao/</link>
+      <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/03-18-buying-books-in-taobao/</guid>
+      <description>分享一下在淘寶買書寄回臺灣的經驗。
+之前到大陸出差就有到當當網買書的經驗，都是用貨到付款的方式。這次想寄回台灣，但當當網只有大陸當地的支付方式，所以就想試試看淘寶，因爲淘寶使用的支付寶是支援海外信用卡交易的，只是好像會被銀行收取海外交易手續費。
+我想買的書主要是軟體開發相關技術書籍的中譯本，一來是比原文便宜，二來現在簡中翻譯的質量也都不錯，缺點就是書的用紙都是比較差的。
+怎麼買呢？先上淘寶旗下的天貓直接搜尋你想買的書，我是選有包郵然後價格最低的：
+這次我選了六本書，有一家因爲只剩一本但是破損了，經過用阿里旺旺聯繫後就取消交易：
+選完書後結帳時，淘寶有個很貼心的功能就是合併快遞，貨物可以通通寄到轉運商那裡再一起轉運回臺灣。 我選擇的轉運商全家 PRoute，算算平均一本書運回台灣的成本是台幣 50 元：
+所以這些包裹就會從大陸各地寄到深圳：
+然後坐船到台灣，整個過程看起來可以在一到兩周內完成。：
+收貨時全家送了一杯咖啡：</description>
+    </item>
+    
+    <item>
+      <title>RubyMotion</title>
+      <link>https://blog.simplypatrick.com/posts/2014/03-16-rubymotion/</link>
+      <pubDate>Sun, 16 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/03-16-rubymotion/</guid>
+      <description>使用 RubyMotion 來撰寫 iOS app 已經有一年多的時間，踩了不少坑後有了一些小心得可以分享，目前想到的題目有：
+ 相較於用 Xcode 開發的優缺點 RubyMotion Rakefile 的使用 與 Xcode 搭配的方法 開發環境的設定 推薦閱讀的書 用 Ruby 風格來架構 app Crash report 的機制 推薦使用的 gem 其他推薦閱讀&amp;hellip;  有一個需要先釐清的是：使用 RubyMotion 不表示你可以不用懂 Objective-C 及 Cocoa Touch， 相反地，學習原生 iOS 開發的方法對於有效駕馭 RubyMotion 是必要的。
+有興趣的人可以先聽聽 Joseph Ku 在 TechTalk@TW 的專訪。另外也可以看 Jim Weirich 在 CincyCocoaDev 對 RubyMotion 的介紹：</description>
+    </item>
+    
+    <item>
+      <title>Page Scrapping By Go</title>
+      <link>https://blog.simplypatrick.com/posts/2014/01-07-page-scrapping-by-go/</link>
+      <pubDate>Tue, 07 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/01-07-page-scrapping-by-go/</guid>
+      <description>分享一下怎麼用 Go 爬網頁：
+先 import 之後步驟會用到的 package:
+import( &amp;#34;code.google.com/p/cascadia&amp;#34; &amp;#34;code.google.com/p/go.net/html&amp;#34; &amp;#34;code.google.com/p/go.text/encoding/traditionalchinese&amp;#34; &amp;#34;code.google.com/p/go.text/transform&amp;#34; ) 第一步當然是用 http.Get 把網頁抓回來：
+resp, err := http.Get(url) if err != nil { log.Println(&amp;#34;Failed to download:&amp;#34;, err.Error()) return } defer resp.Body.Close() 第二步: 如果網頁內容不是 UTF-8 encoding 要做一下轉換，go.text 包有提供編碼轉換及 Big 的支援，然後用 go.net/html 包提供的 HTML parser 來輸出(非標準) DOM tree：
+big5Reader := transform.NewReader(resp.Body, traditionalchinese.Big5.NewDecoder()) doc, err := html.Parse(big5Reader) if err != nil { log.Println(&amp;#34;Failed to parse:&amp;#34;, err.Error()) return } 再來要從 doc 中撈出資訊則可以使用 cascadia 包提供的 CSS selector 來做：</description>
+    </item>
+    
+    <item>
+      <title>Using Native Libraries in Android</title>
+      <link>https://blog.simplypatrick.com/posts/2014/01-04-using-native-libraries-in-android/</link>
+      <pubDate>Sat, 04 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/01-04-using-native-libraries-in-android/</guid>
+      <description>基本概念 開發 Android app 如果需要使用 native library，簡單地說其實不複雜，就是把 .so 檔放到 lib/&amp;lt;abi&amp;gt; 目錄，然後不管你是用 Eclipse ADT, Ant, 或是 Gradle 來產生 APK, 這些工具都會把這些 .so 包到 .apk 裡面，然後這些 .so 就可以在運作時期用 System.loadLibrary 或是 System.load 來載入。
+接下來說明幾個常見的 .so 產生及載入方式：
+使用 NDK 如果是自己開發自己使用，通常建議用 Android NDK，只要一個 ndk-build 命令就可以將 jni/ 目錄裡的 C/C++ code 編譯成 libs/&amp;lt;abi&amp;gt;/ 裡的 lib&amp;lt;name&amp;gt;.so。
+載入方式就是直接使用 System.loadLibrary。
+Third-party library 但如果角色換成是要提供 library 給 App 開發者使用，方法就比較多樣一點：
+jni/ + src/ 也就是直接給 JNI 及 Java code 由 App 開發自己整合。
+Library Project 如果你要提供的 library 有自帶的 resource，這是目前唯一可以用的方式。把 .</description>
+    </item>
+    
+    <item>
+      <title>Go on Heroku</title>
+      <link>https://blog.simplypatrick.com/posts/2013/12-15-go-on-heroku/</link>
+      <pubDate>Sun, 15 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2013/12-15-go-on-heroku/</guid>
+      <description>要將 Go app 放到 Heroku 上執行基本上並不複雜，只要依照這篇 Getting Started With Go on Heroku 一步一步照著做就行了，如果出了問題可以查一下是否是下列幾個原因造成的：
+ .godir 要設定成你的 package 路徑，例如你的程式是放在 $GOPATH/src/simplypatrick/flights，那 package 路徑就是 simplypatrick/flights。 Procfile 裡的 web:  後面是接執行檔的路徑，我目前試驗的結果是放在 bin/ 裡面，所以以我的例子要設定成 web: bin/flights Heroku 目前預設好像都不會把 web process 跑起來，所以需要執行 heroku ps:scale web=1 來啟動 web process。  話說回來，目前 Heroku 目前並沒有正式支援 Go，目前能夠放 Go app 上去跑其實是透過 custom buildpack 完成的。要怎麼創建自己的 buildpack 可以參考 Run Anything on Heroku with Custom Buildpacks，例如前面例子的 Go buildpack 是用 Go 1.1.2，如果你想改成用 Go 1.2 可以自己 fork 一份 buildpack 來改。</description>
+    </item>
+    
+    <item>
+      <title>My Go Development Environment</title>
+      <link>https://blog.simplypatrick.com/posts/2013/12-14-my-go-development-environment/</link>
+      <pubDate>Sat, 14 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2013/12-14-my-go-development-environment/</guid>
+      <description>分享一下我的 Go 開發環境。
+作業系統: Mac OS X 10.9 在 Mac 上要使用 Go 的最簡單方式是用 Homebrew 來安裝:
+$ brew install go 安裝成功後，查看一下注意事項：
+$ brew info go go: stable 1.2 (bottled), HEAD http://golang.org /usr/local/Cellar/go/1.2 (3980 files, 115M) * Poured from bottle From: https://github.com/mxcl/homebrew/commits/master/Library/Formula/go.rb ==&amp;gt; Options --cross-compile-all Build the cross-compilers and runtime support for all supported platforms --cross-compile-common Build the cross-compilers and runtime support for darwin, linux and windows --without-cgo Build without cgo ==&amp;gt; Caveats As of go 1.</description>
+    </item>
+    
+    <item>
+      <title>用 Scala 來開發 Android App 入門</title>
+      <link>https://blog.simplypatrick.com/posts/2013/11-11-develop-android-app-with-scala/</link>
+      <pubDate>Mon, 11 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2013/11-11-develop-android-app-with-scala/</guid>
+      <description>最近想寫些 Android 的小程式，但是用 Java 實在是太無趣了，於是就想嘗試用 Scala 來做，分享一下怎麼入門的心得。
+基本工具 我假設你已經安裝好下列工具 (標上我目前使用的版本):
+ Scala (2.10.3) 及 SBT (0.13.0) IntelliJ 12  Scala plugin (0.22.302) SBT plugin (1.5.1)    產生一個基本的 Scala Android App  執行 android create project --target android-19 --path ./MyProject --package com.example.myproject --activity Main 在 project 目錄下新建 project/plugins.sbt，內容如下 (注意中間的空白行不可省略):  addSbtPlugin(&amp;#34;com.hanhuy.sbt&amp;#34; % &amp;#34;android-sdk-plugin&amp;#34; % &amp;#34;1.2.2&amp;#34;) addSbtPlugin(&amp;#34;com.hanhuy.sbt&amp;#34; % &amp;#34;sbt-idea&amp;#34; % &amp;#34;1.6.0&amp;#34;)  在 project 目錄下新建 build.sbt，同樣中間空白行不可省略:  android.Plugin.androidBuild name := &amp;#34;MyProject&amp;#34;  執行 sbt android:package-debug，到這一步應該就能把 APK 建立出來了  把 Java 轉成 Scala 然後你可以試著把 android 幫你產生的 Java 手動改寫成 Scala (副檔名也要改 .</description>
+    </item>
+    
+    <item>
+      <title>Scala: Under the Hood #1</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-10-scala-under-the-hood-number-1/</link>
+      <pubDate>Mon, 10 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-10-scala-under-the-hood-number-1/</guid>
+      <description>我學一個東西向來喜歡盡量深入去瞭解它的運作原理，這兩天看了 Scala 覺得蠻有趣的，也會去想像如果翻譯成 Java 會是怎麼樣的做法。 如果想知道自己的想法跟 Scala 實作的差距，可以直接做些實驗來比對。例如下面就是個求解最大公因數的實驗，我寫了四個版本 (gcd1 .. gcd4)：
+object GCD { def main(args: Array[String]) { def gcd1(m: Int, n: Int):Int = { if (n == 0) { return m } else { return gcd1(n, m % n) } } def gcd2(m: Int, n: Int):Int = { if (n == 0) { m } else { gcd2(n, m % n) } } def gcd3(m: Int, n: Int):Int = if (n == 0) m else gcd3(n, m % n) var gcd4: (Int,Int) =&amp;gt; Int = null gcd4 = (m: Int, n: Int) =&amp;gt; if (n == 0) m else gcd4(n, m % n) val Array(m, n) = args.</description>
+    </item>
+    
+    <item>
+      <title>Ruby&#39;s Object Model</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-08-rubys-object-model/</link>
+      <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-08-rubys-object-model/</guid>
+      <description>Ruby 強大的 metaprogramming 能力就是來自於它簡單又優雅的 object model。
+ </description>
+    </item>
+    
+    <item>
+      <title>Trying Scala on Android</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-08-trying-scala-on-android/</link>
+      <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-08-trying-scala-on-android/</guid>
+      <description>Scala 是基於 Java 平台的多範式程式語言，最著名的使用者就是原本從 Ruby 起家的 Twitter。由於 Java 平台賦予的可攜性，除了應用於各式各樣的後端程式，Scala 也能用來撰寫 Android 的 app。
+我嘗試的環境如下：
+ Mac OS X 10.8.2 Android 4.2 SDK Scala 2.9.2  由於我習慣用 ant 來建置，需要先做的就是修改 build.xml 加入以下步驟：
+&amp;lt;import file=&amp;quot;mac-shim.xml&amp;quot; /&amp;gt; &amp;lt;import file=&amp;quot;build-scala.xml&amp;quot; /&amp;gt; &amp;lt;target name=&amp;quot;-post-compile&amp;quot; depends=&amp;quot;-post-compile-scala&amp;quot; /&amp;gt; 重點在於加入 -post-compile-scala 這個步驟來編譯 src/ 下的 .scala 檔案。mac-shim.xml 是為了解決 Android SDK 的 ant script 在 Linux/MacOS 下的差異；build-scala.xml 則是包含可重複使用的 Scala 建置規則。
+另外執行 ant 前要先用 android update project 把 local.properties 產生出來，並把 scala.dir 指向 Scala 的安裝位置：</description>
+    </item>
+    
+    <item>
+      <title>rb-appscript and iTunes</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-02-rb-appscript-and-itunes/</link>
+      <pubDate>Sun, 02 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-02-rb-appscript-and-itunes/</guid>
+      <description>iTunes 11 出來了，界面變簡潔漂亮了，所以就比較有把音樂資料庫整理一下的動力。手上有很久以前下載的 Rolling Stone Magazine&amp;rsquo;s Top 500 Songs，可惜的是加入 iTunes 資料庫後由於沒有音軌數字的資訊，整個次序都不大對：
+手動一個一個改對我來說是不可能的，於是想到了 iTunes 似乎是有提供 AppleScript API 界面的，但第一個問題就是我跟 AppleScript 不熟，於是在網路上搜尋發現有個 Ruby gem 叫 rb-appscript 可以用 Ruby 來做類似的功能，二話不說就 gem install rb-appscript 下來用了。
+但接著第二個問題是我跟 iTunes 的 AppleScript API 也不熟，但也很快地發現可以從 AppleScript editor 裡面查到：
+於是在 irb 裡小試了一下發現可以成功運作後，就直接動手寫了：
+require &amp;#39;appscript&amp;#39; Appscript.app.by_name(&amp;#34;iTunes&amp;#34;).selection.get.each do |t| t.track_number.set $1 if t.name.get =~ /^(\d+)/ end 哈，大功告成。</description>
+    </item>
+    
+    <item>
+      <title>Inconsolata and Source Code Pro</title>
+      <link>https://blog.simplypatrick.com/posts/2012/09-27-inconsolata-and-source-code-pro/</link>
+      <pubDate>Thu, 27 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/09-27-inconsolata-and-source-code-pro/</guid>
+      <description>Source Code Pro 是 Adobe 近日釋出的 open-source font:
+跟我目前的最愛 Inconsolata：
+比較一下：
+兩個的設計其實很接近，但基於以下幾個原因我還是比較喜歡 Inconsolata：
+ Source Code Pro 比例上比較寬，實際顯示字有點太胖 我比較喜歡加斜線的 0 Inconsolata 的符號稍微大了一點 不喜歡 Source Code Pro 的小寫 i 及 k  </description>
+    </item>
+    
+    <item>
+      <title>Ruby Singleton Class</title>
+      <link>https://blog.simplypatrick.com/posts/2012/09-16-ruby-singleton-class/</link>
+      <pubDate>Sun, 16 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/09-16-ruby-singleton-class/</guid>
+      <description>今天花了點時間試著了解 Ruby Class/Object 的內部實現：
+以及 singleton class 的創建機制：
+ eval.c - eval.c: rb_extend_object activate eval.c eval.c - class.c: rb_singleton_class activate class.c class.c - class.c: singleton_class_of activate class.c class.c - class.c: rb_make_metaclass activate class.c class.c - class.c: make_singleton_class activate class.c class.c - class.c: rb_class_boot activate class.c class.c - class.c: rb_class_alloc activate class.c deactivate class.c deactivate class.c class.c - class.c: rb_singleton_class_attached activate class.c deactivate class.c deactivate class.c deactivate class.c deactivate class.c deactivate class.</description>
+    </item>
+    
+    <item>
+      <title>ACRA and BugSense</title>
+      <link>https://blog.simplypatrick.com/posts/2012/08-19-acra-and-bugsense/</link>
+      <pubDate>Sun, 19 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/08-19-acra-and-bugsense/</guid>
+      <description>ACRA (Application Crash Report for Android) 是個很受歡迎的 Android library，因為當你的 app 掛點時，它可以送一份驗屍報告 (crash report) 到 server 保存，以便開發者能做事後分析並修正問題。
+你需要做的只是下面簡短幾行設定：
+@ReportsCrashes(formKey = &amp;#34;dGp6WmNqdXNMM2lkTkJiUmhHRlM014615&amp;#34;) // Add this line public class Globals extends Application { private static Airport sAirport; public static Airport getAirport(Context context) { if (sAirport == null) { sAirport = new TaoyuanAirport(context.getApplicationContext()); } return sAirport; } @Override public void onCreate() { ACRA.init(this); // Add this line  super.onCreate(); } } 然後 manifest 裡面加上以下設定：</description>
+    </item>
+    
+    <item>
+      <title>AQuery - JQuery-like library for Android App</title>
+      <link>https://blog.simplypatrick.com/posts/2012/08-19-aquery-jquery-like-library-for-android-app/</link>
+      <pubDate>Sun, 19 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/08-19-aquery-jquery-like-library-for-android-app/</guid>
+      <description>Android Query 是個頗酷的 Android library，顧名思義就是給 Android 用但用法很像 jQuery 的東西。
+跟 jQuery 一樣，AQuery 的目標是讓 Android developer 可以 write less and do more：
+public void renderContent(Content content, View view) { AQuery aq = new AQuery(view); aq.id(R.id.icon).image(R.drawable.icon).visible().clicked(this, &amp;#34;someMethod&amp;#34;); aq.id(R.id.name).text(content.getPname()); aq.id(R.id.time).text(FormatUtility.relativeTime(System.currentTimeMillis(), content.getCreate())).visible(); aq.id(R.id.desc).text(content.getDesc()).visible(); } 也可以輕鬆地執行 AJAX:
+public void asyncJson(){ // perform a Google search in just a few lines of code  String url = &amp;#34;http://www.google.com/uds/GnewsSearch?q=Obama&amp;amp;v=1.0&amp;#34;; aq.ajax(url, JSONObject.class, this, &amp;#34;jsonCallback&amp;#34;); } public void jsonCallback(String url, JSONObject json, AjaxStatus status) { if (json !</description>
+    </item>
+    
+    <item>
+      <title>PlantUML - Keep Knowledge in Plain Text</title>
+      <link>https://blog.simplypatrick.com/posts/2012/08-19-plantuml-keep-knowledge-in-plain-text/</link>
+      <pubDate>Sun, 19 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/08-19-plantuml-keep-knowledge-in-plain-text/</guid>
+      <description>PlantUML 是個有趣的工具，因為它可以讓你用純文字的方式來表達視覺化的 UML，如以下的例子：
+@startuml abstract class AbstractList abstract AbstractCollection interface List interface Collection List &amp;lt;|-- AbstractList Collection &amp;lt;|-- AbstractCollection Collection &amp;lt;|- List AbstractCollection &amp;lt;|- AbstractList AbstractList &amp;lt;|-- ArrayList class ArrayList { Object[] elementData size() } @enduml  能用來產生這張圖：
+這樣的概念並不是新的，像 Graphvis 這套工具就是用 DOT language 來描述「圖」，PlantUML 只是將這概念套用在 UML 上。對 programmer 來說，這種表示方法是再自然不過了，因為這樣能將內容與呈現方式分離，而當要修改內容時你所需要的只是你最愛的文字編輯器。
+有許多種方式來使用 PlantUML：
+ 手動撰寫內容，然後單純使用它來產生 UML 圖檔 (JPG, PNG, or SVG) 用程式自動產生內容，再經由 PlantUML 產生圖檔 將它嵌入其他文件 (程式碼、Word 文件、網頁) 裡，當呈現時再動態產生圖檔 因為是純文字，所以很容易可以在網站上直接編輯內容，產生唯一的 image URL，需要呈現時再從網站下載  非常地有彈性及符合 DRY 原則，這也是為什麼 Pragmatic Programmer 告訴你要用純文字來保存你的知識。</description>
+    </item>
+    
+    <item>
+      <title>Reference Counting in Android libutils</title>
+      <link>https://blog.simplypatrick.com/posts/2012/08-12-reference-counting-in-android-libutils/</link>
+      <pubDate>Sun, 12 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/08-12-reference-counting-in-android-libutils/</guid>
+      <description>從事 Android native framework 層的開發一定會接觸到兩個 C++ template class: sp 及 wp，分別是 strong pointer 及 weak pointer 的簡稱，是兩個看似簡單但卻有著魔鬼細節的 utility class。
+一個比較典型使用 weak pointer 的狀況就是 Listener pattern，例如:
+class TimedTextPlayer { wp&amp;lt;MediaPlayerBase&amp;gt; mListener; } void TimedTextPlayer::postTextEvent(const sp&amp;lt;ParcelEvent&amp;gt;&amp;amp; parcel, int64_t timeUs) { sp&amp;lt;MediaPlayerBase&amp;gt; listener = mListener.promote(); if (listener != NULL) { // ...  listener-&amp;gt;getCurrentPosition(&amp;amp;positionMs); // ...  } } 這個例子如果使用 sp 來記錄 listener 很容易因為忘了移除 listener 而造成 memory leak。用了 wp 也就沒有這個困擾，不過額外的開銷就是 wp 必須先呼叫 promote() 拿到一個 sp 才能使用。</description>
+    </item>
+    
+    <item>
+      <title>Smart Pointers in WebKit</title>
+      <link>https://blog.simplypatrick.com/posts/2012/04-29-smart-pointers-in-webkit/</link>
+      <pubDate>Sun, 29 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/04-29-smart-pointers-in-webkit/</guid>
+      <description>上一篇講了 RefCounted，也講一下我看 RefPtr, PassRefPtr, OwnPtr, 及 PassOwnPtr 的心得：
+ RefPtr 定義了一個轉換至 pointer to data member 的 conversion operator:  // This conversion operator allows implicit conversion to bool but not to other integer types. typedef T* (RefPtr::*UnspecifiedBoolType); operator UnspecifiedBoolType() const { return m_ptr ? &amp;amp;RefPtr::m_ptr : 0; } 這個轉換運算子回傳的值可以被 compiler 自動轉換成 bool (非空時為 true)，但不能被轉換成數值來被使用，主要是用來避免一些可能的誤用狀況，有興趣的人可以參考 &amp;ldquo;The Safe Bool Idiom&amp;rdquo; 這篇文章。
+OwnPtr 運用了 type traits 的技巧來達到 OwnPtr 及 OwnPtr&amp;lt;T*&amp;gt; 都是宣告一個內含 T* 的 smart pointer：  typedef typename RemovePointer&amp;lt;T&amp;gt;::Type ValueType; typedef ValueType* PtrType; </description>
+    </item>
+    
+    <item>
+      <title>Reference Counting in WebKit</title>
+      <link>https://blog.simplypatrick.com/posts/2012/04-28-reference-counting-in-webkit/</link>
+      <pubDate>Sat, 28 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/04-28-reference-counting-in-webkit/</guid>
+      <description>WebKit 裡物件的生命週期很多都是由引用計數 (reference count) 控制的，今天有空看了一下，發現幾個巧妙之處：
+ RefCounted 是個 template class，並且繼承自 RefCountedBase:  template&amp;lt;typename T&amp;gt; class RefCounted : public RefCountedBase { WTF_MAKE_NONCOPYABLE(RefCounted); WTF_MAKE_FAST_ALLOCATED; public: void deref() { if (derefBase()) delete static_cast&amp;lt;T*&amp;gt;(this); } protected: RefCounted() { } ~RefCounted() { } }; 繼承 RefCountedBase 的技巧 (template hoisting) 是為了避免 template 實例化產生的 code bloating；而 destructor 裡的 delete static_cast&amp;lt;T*&amp;gt;(this); 則是為了避免不必要的 virtual table 產生，觀察 ~RefCountBase() 是個 non-virtual function 可以印證：
+~RefCountedBase() { ASSERT(m_deletionHasBegun); ASSERT(!m_adoptionIsRequired); } RefCountedBase 的設計相當輕量化， release 版本裡實際只會佔用一個 integer 的空間，而 debug 版裡則多了幾個輔助除錯的欄位:  #ifndef NDEBUG  bool m_deletionHasBegun; bool m_adoptionIsRequired; ThreadRestrictionVerifier m_verifier; #endif m_deletionHasBegun 是用來確保當物件當參考計數已經小於 1 之後是不能再做 ref/deref 的動作的；m_adoptionIsRequired 是用來確保 adoptRef() 一定要被呼叫到，也就是 new 出來的物件一定要先用 PassRefPtr 來管理；而 m_verifier 則是用來確認物件不會同時被兩個以上的 thread 引用。</description>
+    </item>
+    
+    <item>
+      <title>ARM Architecture for Mobile Developers</title>
+      <link>https://blog.simplypatrick.com/posts/2011/12-24-arm-architecture-for-mobile-developers/</link>
+      <pubDate>Sat, 24 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/12-24-arm-architecture-for-mobile-developers/</guid>
+      <description>目前幾乎市場上所有的 mobile device 用的 processor 都是基於 ARM Architecture 的，而做為一位 Android 或是 iOS 平台的應用程序開發人員對於 ARM 有一定的認識雖非必要，但多了解一點對優化程序及偵錯問題是有很大幫助的。關於 ARM 的基本介紹，可以參考 Pierre Lebeaupin 的 A few things iOS developers ought to know about the ARM architecture。
+最基本要知道的是 ARM Architecture 是有分版本的:
+目前主流的 Smartphone 都是採用 ARMv7a 的架構。
+而另一個需要了解的觀念是 ABI (Application Binary Interface)，要了解 ARM 的 ABI 最快的就是參考 Application Binary Interface for the ARM Architecture 裡的這張圖：
+從圖上可以看到在 ABI for the ARM Architecure 實際涵蓋了許多範圍，各個平台的 ABI 通常就是參考標準的 ARM ABI 然後把不明確的地方或是有差異的部份定義清楚。</description>
+    </item>
+    
+    <item>
+      <title>Build iOS App with rake</title>
+      <link>https://blog.simplypatrick.com/posts/2011/12-24-build-ios-app-with-rake/</link>
+      <pubDate>Sat, 24 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/12-24-build-ios-app-with-rake/</guid>
+      <description>上次說到 rake 是幫忙 iOS App 本地化的好用工具，但其實幾乎所有要自動化的事情都能請它幫忙， 例如寫 game 的人需要做的 sprite sheet 也能請 rake 自動產生。
+除此之外，準備各種不同的 build 也是頗煩人的事，如果你也用 rake 的話就可以用 wox 這個 gem 來幫忙，下面的範例是 wox 文檔建議的方式：
+# Rakefile Wox::Tasks.create :info_plist =&amp;gt; &amp;#39;Resources/Info.plist&amp;#39;, :sdk =&amp;gt; &amp;#39;iphoneos&amp;#39;, :configuration =&amp;gt; &amp;#39;Release&amp;#39; do build :debug, :configuration =&amp;gt; &amp;#39;Debug&amp;#39; build :release, :developer_certificate =&amp;gt; &amp;#39;iPhone Developer: Dangerous Dave (9GZ84DL0DZ)&amp;#39; do ipa :app_store, :provisioning_profile =&amp;gt; &amp;#39;App Store&amp;#39; ipa :adhoc, :provisioning_profile =&amp;gt; &amp;#39;Team Provisioning Profile&amp;#39; do testflight :publish, :api_token =&amp;gt; &amp;#39;nphsZ6nVXMl0brDEsevLY0wRfU6iP0NLaQH3nqoh8jG&amp;#39;, :team_token =&amp;gt; &amp;#39;Qfom2HnGGJnXrUVnOKAxKAmpNO3wdQ9panhtqcA&amp;#39;, :notes =&amp;gt; proc { File.</description>
+    </item>
+    
+    <item>
+      <title>iOS App Localization using rake</title>
+      <link>https://blog.simplypatrick.com/posts/2011/12-24-ios-app-localization-using-rake/</link>
+      <pubDate>Sat, 24 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/12-24-ios-app-localization-using-rake/</guid>
+      <description>一般要幫 iOS App 本地化，其中比較繁瑣的就是翻譯 xib 檔案中的字串，通常是需要下面三個步驟 (可參考 ICanLocalize 的教學)：
+ 使用 ibtool 把字串從 xib 中抓出來 找人翻譯字串 使用 ibtool 再把翻譯好的字串放到 xib 中  不過我是不能忍受這些工作要手動進行的，所以最好的方式是用 rake 來自動化這些事情：
+DEF_LPROJ = &amp;#39;en.lproj&amp;#39; REGIONS = Dir[&amp;#39;*.lproj&amp;#39;].delete_if {|p| p == DEF_LPROJ}.map {|p| File.basename(p, &amp;#39;.lproj&amp;#39;)} XIBS = Dir[&amp;#34;#{DEF_LPROJ}/*.xib&amp;#34;].map {|x| File.basename(x)} namespace :l10n do task :regions do REGIONS.each {|region| puts region} end task :xibs do XIBS.each {|xib| puts xib} end desc &amp;#39;Generate strings file for XIB&amp;#39; task :genstrings do REGIONS.</description>
+    </item>
+    
+    <item>
+      <title>LiveReload and Octopress</title>
+      <link>https://blog.simplypatrick.com/posts/2011/12-03-livereload/</link>
+      <pubDate>Sat, 03 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/12-03-livereload/</guid>
+      <description>雖然平常沒什麼時間寫 blog，但總是希望寫的時候能夠專注在所寫的內容，而不必被發佈 blog 的一些瑣事而干擾，例如現在雖然已經習慣用 Pow 了，然後把 rake watch 開著，但要預覽時還是要回 Chrome 按一下 Reload 才能預覽目前的內容，有點小煩，所以看到有 LiveReload 這種好東西當然要拿來用啊。
+簡單描述一下安裝的步驟:
+ 安裝 guard-livereload:  $ gem install guard-livereload  修改 Gemfile 把下列這一行加進去 &amp;lsquo;guard-livereload&amp;rsquo;:  $ gem &amp;#39;guard-livereload&amp;#39;  再來是改完 Gemfile 後的標準步驟:  $ bundle install  產生一份基本的 Guardfile:  $ guard init livereload  再來要修改 Rakefile 把啟動 guard 的動作放到 rake watch 裡面:  desc &amp;#34;Watch the site and regenerate when it changes&amp;#34; task :watch do raise &amp;#34;### You haven&amp;#39;t set anything up yet.</description>
+    </item>
+    
+    <item>
+      <title>AppCode: Make you a happier iOS developer</title>
+      <link>https://blog.simplypatrick.com/posts/2011/10-29-appcode-make-you-a-happier-ios-developer/</link>
+      <pubDate>Sat, 29 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/10-29-appcode-make-you-a-happier-ios-developer/</guid>
+      <description>&amp;ldquo;XCode doesn&amp;rsquo;t look like a software tool that&amp;rsquo;s developed by Apple at all. It is clear Steve Jobs was not involved creating this tool.&amp;rdquo;
+ 我完全同意這句話，從 XCode 3.2 用到現在 4.2 版還是覺得不順手。寫程式最怕的就是被其他事干擾而分心，IDE 如果有什麼地方讓我工作效率不彰，我通常很快就會受不了然後分心去解決效率問題先，因為不能馬上解決會一直困擾我，而 XCode 就是個會讓我一直要傷腦筋的工具，但是為了要在相對精美的 iOS 及 iPhone 上開發程式，XCode 是唯一的選擇。
+Tom van Zummeren 在 AppCode: IntelliJ for Objective C! 裡把 AppCode 比 XCode 還好的地方都整理出來了。我自己試用 AppCode 後也覺得 JetBrains 是有備而來的，用起來跟 IntelliJ IDEA 一樣地流暢，讓寫 Objective C 也能是個愉快的過程。
+AppCode 主要贏在程式編輯功能，但偵錯功能感覺弱了一點，例如:
+ 我找不到 NSLog 輸出的訊息會跑到那裡 Debug 時輸出的訊息沒有 XCode 完整 不會自動停在 first-chance exception  所以實際開發時還是要 AppCode 及 XCode 同時開啟，買個大螢幕會比較好：</description>
+    </item>
+    
+    <item>
+      <title>Git and SourceTree</title>
+      <link>https://blog.simplypatrick.com/posts/2011/10-23-git-and-sourcetree/</link>
+      <pubDate>Sun, 23 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/10-23-git-and-sourcetree/</guid>
+      <description>由於 Git 在 Linux/Windows 上都沒有比較好用的 GUI client，我向來是習慣直接在命令列敲指令，好處是簡單而且快，比較大的缺點就是瀏覽歷史記錄時比較麻煩，陽春又醜的 gitk 我通常是不得已才會去開它，所以換到 Mac OS X 上後，簡單好用而且開源的 GitX 自然就成為我的最愛，但 GitX 的更新實在有點慢，愛嘗鮮的我便一直注意著是否有更好的選擇。
+後來有試用過 Tower，整個 UI 比 GitX 漂亮許多，使用設計上也相當不錯，正想說可以&amp;rsquo;定居&amp;rsquo;下來，沒想到中間殺出個 SourceTree，而且因為這個產品被 Atlassian 收購了，在 Mac App Store 正免費大放送中，估計之後會有跟 BitBucket 更緊密的功能整合。
+本來 Mac OS X 就是讓 programmer 感覺很舒服的開發環境，有了 SourceTree 之後變更棒了。</description>
+    </item>
+    
+    <item>
+      <title>C and Dennis Ritchie</title>
+      <link>https://blog.simplypatrick.com/posts/2011/10-14-c-and-dennis-ritchie/</link>
+      <pubDate>Fri, 14 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/10-14-c-and-dennis-ritchie/</guid>
+      <description>我第一次接觸 C 語言應該是國二吧，那時在倚天雜誌上看到有人用 C 寫了一個程式獲得了程式比賽冠軍，當時看到這個用了各種括號 { ( [ ] ) } 來寫的語言實在是比 BASIC 酷太多了，馬上就被迷上了。剛開始，不記得去那裡拷貝到一個 C compiler 就開始自學起 C programming 了，但那個 compiler 實在是太陽春到一些正確的語法也會有編譯錯誤，一直等到 Borland Turbo C 2.0 這個產品出現後，自己才算真正地學起 C 語言:
+C 從此成為我一窺 computer programming 奧妙的鑰匙，也是之後我會從事資訊業的主要原因，所以說 C 這個程式語言很大地影響了我人生也不為過。
+眾所皆知，C 語言之父就是 Bell Labs K&amp;amp;R 的 R (Dennis Ritchie)，而他於很令人遺憾地於 10/8 過世了。Dennis 的主要貢獻 C 及 UNIX 幾乎是全面性地影響了整個資訊產業，你手上用的 iPhone 或是 Android 手機也是站在這個巨人的肩膀上才有可能被發明出來。
+Dennis 曾經說過:
+ UNIX is very simple, it just needs a genius to understand its simplicity.</description>
+    </item>
+    
+    <item>
+      <title>Git and Jun</title>
+      <link>https://blog.simplypatrick.com/posts/2011/06-17-git-and-jun/</link>
+      <pubDate>Fri, 17 Jun 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/06-17-git-and-jun/</guid>
+      <description>大家一般知道 Git 的發明者是 Linus Torvalds，但是實際上假如你常查閱 git help 的話，你會發現 Junio C Hamano 這個名字出現的次數實在比 Linus 多很多。如果說 Linus 是 Git 之父，Jun 應該就是 Git 之母了。
+Jun 目前在 Google 工作，Android 或是 Chrome OS 都選擇用 Git 也算是支持自家人了。下面是他的在 Open Source At Google 接受訪談的影片：
+ 附記：
+ Google 內部用的 VCS 應該不是秘密吧，聽說是修改過的 Perforce。 訪問者啕侃了一下 Jun 為什麼 Git 這麼難用不好學。 XD  </description>
+    </item>
+    
+    <item>
+      <title>好久沒碰的 Buildbot 改的還不錯</title>
+      <link>https://blog.simplypatrick.com/posts/2011/05-30-buildbot/</link>
+      <pubDate>Mon, 30 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/05-30-buildbot/</guid>
+      <description>蠻久沒有碰 Buildbot 了，今天看到 Chromium project 在用，新增的這個 Console 界面還不錯，對於 Chromium 這種需要支援許多平台並且要執行許多測試項目的 project 是蠻適合的，整個狀況可以一目了然：
+ 有問題的部份也很明顯可以直接點進去看，比起之前要去拉長長的 waterfall 圖方便許多：</description>
+    </item>
+    
+    <item>
+      <title>多平台手機遊戲開發</title>
+      <link>https://blog.simplypatrick.com/posts/2011/05-28-portable-mobile-game-development/</link>
+      <pubDate>Sat, 28 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/05-28-portable-mobile-game-development/</guid>
+      <description>昨天發現一個 Flash 遊戲: Jelly Cannon，相當地好玩，類型也是流行的物理益智遊戲：
+ 玩的過程發現他果凍的質感做得很好，看起來用的物理引擎還挺不錯的，不輸給 Box2D 或是 Chipmunk，查了一下是個叫 Nape 的物理引擎。
+自從接觸 iOS programming 以來，一直都對這種小遊戲的設計還蠻有興趣的，仔細看了一下發現它是用 haXe (啥? 聽都沒聽過) 這個 programming language 寫的，而 haXe 的 compiler 是用 OCaml 寫的，一整個非主流 (法國風?) 實在是讓人很感興趣。
+特別的是，haXe 是個 multiplatform language，目前可以把 code 編譯成 Flash, JavaScript (用來支援 HTML5?!), C++ (iOS 上看起來沒問題), 之後還會支援 C# (跑在 Windows Phone / Xbox360 上) 及 Java (Android 也行)，看起來相當有潛力用來開發支援多種平台 (看起來大家都這樣做吧) 的 mobile game。值得持續關注&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>My preferred programming fonts on Mac OS X</title>
+      <link>https://blog.simplypatrick.com/posts/2011/02-19-programming-fonts-on-mac-osx/</link>
+      <pubDate>Sat, 19 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/02-19-programming-fonts-on-mac-osx/</guid>
+      <description>Mac OS X 是非常棒的程式開發平台，有非常強的 CLI，也有非常漂亮的 GUI。
+我個人對於程式字型的選擇頗為堅持，例如在使用較暗的背景下，我偏好使用 Menlo：
+
+但如果是在白色的背景下，我覺得 Consolas 比較好看些：
+
+關於怎麼在 Mac OS X 下安裝 Consolas 字型，Google 就能找到一堆。</description>
+    </item>
+    
+    <item>
+      <title>Software Simian</title>
+      <link>https://blog.simplypatrick.com/posts/2008/2008-07-19-405/</link>
+      <pubDate>Sat, 19 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2008/2008-07-19-405/</guid>
+      <description>呆伯特漫畫裡頗為經典的一篇：
+如果現實裡能單純當個 Code Monkey 其實也不錯&amp;hellip; 呵&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Michael Barr </title>
+      <link>https://blog.simplypatrick.com/posts/2007/2007-09-03-399/</link>
+      <pubDate>Mon, 03 Sep 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2007/2007-09-03-399/</guid>
+      <description>初次知道 Michael Barr 是因為讀了他寫的 Programming Embedded Systems in C and C++ 這本關於 embedded system programming 的書。後來陸陸續續在網路上找到蠻多他寫的技術文章，才發現他是 Embedded Systems Programming magazine (現已改名叫 Embedded Systems Design) 的前總編輯，難怪文筆相當不錯。我還蠻喜歡看他寫的東西，主要是他的文章都有假設讀者的程度，因此不會有一堆太基本的內容，或是過於複雜難懂的技術細節。
+現在任職於顧問公司的 Michael 將他以前的一些文章集結整理起來在這裡，裡面內容對於從事 embedded system programming 的技術人員應該都頗有幫助。尤其是今天看完這篇 The Perils of Preemption配合下面這張圖，雖然內容都是已經熟悉的東西，經由 Michael 這樣的整理與講解，還是讓整個人有打通任督二脈的感覺：</description>
+    </item>
+    
+    <item>
+      <title>Beautiful Code</title>
+      <link>https://blog.simplypatrick.com/posts/2007/2007-08-18-394/</link>
+      <pubDate>Sat, 18 Aug 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2007/2007-08-18-394/</guid>
+      <description>我想我最近這幾個月遇到人，大概第一件想做的事就是問他：『喂，你看了那本書了嗎？』 (路人：關我什麼事啊？)
+看起來這本書在 Amazon.com 上蠻熱銷的，目前在 Software Development 類別的銷售排行榜上是第一名的，或許跟它的書名有些關係，這本書叫 &amp;ldquo;Beautiful Code&amp;rdquo;，畢竟 programmers 都忍不住會幻想讀了這本書後，功力大進，被人家稱讚 &amp;ldquo;Oh! Your code is beautiful.&amp;quot;。話說回來，這當然是不可能的事，programming 這件事雖然稱不上是藝術，但要達到一定的境界也需要一些天份、知識、經驗、與技巧，做的好的人當然夠資格被稱為大師或是達人。這本書基本上就是這些達人們描述他們遇到的問題，以及如何構思 beautiful code來解決這些問題。
+另外一個吸引我的地方就是本書的作者群實力堅強，例如有大家熟悉的老牌技術作家如 Brian Kernighan, Jon Bentley, 及 Charles Petzold，也有 XML 的專家 Time Bray，Ruby 的作者 Yukihiro Matsumoto, Perforce 的 Laura Wingerd 及 Christopher Seiwald, Subversion 的 Karl Fogel, 推廣 JSON 的 Douglas Crockford, Greg Kroah-Hartman 是著名的 Linux kernel hacker，以及其他在不同領域有名的技術人員。
+這本書雖然講的都是 coding，但是涵蓋的主體很廣，也是我這覺得這本書最獨特的地方，因為唯有從不同的角度來印證，你才能真正地了解什麼是 beautiful code。學校不會教你怎麼去欣賞好的 code，但是要成為一個好的 programmer，我認為這是必要的能力，畢竟我們不是天才，我們都是站在巨人的肩膀上看這世界。
+不過別期待能很快看完這本書，每篇文章都需要蠻多時間去細讀及思考的 (我也只讀完幾篇而已)。</description>
+    </item>
+    
+    <item>
+      <title>與所有的開發人員共勉之</title>
+      <link>https://blog.simplypatrick.com/posts/2007/2007-08-05-390/</link>
+      <pubDate>Sun, 05 Aug 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2007/2007-08-05-390/</guid>
+      <description>引述自 Adam Barr 在 MSDN 的專欄文章：
+我還是大四的學生時， 我記得有一位即將到投顧銀行上班的電腦科學系同學所說的話。他表示他只會參與軟體的設計，但是不會實際加入程式碼的撰寫工作，因為那太無趣。如此的工作應 該要交給程式撰寫人員 -- 顯然他認為程式撰寫人員是身分比較低等。當初那指的當然就是我囉。如此的談話發生在一所破解程式碼是最高榮耀的大學而言，讓我感到被羞辱的情緒。
+然而，他也沒說錯。當初我只是一名程式撰寫人員 (雖然他的程式撰寫能力不見得比我好)。如今，就像 Mike Gunderloy 的書 Coder to Developer 所示，我已經從一般的程式撰寫人員晉升到開發人員。我不但知道如何撰寫可以順利編譯的程式碼；我創造的軟體產品還可以有：執行速度敏捷、可靠、通過完善測 試、安全、可維護性佳且易於全球化…以及其他高品質程式碼應有的特點。一般而言，整個軟體產業的龐大程式編寫人員組織，正在成長與演進為龐大的開發人員組 織。 但是，如果您詢問開發人員專業生涯的下一步，他們的答案 可能會是想要成為「架構設計人員 (Architect)」。所謂的「架構/結構設計」會令人聯想到鈦合金骨架和毛玻璃，而且相對的會把開發人員的身分影射成營建工人的角色。那麼我是否也 想要躍升到下一個理論性的階層，讓自己成為架構設計人員呢？答案是否定的。
+這並非因為我瞧不起架構設計人員的職責：在軟體開發過程中協調所有系統元件的互動，同時考慮到整體目標 &amp;ndash; 這的確需要有人擔任。然而，身為開發人員我深感榮耀，而且我也誠懇地希望每一位開發人員都能感受到這樣的榮耀。
+但是萬一有人仰慕實體架構設計師 Frank Gehry 或 Rem Koolhaas 在設計上享有的知名氣和自由度呢？我的回應會是，軟體工程設計的領域目前還不夠成熟，無法以這麼概念性的方式運作。架構設計人員可以設計如 Bilbao Guggenheim Museum 以及 Seattle Public Library 等的之名建築物，因為土木工程的領域已經累積有數百年的知識和經驗做為基礎和後盾。但是軟體產業無法一下子讓所有人都晉升到這個層次；畢竟我們大多數都還 在建構一棟不會在用力甩門既倒塌的平房。
+當Microsoft 檢查程式的錯誤 (Bug) 時，發現設計性的錯誤 (亦即，架構設計人員審閱設計文件時會發現的錯誤) 佔據的比率很低，而且程式編寫錯誤 (亦即，程式碼無法根據程式設計人員的用意執行) 的比率也不高。會產生居中的類別，是因為雖然來源程式碼可以根據程式設計人員的用意執行，但是用意在進行當地語系化時發生錯誤 (應譯為：但是這些用意有些區域性的錯誤)：問題包括傳遞給方法的旗標有誤，或是曲解了組態參數的意思。而這些都不屬於架構設計人員可以處理的領域。這都是開發人員必須自行修正的事項。
+Fred Brooks 在他的著名文章 &amp;ldquo;No Silver Bullet&amp;rdquo; 中有間接提到這項重點：「軟體的本質涉及連鎖概念的結構：資料集、資料項目的關係、演算法，以及函數的呼叫」，其中還包括：「我相信建構軟體最困難的部 分，在於擬定這些連鎖概念的詳細規格、設計以及測試，而非結構的呈現或精確度的測試。」由此可見，他認為關鍵並非在於結構設計人員，而是開發人員的工作。 換句話說，他認為程式編寫人員的工作不是很困難，但是開發人員的工作就有許多挑戰。因此，我們應該要肯定我們的價值。
+我知道或許我們的工作不是整體程式設計的最高層次。能夠設計完美的結構，以精簡地封裝所有變數並因應未來的擴充需求，的確是一件令人振奮的成就。畢竟程式設 計人員都講求精確度，所以能夠讓所有組件順暢合併就是理想。但是軟體的創造其時有很多部分需要我們向熟練的工匠看齊：例如程式碼的審閱、撰寫單元的測試， 以及註解的清理。客戶或許無法直接認定是我們的辛勞，才能確保他們的隱私以及系統的防禦，但是我們都知道我們所提供的價值和重要性十足。此外，若要最佳化系統效能和電源管理，更需要黑手藝術的真材實料：這需要近距離接觸、以技能和經驗解決問題的實力，而非高階概念性的結構設計所能。
+我要大聲說：身為開發人員而非結構設計人員是我的榮幸。或許在未來的某一天，所有的軟體工程問題都將獲得解決，讓我們都可以成為結構設計人員。在此之前，我們還是專注於如何持續加強軟體開發吧。</description>
+    </item>
+    
+    <item>
+      <title>XNA Game Studio Express</title>
+      <link>https://blog.simplypatrick.com/posts/2007/2007-05-20-388/</link>
+      <pubDate>Sun, 20 May 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2007/2007-05-20-388/</guid>
+      <description>今天下載了 XNA Game Studio Express 來玩玩，不過微軟還是有點不乾脆啊，開發出來的遊戲要下載到 XBox 360 上還要繳 $99 的年費。 :-(
+目前 Game Studio Express 只支援用 C# 搭配 XNA Framework 來開發遊戲 (或者其他應用程式)。</description>
+    </item>
+    
+    <item>
+      <title>The Best Programming Language</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-12-06-384/</link>
+      <pubDate>Wed, 06 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-12-06-384/</guid>
+      <description>UnSpun by Amazon: Best Programming Language
+Ruby 遙遙領先第二名 Java，不過現在會去 UnSpun 逛的人大概都是 Ruby 迷吧，所以這樣的投票實在是不太公平了，就像是在德國投票選誰是史上最偉大賽車手一樣。 :-)</description>
+    </item>
+    
+    <item>
+      <title>Recursive Descent Parser in Ruby</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-11-08-368/</link>
+      <pubDate>Wed, 08 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-11-08-368/</guid>
+      <description>嗯嗯嗯&amp;hellip; 用 Ruby 來寫 recursive descent parser 真是妙，因為所有的 grammar 都可以用 Ruby 的語法來寫，換句話說，就是把 code 當成 data 來使用，例如：
+start :expr do match(:expr, &amp;#39;+&amp;#39;, :term) {|a, op, b| a + b} match(:expr, &amp;#39;-&amp;#39;, :term) {|a, op, b| a - b} match(:term) end 要增刪一條 rule 非常地直覺與簡單，同樣的方式要用 C 來寫就麻煩多了。本來是想自己寫一份新的，但是看了 Dennis Ranke 的方法後，不知不覺就跟著他的方法一直抄了，我覺得不太可能寫得比他的版本更好了。下面是我的版本：
+class Parser class Lexer TokenMatch = Struct.new(:name, :pattern, :eval) attr_accessor :pos attr_reader :matches def initialize @matches = [] end def add_match(name, pattern, eval) @matches &amp;lt;&amp;lt; TokenMatch.</description>
+    </item>
+    
+    <item>
+      <title>Ruby Quiz</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-11-06-364/</link>
+      <pubDate>Mon, 06 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-11-06-364/</guid>
+      <description>今天才發現原來有個 Ruby Quiz 網站，在上面每週會提供一個題目讓你思考及練習 Ruby programming 的技巧，對於有 programming language 的經驗但是沒有接觸過 Ruby 的人應該是不錯的學習方式。正如同網站所述：We use the Ruby Quiz to learn more about the Ruby programming language, not as a race. 就把它當作遊戲來玩玩吧。
+這是我對 Quiz #28: Mad Libs 的解答：
+class MadLibs def ask(word) print &amp;#34;Give me #{word}: &amp;#34; $stdin.gets.chomp end def play(file) keywords = {} story = file.read.gsub(/\(\((.+?)\)\)/) do word = $1 if word =~ /(.+):(.+)/ keywords[$1] = ask($2) elsif keywords.include?(word) keywords[word] else ask(word) end end puts print story end end raise &amp;#34;No template is given!</description>
+    </item>
+    
+    <item>
+      <title>My Second Ruby Program</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-11-05-363/</link>
+      <pubDate>Sun, 05 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-11-05-363/</guid>
+      <description>今天寫的一個 Ruby 程式，解 Interpreter 這個問題：
+# PC/UVa IDs: 110106/10033 class Computer def initialize(file) @regs = Array.new(10, 0) @ram = Array.new(1000, 0) load_inst(file) end def load_inst(file) pc = 0 file.each_line do |line| line.chomp! line.strip! if line.length &amp;gt; 0 then @ram[pc] = line pc += 1 elsif pc &amp;gt; 0 break end end end MAX_INST = 1000 def execute executed = 0 pc = 0 opcodes = { &amp;#39;1&amp;#39; =&amp;gt; Proc.new { return executed }, &amp;#39;2&amp;#39; =&amp;gt; Proc.</description>
+    </item>
+    
+    <item>
+      <title>My First Ruby Program</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-11-03-361/</link>
+      <pubDate>Fri, 03 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-11-03-361/</guid>
+      <description>最近在學 Ruby，而要學一個 programming language 最快的方法就是動手去寫，可是工作之餘我又沒太多時間可以寫大一點的程式，因此我通常會找 Programming Challenges 裡面的題目來自娛。
+下面的程式就是我的第一個 Ruby 程式： 解 Check The Check 這個問題：
+class Chess @@capture = { &amp;#39;p&amp;#39; =&amp;gt; [[-1, 1, 1], [ 1, 1, 1]], &amp;#39;P&amp;#39; =&amp;gt; [[-1, -1, 1], [ 1, -1, 1]], &amp;#39;r&amp;#39; =&amp;gt; [[ 1, 0, 8], [-1, 0, 8], [0, 1, 8], [ 1, 0, 8]], &amp;#39;b&amp;#39; =&amp;gt; [[-1, 1, 8], [ 1, 1, 8], [1, -1, 8], [-1, -1, 8]], &amp;#39;n&amp;#39; =&amp;gt; [[-2, -1, 1], [-1, -2, 1], [1, -2, 1], [ 2, -1, 1], [2, 1, 1], [1, 2, 1], [-1, -2, 1], [-2, -1, 1]], &amp;#39;k&amp;#39; =&amp;gt; [[-1, 1, 1], [ 1, 1, 1], [1, -1, 1], [-1, -1, 1], [1, 0, 1], [0, 1, 1], [-1, 0, 1], [ 0, -1, 1]], &amp;#39;q&amp;#39; =&amp;gt; [[-1, 1, 8], [ 1, 1, 8], [1, -1, 8], [-1, -1, 8], [1, 0, 8], [0, 1, 8], [-1, 0, 8], [ 0, -1, 8]], } @@capture.</description>
+    </item>
+    
+    <item>
+      <title>Goodbye XAML</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-10-30-357/</link>
+      <pubDate>Mon, 30 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-10-30-357/</guid>
+      <description>Goodbye XAML, Hello AvalonBuilder
+使用 RubyCLR 或是 IronPython 來跟 WPF 搭配應該是蠻有趣的，或許以後有人會為 WPF 搞個類似 Rails 的 framework 喔。</description>
+    </item>
+    
+    <item>
+      <title>Green Thread</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-10-29-356/</link>
+      <pubDate>Sun, 29 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-10-29-356/</guid>
+      <description>jGuru: What is the difference between green threads and native threads?
+突然看到 green thread 這個詞愣了一下，想說那時候有這種東西的。說穿了，就是 Sun JVM 裡的 user-level thread。</description>
+    </item>
+    
+    <item>
+      <title>Bad Comments in Code</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-10-16-349/</link>
+      <pubDate>Mon, 16 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-10-16-349/</guid>
+      <description>推薦讀一下我學弟的這篇文章《Use SVN as local repository》，強調是我學弟當然是我想沾一點光，不過文中的 Patrick 不是我啦。 :-)
+我個人是對於在程式裡留下一堆被註解掉的 code 是相當感冒的，原因是這些 code 根據個人經驗有 99.9% 的機率不會再被用到，那幹嘛放在那裡混淆後來讀這份 code 的人？尤其是用了版本控制系統後，這種作法更是沒有必要。
+另外一種類似的問題就是有人特別喜歡在程式碼裡面簽名，例如 /* 06-01-01 modified by XXX */ 這類的，尤其是在那種有很多人可能會一起改到的或是歷史悠久的檔案，這些人名比程式碼還顯目刺眼，尤其當每個人的簽名格式都不一樣，甚至個人的簽名風格還會隨時間改變時 (暈&amp;hellip;)。背後的原因不外是能夠在發生問題的時候能找到原作者來解決，問題是這種類似 CVS blame 的功能絕大多數的版本控制系統都有提供 (你可以丟了這個系統，假如它沒有這個功能的話) ，加上這些註解只是妨礙程式閱讀的流暢度罷了。
+所以老實說，讀起許多 open-source project 的程式碼實在是比工作時讀的舒服多了，因為至少大家都還有 &amp;ldquo;code should be written for readability.&amp;rdquo; 的觀念。</description>
+    </item>
+    
+    <item>
+      <title>Josh Bloch on Design</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-09-25-342/</link>
+      <pubDate>Mon, 25 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-09-25-342/</guid>
+      <description>不是什麼新的技術，Joshua Bloch 談的是更基本但也更重要的 API Design：How to Design a Good API and Why it Matters。
+其實軟體開發者的大部分工作就是和一大堆的 API 打交道，我是最討厭使用那種設計不良的 API，因為往往要用更多的 client code 來完成功能或者避過設計的缺陷。怎麼去設計“良好的 API”正是所有軟體開發者要必備的技巧，Joshua 所提出的這些設計準則，都是相當值得參考學習的。
+另一篇 Joshua 的訪談：Josh Bloch on Design。</description>
+    </item>
+    
+    <item>
+      <title>Embedded Programming with Eclipse</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-09-24-340/</link>
+      <pubDate>Sun, 24 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-09-24-340/</guid>
+      <description>James P. Lynch 寫了一本圖文並茂、詳細到不行的 ARM 與 Eclipse 開發指南：ARM Cross Development with Eclipse，主要著重在開發環境的安裝、設置、與使用。由於 Eclipse 具有免費、跨平台、開放的架構、強大的開發社群，embedded system 的開發環境慢慢移至 Eclipse 平台相信將會是大勢所趨。
+不管你是從事甚麼樣的軟體開發工作，精通手頭上的開發工具絕對是做好事情的必要條件，而 Eclipse 就是個值得投資時間去熟習的工具，強力推薦這篇文章給有興趣於 embedded programming 的初學者。</description>
+    </item>
+    
+    <item>
+      <title>Programmer&#39;s Font</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-09-03-337/</link>
+      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-09-03-337/</guid>
+      <description>我一直是那種對於程式碼字型很挑剔的那種人，因此這幾年都是 Courier New 的愛用者，因為它在不開 ClearType 的情況下還是能顯示非常清晰的程式碼，雖然ㄧ直覺得它給人的感覺硬了一點：
+當然程式碼字型的美醜是有點見仁見智的問題，我甚至也看過用非固定寬度字型的 programmer，他說這樣同一行就可以顯示更多的程式碼。不過我還是喜歡傳統固定寬度的字型，程式排列起來比較有條理也容易看清楚。Courier New 好是好，但我總想找一個更漂亮的程式碼字型。直到有次到某家合作夥伴去討論一些技術細節，發現他用的程式碼字型非常好看，我也就跟著變心用起 Bitstream Vera Sans Mono 這個字型了：
+但是 Bitstream Vera Sans Mono 唯一的缺點是必須在打開 ClearType 的狀況下才會漂亮。
+另外一個值得推薦的是 Microsoft 即將於 Vista 中提供的 Consolas。</description>
+    </item>
+    
+    <item>
+      <title>Books on Embedding System Programming</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-04-01-329/</link>
+      <pubDate>Sat, 01 Apr 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-04-01-329/</guid>
+      <description>在辭掉工作短暫休息的這段時間，我讀完了這本《MicroC OS II: The Real Time Kernel 》。會想要去讀它的原因是因為既然要做嵌入式系統的開發，那就必須對 RTOS 的特性有相當程度的掌握，而最快的方式莫過於直接去深入了解一個 RTOS 的實作，而短小精幹的 MicroC/OS-II 因為有原作者的詳細解說，當然是最適合學習的目標。老實說，讀這本書前，自己對於即時系統的一些概念是似懂非懂，但是看完這本書之後卻是豁然開朗。我覺得這本書更適合作為一般學校基礎 OS 的教材，之前大學上的 OS 課程都太理論性了，有點後悔當時沒有去修即時系統的課。強力推薦這本給想要自修學習 RTOS 的人。
+另外一本的入門好書則是 David E. Simon 寫的《An Embedded Software Primer》。這本書關於 RTOS 的部分我是覺得沒有前一本講的清楚，但是可讀性倒是高了些，畢竟這本書就是要給入門者看的。後面關於 embedded software design, development, 及 debugging 的觀念我覺得寫的相當不錯，一樣推薦給想要了解 embedded system programming 的人。</description>
+    </item>
+    
+    <item>
+      <title>Andrew S. Tanenbaum on Teaching Computer Science</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-03-27-327/</link>
+      <pubDate>Mon, 27 Mar 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-03-27-327/</guid>
+      <description>從 iSee&amp;rsquo;s Blog! 看到的：在 1997 年的 SIGCSE，Andrew S. Tanenbaum 的演說 TEN GOLDEN RULES FOR TEACHING COMPUTER SCIENCE：
+ Think long term Emphasize principles, not facts Expect paradigm shifts Explain how things work inside Show students how to master complexity Computer science is not science Think in terms of systems Keep theory under control Ignore hype Don&amp;rsquo;t forget the past  這是他近十年前講的東西了，到今天看起來還是很對，其中的道理更是每天可以用在工作上的。以前讀書的時候就很喜歡 Andrew 寫的書，例如《Computer Networks》及《Modern Operating Systems》都是我心目中的經典之作。
+聽說他最近又開始搞 Minix3 了，主要是作為開發手持行動設備及嵌入式環境的作業系統。或許有人說作業系統已經是老掉牙的題材了，因為我們已經有了 Windows 或 Linux，搞作業系統還有前途嗎？喔喔，至少在各式各樣嵌入式裝置盛行的今天，我不這樣認為。我並不是要你去發明一個新的作業系統 (那是需要一點天份的)，但是至少要搞清楚它的運作原理。Andrew 也告訴我們 &amp;ldquo;Don&amp;rsquo;t forget the past&amp;rdquo;，不是嗎？</description>
+    </item>
+    
+    <item>
+      <title>kludge</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-03-24-325/</link>
+      <pubDate>Fri, 24 Mar 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-03-24-325/</guid>
+      <description>這種東西就叫 kludge: klumsy, lame, ugly, dumb, but good enough。</description>
+    </item>
+    
+    <item>
+      <title>Catch-22</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-03-04-318/</link>
+      <pubDate>Sat, 04 Mar 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-03-04-318/</guid>
+      <description>正如朋友所說的，最近的際遇好像陷入了 Catch-22 循環了：『我找不到工作因為沒有相關經驗，但我沒有工作怎麼會有相關經驗』，用 programming 的術語說也就是遇到 deadlock 了。
+不過實際狀況也沒那麼慘啦，履歷才投了一家公司，而且又是很多人想去的公司，因為沒經驗被拒絕是正常的。雖然如此，我還是要為自己辯解一下，引自從『A 到 A+』這本書：
+ 在決定誰才是適合的人才時，從優秀到卓越的公司重視個性甚於教育背景、專業知識、技能、或工作經驗。這並不表示，專業知識和技能不重要，但是，他們認為專業知識與技能都是可以傳授的(或可以學習的)，然而個性、工作倫理、基本智商、能否堅守承諾，和價值觀等卻早已深植人心，很難改變。
+ 從我工作這幾年的經驗，我是相當認同這個理念。或許是自己太信心滿滿了，對於第一次求職被拒絕感到有點錯愕，不管如何，只好繼續努力囉。</description>
+    </item>
+    
+    <item>
+      <title>New Stuff for Programtic Programmers</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-02-26-313/</link>
+      <pubDate>Sun, 26 Feb 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-02-26-313/</guid>
+      <description>Pragmatic Bookshelf 又有一些新書了：
+ Behind Closed Doors: Secrets of Great Management (Pragmatic Programmers) by Johanna Rothman, Esther Derby Ship it! A Practical Guide to Successful Software Projects by Jared Richardson, William Gwaltney My Job Went to India: 52 Ways to Save Your Job (Pragmatic Programmers) by Chad Fowler  這三本似乎蠻有趣的，評價也不錯。我應該會買下來，趁著最近離職的空檔讀一讀。</description>
+    </item>
+    
+    <item>
+      <title>C# 3.0</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-10-02-296/</link>
+      <pubDate>Sun, 02 Oct 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-10-02-296/</guid>
+      <description>Ian Griffiths 對於 C# 3.0 新功能的介紹：
+C# 3.0 and LINQ - Expression Trees C# 3.0 - Extension Methods C# 3.0 - Var Isn&amp;rsquo;t Object</description>
+    </item>
+    
+    <item>
+      <title>.NET Performance Tuning</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-09-23-292/</link>
+      <pubDate>Fri, 23 Sep 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-09-23-292/</guid>
+      <description>我向來相信 managed code 可以讓 programmer 把事情做的更快更好，但這一切美好事物的背後是要付出其他代價的，因此這次去 PDC 特別挑了 Rico Mariani 主講的兩個 session 來聽：
+ FUNL04 Tips &amp;amp; Tricks: Writing Performant Managed Code FUNL05 Tips &amp;amp; Tricks: Common Memory Management Pitfalls and Profiling for Managed Applications  如果你問 Rico &amp;ldquo;在開始 performance tuning 之前，最重要的三件準備工作是什麼？&amp;quot;，他的答案肯定是 &amp;ldquo;measure, measure, measure&amp;rdquo;。這幾乎是每個專家、每本書都會跟你強調的重點，但是很多 programmer 卻總是喜歡憑自己的直覺判斷來決定怎麼做，似乎他們就是刻意或者下意識地忘掉這件事，為什麼？因為 measure 實在是件麻煩事，有時甚至不可能做到。相反地，如果有一些工具程式的輔助，measure &amp;amp; performance tuning 可以是件頗有趣的事。除此之外，因為 managed code 有 metadata 可以輔助這些工具的分析，做起來其實比 native code 的 tuning 容易多了。
+這兩場 session 都蠻短的，Rico 並沒有足夠的時間能夠用實際的例子 demo 怎麼使用這些工具並分析其結果，所以我就拿自己寫的一些程式來練習使用 vadump 及 SOS，我向來認為花點時間熟悉這些基本的工具使用可以在將來幫你省下更多的時間。</description>
+    </item>
+    
+    <item>
+      <title>在公牛身上擠奶</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-09-23-293/</link>
+      <pubDate>Fri, 23 Sep 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-09-23-293/</guid>
+      <description>咦？獨孤木出書了？《在公牛身上擠奶》？
+最近好像有點跟不上新消息，還是因為看到 CNET 的這篇文章才知道這件事。不過聽說出版社編輯水準很差，請自行判斷是否值得購買。</description>
+    </item>
+    
+    <item>
+      <title>9/16 Anders Hejlsberg on C# 3.0</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-09-16-289/</link>
+      <pubDate>Fri, 16 Sep 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-09-16-289/</guid>
+      <description>呵呵，今天去聽 Anders Hejlsberg 講 C# 3.0，內容真的是很精采啊。Anders 本人有一種說不上來的獨特魅力，不會讓你因為覺得他非常聰明而不敢接近他，感覺是個很有親和力的人。在這個 session 他很有條理、循序漸進地告訴你為什麼這些 C# 的新功能需要被加進來：
+ Lambda expressions Extension methods Local variable type inference Object initializers Anonymous types Query expressions Expression trees  本來我一直以為 C# 3.0 只是新增了 query language 的語法 (Microsoft 所謂的 Language Integrated Query, 簡稱 LINQ)，今天才知道 C# 為了實現 LINQ 也新增了許多令人興奮的新功能。這段 code 真是越看越酷：
+var contacts = from c in customers where c.State == &amp;#34;WA&amp;#34; select new { c.Name, c.Phone }; 有興趣的可以參考 Overview of C# 3.</description>
+    </item>
+    
+    <item>
+      <title>9/12 The Sleepy Day</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-09-13-287/</link>
+      <pubDate>Tue, 13 Sep 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-09-13-287/</guid>
+      <description>&amp;ldquo;C++ Internals&amp;rdquo; Jim Hogg, Stan Lippman, Bob Davidson, Brandon Bray This is the talk that only the C++ Product Unit could give, and they&amp;rsquo;re here to give it. While understanding the internals of C++ is fascinating from a purely intellectual perspective, the Visual C++ team has found the set of internal knowledge that will also help you become the expert C++ developer. This talk will cover issues such as the C++ object model (managed and unmanaged), the complexity of app domains when the whole world is not managed, performance internals, and much much more.</description>
+    </item>
+    
+    <item>
+      <title>Counting Semaphore in .NET</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-19-254/</link>
+      <pubDate>Sun, 19 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-19-254/</guid>
+      <description>另一篇在 CSDN 也是有問題的程式，程式的目的是限制一定數量的 threads 同時執行某項工作。我的想法是用 System.Threading.Monitor 就可以很優雅地解決這問題：
+class Program { static void Main(string[] args) { Program p = new Program(); Thread[] threads = new Thread[10]; for (int i = 0; i &amp;amp;lt; threads.Length; i++) { threads[i] = new Thread(p.Run); threads[i].Name = &amp;#34;Thread(&amp;#34; + i.ToString() + &amp;#34;)&amp;#34;; threads[i].Start(); Thread.Sleep(1000); } foreach (Thread t in threads) { t.Join(); } Console.ReadLine(); } private int allowed = 3; public void Run() { Thread t = Thread.</description>
+    </item>
+    
+    <item>
+      <title>Implement Singleton Pattern by Generic (in C#  2.0)</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-19-253/</link>
+      <pubDate>Sun, 19 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-19-253/</guid>
+      <description>在 CSDN 看到的這個範例有兩個問題：
+ 不是 thread-safe 假如 T 沒有公開無參數的建構函數，會在 runtime 時拋出異常。事實上，這個問題可以使用 generic constraint 在 compiler time 時避免。  所以下面是改良過的版本：
+public class Singleton where T : new() { private static T _instance = new T(); // to disable beforefieldinit flag  static Singleton() {} public static T Instance { get { return _instance; } } } </description>
+    </item>
+    
+    <item>
+      <title>Cdecl Calling Convention for Delegates</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-15-248/</link>
+      <pubDate>Wed, 15 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-15-248/</guid>
+      <description>如何使用 C# 建立 cdecl callback 給 unmanaged code 使用？
+SQLite.NET 所採用的方法如下：
+ 用 ildasm 反組譯 DLL 產生 IL 碼 用 Perl script 為 delegate 的 Invoke() 加上 modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) 再用 ilasm 組譯出新的 DLL  參考下列詳細的方法 (摘自 SQLite.NET 的文件檔)：
+ The C# does not allow you to specify the calling convention of the callback. It is just one of the C# limitations. IL, managed C++ and the runtime itself supports the cdecl calling convention for delegates through modopt([mscorlib]System.</description>
+    </item>
+    
+    <item>
+      <title>Cdecl Calling Convention for Delegates, Part II</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-15-249/</link>
+      <pubDate>Wed, 15 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-15-249/</guid>
+      <description>想了一下，前一篇文章裡的方法似乎有點麻煩。雖然 C# 的實作有這樣的限制，但是我們應該可以用 System.Reflection.Emit.TypeBuilder 來動態產生一個使用 cdecl 的 delegate。理論上，透過 dynamic code generation 這種方式是可以突破任何語法上或是實作上的限制。因此參考下列的這兩篇文章，其實這問題是可以用更優雅的方式來解決：
+ Creating delegate types via Reflection.Emit, Joel Pobar Calling Code Dynamically, Eric Gunnerson  下列的程式列出了新的作法，產生出來的 delegate 跟用 ildasm/perl/ilasm 是一樣的效果 (注意 new Type[] { typeof(System.Runtime.CompilerServices.CallConvCdecl) } 的使用)，酷！
+using System; using System.Collections.Generic; using System.Text; using System.Reflection; using System.Reflection.Emit; namespace EmitCdeclDelegate { class Program { static void Main(string[] args) { Program program = new Program(); program.TestCdeclDelegate(); } private void TestCdeclDelegate() { MethodInfo methodInfo = typeof(Program).</description>
+    </item>
+    
+    <item>
+      <title>Erich Gamma on Design Patterns</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-11-245/</link>
+      <pubDate>Sat, 11 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-11-245/</guid>
+      <description>談到 Design Patterns，有興趣的人可以看看這一系列對 Erich Gamma 的訪談：
+ Part I: How to Use Design Patterns Part II: Erich Gamma on Flexibility and Reuse Part III: Design Principles from Design Patterns  Erich Gamma 談到如何使用 DP 以及經過這十年他想法的一些改變。DP 固然是 programmer 設計程式時的一大利器，然而水可載舟亦可覆舟，誤用 DP 往往會造成過度的設計以及沒有必要的彈性。例如下面這個我很久以前看過的一個實際例子：
+class Toy {}; class Barbie : public Toy {}; class Lego : public Toy {}; class ToyFactory { public: static ToyFactory* Instance(); virtual Toy* CreateToy(LPCTSTR id); protected: ToyFactory(); virtual ~ToyFactory(); private: static ToyFactory* m_pToyFactory; }; ToyFactory * ToyFactory::m_pToyFactory = NULL; ToyFactory::ToyFactory() {} ToyFactory::~ToyFactory() {} ToyFactory * ToyFactory::Instance() { if (!</description>
+    </item>
+    
+    <item>
+      <title>Head First Design Patterns</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-09-241/</link>
+      <pubDate>Thu, 09 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-09-241/</guid>
+      <description>蔡學鏞要翻譯《Head First Design Patterns》這本近來熱賣到不行的書。
+翻譯這本書跟翻譯一般的技術書籍有點不一樣，相對地也比較難，就看蔡學鏞能否一戰成名或是砸了自己的招牌囉。目前網站上沒提供試讀的章節，所以不曉得翻譯的品質如何。但如果翻譯的品質不錯，我肯定會掏腰包去買。</description>
+    </item>
+    
+    <item>
+      <title>Windows Internals Guru - Mark Russinovich</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-04-12-236/</link>
+      <pubDate>Tue, 12 Apr 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-04-12-236/</guid>
+      <description>Mark Russinovich 也開始 blog 了。對 Windows 內部運作有興趣的人可以持續關注他的文章。</description>
+    </item>
+    
+    <item>
+      <title>The First Recorded Computer Bug</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-04-11-235/</link>
+      <pubDate>Mon, 11 Apr 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-04-11-235/</guid>
+      <description>The First Recorded Computer Bug</description>
+    </item>
+    
+    <item>
+      <title>The Ten Rules of Performance</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-03-31-229/</link>
+      <pubDate>Thu, 31 Mar 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-03-31-229/</guid>
+      <description>Eric Gunnerson 的 Design for Performance vs. Tune for performance 讓我想起之前讀過 Paul Vick 的這篇文章 The Ten Rules of Performance。
+我自己歸納了幾個了幾個重點:
+ Don&amp;rsquo;t guess, do profiling. Fix performance problem as early as possible. Performance should be designed in. Memory access is more expensive than CPU cycle. Develop a &amp;ldquo;performance culture&amp;rdquo; in the team/company.  </description>
+    </item>
+    
+    <item>
+      <title>Jolt Awards 2005</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-03-21-227/</link>
+      <pubDate>Mon, 21 Mar 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-03-21-227/</guid>
+      <description>Subversion 拿下 Change and Configuration Management Tools 的首獎。毫無意外地，Eclipse 仍然蟬連 Languages and Development Environments 的寶座。
+新增的 Test – Defect Tracking Tools 獎項則是由 FogBugz 3.1 獲得，Joel Spolsky 應該感到驕傲，因為他的書《Joel on Software》及產品 FogBugz 同時都得獎了。</description>
+    </item>
+    
+    <item>
+      <title>How to be a good programmer?</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-03-14-226/</link>
+      <pubDate>Mon, 14 Mar 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-03-14-226/</guid>
+      <description>I want to be a good programmer&amp;hellip; How???
+我多加一條:
+ Read a lot of code: for example, you can choose an open-source project you are interested in and try to understand how it works by reading its source code. You can always learn new things from that because every programmer thinks differently for the same thing and their solution may be better than yours.  </description>
+    </item>
+    
+    <item>
+      <title>Exception Handling Best Practices in .NET</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-03-12-225/</link>
+      <pubDate>Sat, 12 Mar 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-03-12-225/</guid>
+      <description>Daniel Turini 寫的這篇《Exception Handling Best Practices in .NET》相當不錯，內容正好跟 Brad Abrams 的《Exception handing and Memory Management》相呼應。
+我不明白的是，為什麼 Brad Abrams 會認為 &amp;ldquo;catch (Exception e) is your friend&amp;rdquo;？ 因為 catch {&amp;hellip;} 中我所能想到最好的處理方式就是 &amp;ldquo;log the Exception, rethrow it, and let the program terminate&amp;rdquo;；如果不這樣做而把這個 Exception 忽略掉，反而會造成以後偵錯的困難。
+有興趣的人可以參考 Is &amp;ldquo;throw new Exception(&amp;hellip;)&amp;rdquo; a good practice 這個討論，我喜歡 David Levine 給我的答案。</description>
+    </item>
+    
+    <item>
+      <title>Knuth &amp; TAOCP</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-02-15-220/</link>
+      <pubDate>Tue, 15 Feb 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-02-15-220/</guid>
+      <description>唸過 computer science 的人大多對 Knuth 有份莫名的崇敬，而大多數人的崇敬源自於 The Art of Computer Programming 這部不知何時才能全部完成的巨著，而大家最常開的笑話就是『 Knuth 能在有生之年把七大冊全部寫完嗎？』。但對我而言，Knuth 這名字卻有著更不同的意義：他是我的師祖，也就是老師的老師的老師。
+我自己幾年前買下 vol.1-3 這一套供在書架上，卻從來沒能夠把這幾本書看完，畢竟自己的數學基礎不夠扎實，出來工作後也沒有時間及熱情來研讀了。有時候覺得愧對師祖時就會拿出來翻一翻再放回架上去。 XD
+師祖預計於 2007 年完成 vol.4，在這之前，將先出版一系列的 fascicle 為它鋪路：
+ Volume 1, Fascicle 1: MMIX &amp;ndash; A RISC Computer for the New Millennium Volume 4, Fascicle 2: Generating All Tuples and Permutations Volume 4, Fascicle 3: Generating All Combinations and Partitions  不熟悉 Knuth 的人可以看看這篇簡介《高德納的二十年計畫》。</description>
+    </item>
+    
+    <item>
+      <title>Stallman, Torvalds, Knuth, and Dijkstra</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-02-14-219/</link>
+      <pubDate>Mon, 14 Feb 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-02-14-219/</guid>
+      <description>取自 Knuth&amp;rsquo;s Art of Computer Programming Vol. 4 這篇在 Slashdot 的消息：
+ Richard M. Stallman, Linus Torvalds, and Donald E. Knuth engage in a discussion on whose impact on Computer Science was the greatest.
+Stallman: &amp;ldquo;God told me I have programmed the best editor in the world!&amp;quot;
+Torvalds: &amp;ldquo;Well, God told me that I have programmed the best operating system in the world!&amp;quot;
+Knuth: &amp;ldquo;Wait, wait - I never said that.</description>
+    </item>
+    
+    <item>
+      <title>Acronym: IIRC</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-02-01-218/</link>
+      <pubDate>Tue, 01 Feb 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-02-01-218/</guid>
+      <description>這是我今天第二次看到 IIRC 這縮寫了，就搜尋了一下，只是 YHGMTPOTG 或 BTDTGTTSAWIO 有點惡搞吧？</description>
+    </item>
+    
+    <item>
+      <title>What is LLP64?</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-02-01-217/</link>
+      <pubDate>Tue, 01 Feb 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-02-01-217/</guid>
+      <description>談到 64-bit programming，難免就會看到這幾個縮寫：LP64 ILP64 LLP64 ILP32 LP32，關於這些模式的差異可以參考《64-Bit Programming Models: Why LP64?》。
+附帶一提：Win64 採用 LLP64</description>
+    </item>
+    
+    <item>
+      <title>Async is hard</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-01-27-216/</link>
+      <pubDate>Thu, 27 Jan 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-01-27-216/</guid>
+      <description>今天跟同事討論一個問題： &#34;Is asynchronous interface good?&#34;
+我的觀點是『server interface 應該採用 synchronous model，而由 client 來決定是否採用 asynchronous model 』。會有這樣的結論是因為我認為 &#34;async is hard&#34;。asynchronous model 強迫 client 去做許多不同於 synchronous model 的特別處理才能確保程式的正確性；但是根據我的觀察，大多數 programmer 的思考邏輯都習慣了 synchronous model，要他們突然換成 asynchronous model 來思考非得花一番時間嘗試及偵錯才能達到 100% 的正確性。換句話說，我認為一個容易讓 client 端出錯的 interface 並不是好的 interface。
+我向來是 &#34;Make simple things easy and hard things possible&#34; 這句話的信徒。</description>
+    </item>
+    
+    <item>
+      <title>Writing Exception-Safe Code</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-01-17-214/</link>
+      <pubDate>Mon, 17 Jan 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-01-17-214/</guid>
+      <description>The Old New Thing 中關於 exception-safe 的相關討論：
+ Cleaner, more elegant, and wrong How did MS-DOS report error codes? Cleaner, more elegant, and harder to recognize  如同我以前在 Assertions and Error Handling 這篇文章中的觀點，我還是認為 exception 帶來的好處多於它帶來的問題。大家都知道 &amp;ldquo;writing error handling code is hard&amp;rdquo;，不表示我們就可以忽略這個議題而不做 error handling；正如同 &amp;ldquo;writing bug-free code is hard&amp;rdquo; 不是你程式裡有一堆臭蟲的好理由。
+關於 exception-safe 或是 failure atomicity 這個問題，常見的五個解決方法可以參考 Effective Java 中的 Item 46: Strive for failure atomicity：
+ design immutable objects check parameters for validity before performing the operation order the computation so that any part that may fail takes place before any part that modifies the object write recovery code perform the operation on a temporary copy  </description>
+    </item>
+    
+    <item>
+      <title>CodeProject</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-01-06-211/</link>
+      <pubDate>Thu, 06 Jan 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-01-06-211/</guid>
+      <description>我有訂閱 CodeProject 的 newsletter，原因是在裡面總是可以發現一些新奇有趣的程式小品如 ASCII art with C#。</description>
+    </item>
+    
+    <item>
+      <title>John Lam on CLI Metadata</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-12-08-207/</link>
+      <pubDate>Wed, 08 Dec 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-12-08-207/</guid>
+      <description>John Lam 的 Metadata Internals 實在是太棒了，單單看這份簡報就可以對 CLI metadata 的結構有了清楚的認識，可以看出來 John 是個很會教導的老師。
+我想大部分的 .NET programmer 也只要了解到這個程度就夠了，如果想要更深入才需要去看 CLI Partition II - Metadata and File Format 這份長達174頁的正式規格。
+John 的 iunknown.com blog 也很值得去看喔。</description>
+    </item>
+    
+    <item>
+      <title>Stan Lippman on C&#43;&#43;/CLI</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-12-06-205/</link>
+      <pubDate>Mon, 06 Dec 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-12-06-205/</guid>
+      <description>我一直很好奇為什麼在 C++ 領域赫赫有名的 Stan Lippman 及 Herb Sutter 會加入 Microsoft?
+從孟岩對 Stan 的訪談或許可以一窺其究竟。從文中可以看出，透過 C++/CLI 一方面可以實現 Stan 個人對 C++ 改進的期許，一方面也大大增強了 C++ 在 .NET 平台上的實用性。或許有許多人認為 Stan 這樣的作法是叛離 C++ 的正統道路，我倒是很樂觀其成。如果今天 Microsoft 不做 C++ 與 .NET 的 Interop，一定會有其他的公司或開放原始碼的專案會去做，畢竟有需求就會有人想辦法供給。
+看看訪談文章的評論，發現有些人總是喜歡把別人當成笨蛋或是認為別人做任何事都是出於自私的目的，胸襟及眼光實在是小了些。人們所以為的往往是自己想法的反射。</description>
+    </item>
+    
+    <item>
+      <title>Windows Forms Programming Tips</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-12-03-204/</link>
+      <pubDate>Fri, 03 Dec 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-12-03-204/</guid>
+      <description>在 jfo&amp;rsquo;s coding 有一些 Windows Forms 的技術文章，內容頗為實用而且都是一般市面的 Windows Forms 書籍沒討論到的課題：
+ Picking your base class wisely All About Handles in Windows Forms How When Where and Why to use Dispose Painting Best Practices Understanding DockLayout and Splitters Building NotifyIcon Applications/Understanding the Application class How to make a readonly controls collection  </description>
+    </item>
+    
+    <item>
+      <title>Don&#39;t throw System.Exception directly!</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-27-203/</link>
+      <pubDate>Sat, 27 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-27-203/</guid>
+      <description>在寫下列這一段程式時，發現 System.Drawing.Graphics.FromImage 居然會直接拋出 System.Exception：
+public class AddImageInfo : BaseImageOp { private Font _drawFont = new Font( &amp;#34;Verdana&amp;#34;, 10); private SolidBrush _drawBrush = new SolidBrush(Color.White); public AddImageInfo(ImageOp innerOp) : base(innerOp) { } public override Image Execute(Image image) { using (Graphics g = Graphics.FromImage(_innerOp.Execute(image))) { string info = String.Format( &amp;#34;{0}x{1}&amp;#34;, image.Width, image.Height); g.DrawString( info, _drawFont, _drawBrush, 10, 10); } return image; } } 用 Reflector 查了 System.Drawing.Graphics.FromImage() 的實作：
+public static Graphics FromImage(Image image) { if (image == null) { throw new ArgumentNullException(&amp;#34;image&amp;#34;); } if ((image.</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; Coding Standards</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-23-202/</link>
+      <pubDate>Tue, 23 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-23-202/</guid>
+      <description>預覽 Herb Sutter 及 Andrei Alexandrescu 的新書《C++ Coding Standards》。
+還沒有機會去書店買，但從 Amazon.com 裡的評論看來，這本書與 Effective C++ 似乎頗有互補作用。
+Don’t sweat the small stuff. (Or: Know what not to standardize.) 2 Compile cleanly at high warning levels. 4 Use an automated build system. 7 Use a version control system. 8 Invest in code reviews. 9 Give one entity one cohesive responsibility. 12 Correctness, simplicity, and clarity come first. 13 Know when and how to code for scalability.</description>
+    </item>
+    
+    <item>
+      <title>beforefieldinit</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-16-200/</link>
+      <pubDate>Tue, 16 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-16-200/</guid>
+      <description>兩篇文章讓你可以把 static initializer, static constructor, 及 beforefieldinit 的觀念搞清楚：
+ Implementing the Singleton Pattern in C# C# and beforefieldinit  兩篇文章都是出自於 Jon Skeet 的網站，裡面還有一些很不錯的 .NET 技術文章。</description>
+    </item>
+    
+    <item>
+      <title>IanG on .NET Multi-thread Programming</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-14-199/</link>
+      <pubDate>Sun, 14 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-14-199/</guid>
+      <description>Ian Griffiths 寫了不少關於 .NET multi-thread programming 的文章：
+《What Locks Are You Holding Right Now?》 解釋了 deadlock 發生的時機，以及兩個常用的規則來避免之：
+ avoid blocking the UI thread. avoid making other threads wait for the UI thread to do something.  《Monitor.TryEnter, lock, using, and Deadlock》解釋如何用 using 語法來實作限時的等待。類似的手法也可以應用在 ReaderWriterLock。(參考 Stupid &amp;ldquo;using&amp;rdquo; Tricks)
+《ReaderWriterLock vs Monitor》解釋了為什麼使用 ReaderWriterLock 通常是一種過早的最佳化 (premature optimization)。
+《Locking, Anonymous Delegates, and Interrupts》說明了一般同步機制所使用的 &amp;ldquo;acquire, do, release&amp;rdquo; 模式的缺點，也順帶點出 KeSynchronizeExecution 存在的原因。
+《When Synchronous Locking Goes Bad》是前一篇的延續，點出另一個 &amp;ldquo;acquire, do, release&amp;rdquo; 不適用的時機，以及 ISynchronizeInvoke 模式如何弭補這缺陷。簡而言之，ISynchronizeInvoke 是個比 &amp;ldquo;acquire, do, release&amp;rdquo; 更抽象、適用範圍更廣的同步模式。</description>
+    </item>
+    
+    <item>
+      <title>Knowing x86 machine code</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-13-198/</link>
+      <pubDate>Sat, 13 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-13-198/</guid>
+      <description>有 crack 過一些軟體的人應該都知道這樣的技巧吧：Advantages of knowing your x86 machine code。Comment 中提到的 Ctrl-F11 切換 source code 與 disassembly code 的技巧還蠻方便的。</description>
+    </item>
+    
+    <item>
+      <title>Java theory and practice</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-02-193/</link>
+      <pubDate>Tue, 02 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-02-193/</guid>
+      <description>想要對 Effective Java 裡面的課題有更多探討的人，可以參考 Brian Goetz 在 developerWorks 的專欄 Java theory and practice。</description>
+    </item>
+    
+    <item>
+      <title>Effective Java</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-01-192/</link>
+      <pubDate>Mon, 01 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-01-192/</guid>
+      <description>我的上一次 Java programming 經驗已經是將近六年前的事了，JDK 那時才剛從 1.0 版升級至 1.1，後來因為工作內容的關係，C++ 才變成是我最常使用的程式語言。
+前一陣子逛書店時瞄到了 Joshua Bloch 的《Effective Java Programming Language Guide》居然有中文版，原文的版本我是聞名已久卻沒空拜讀。我一看是侯捷翻譯的作品，二話不說便掏錢買下這本書，直到最近，我一時興起才把它讀完。
+就內容而言，這本書絕對有資格跟《Effective C++》享有一樣的經典地位，不僅 Java programmer 要看，.NET programmer 也應該人手一本，因為其中的許多物件導向編程的道理是同時適用於 Java 與 .NET。中文版裡不通順或是有錯誤的地方倒是比我期待的數目多了一點，不過我想侯捷應該是不介意別人用高標準來檢驗他的作品。
+下面是我發現的一些翻譯問題：
+原文: Not only can the class of an object returned by a public static factory method be nonpublic, but the class can vary from invocation to invocation depending on the values of the parameters to the static factory.譯文 p7: public static factory method 傳回的物件不僅可以是個 nonpublic class 物件，而且視 static factory 函式參數的不同，還可以涉及不同的 nonpublic class .</description>
+    </item>
+    
+    <item>
+      <title>Dilbert on Extreme Programming</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-10-12-185/</link>
+      <pubDate>Tue, 12 Oct 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-10-12-185/</guid>
+      <description>註：原圖來自於 dilbert.com 於 2003/01/09 及 2003/01/10 刊載的漫畫，但原網站已經移除原圖的鏈結。</description>
+    </item>
+    
+    <item>
+      <title>Grady Booch&#39;s Blog</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-10-11-184/</link>
+      <pubDate>Mon, 11 Oct 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-10-11-184/</guid>
+      <description>Grady Booch 的 blog 有一些精采的簡報：
+ General Software Architecture Software Archeology The Limits of Software  </description>
+    </item>
+    
+    <item>
+      <title>Applied .NET Attributes</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-10-04-183/</link>
+      <pubDate>Mon, 04 Oct 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-10-04-183/</guid>
+      <description>《Applied .NET Attributes》是本有趣的書：精簡而專注。精簡是因為它只有短短的 232 頁；專注則是因為 custom attributes 是它的唯一主題。一開始我蠻訝異會有這樣主題的書籍出現，但仔細想了一下，custom attributes 的確是 .NET 中最值得討論的一個技術，因為它帶來了許多創新的可能性。
+這本書在第一二三章首先解釋 attribute 的基本精神以及它在 compile-time, design-time, 及 runtime 所能發揮的功用。我尤其喜歡第四章中關於 ContextBoundObject 以及 AOP 的討論，這一章釐清了我以前不甚明白的一些概念。對於如何在 .NET 的環境實現 AOP 的人可以也參考下面這兩篇在 MSDN Magazine 的文章：
+ Aspect-Oriented Programming Enables Better Code Encapsulation and Reuse Decouple Components by Injecting Custom Services into Your Object&amp;rsquo;s Interception Chain  </description>
+    </item>
+    
+    <item>
+      <title>.NET is better than COM</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-09-04-181/</link>
+      <pubDate>Sat, 04 Sep 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-09-04-181/</guid>
+      <description>Top 10 Reasons .NET is better than COM 很幽默地消遣了 Don Box&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Data Binding in Avalon</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-31-180/</link>
+      <pubDate>Tue, 31 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-31-180/</guid>
+      <description>A good introduction to the data binding mechanism in Avalon.</description>
+    </item>
+    
+    <item>
+      <title>&#34;,hr&#34;</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-30-179/</link>
+      <pubDate>Mon, 30 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-30-179/</guid>
+      <description>Matt Pietrek 居然不知道 &amp;ldquo;,hr&amp;rdquo; 的用法! 如同這個 blog entry 的第一篇評論，我感到蠻驚訝的。</description>
+    </item>
+    
+    <item>
+      <title>Coroutine implementation in C# 2.0</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-30-178/</link>
+      <pubDate>Mon, 30 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-30-178/</guid>
+      <description>Matt Pietrek 的《Fun with Iterators and state machines》解釋了 C# 2.0 如何使用 state machine 來實現 coroutine。</description>
+    </item>
+    
+    <item>
+      <title>Dependency properties</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-30-177/</link>
+      <pubDate>Mon, 30 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-30-177/</guid>
+      <description>剛接觸 Avalon 的人可能會對所謂的 Dependency properties 感到困惑 ，在《Three Extensibility Models: A Bad Thing?》裡，Drew 清楚地解釋 Attached properties (一種特別的 Dependency properties) 的用法及原理。
+懂了 Attached properties 後可以再參考 Wesner Moise 的《Dynamic Properties and Code Generation》來了解 Dynamic properties 的概念。
+最後《Core Concepts of the Presentation Subsystem (code-named &amp;ldquo;Avalon&amp;rdquo;)》可以讓你透視 Dependency properties 的目的，也就是實現下列這些機制： styling, databinding, animation, default values, value expressions, property invalidations, and inherence。</description>
+    </item>
+    
+    <item>
+      <title>My Shopping Cart for Technical Books</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-30-176/</link>
+      <pubDate>Mon, 30 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-30-176/</guid>
+      <description>下面是這次美國行要採購的書籍清單:
+  Pragmatic ADO.NET: Data Access for the Internet World by Shawn Wildermuth    Design Patterns C# by Steven John Metsker    Coder to Developer: Tools and Strategies for Delivering Your Software by Mike Gunderloy, Sybex    Code Complete, Second Edition by Steve McConnell    Pragmatic Project Automation: How to Build, Deploy, and Monitor Java Apps by Mike Clark    Code Generation in Microsoft .</description>
+    </item>
+    
+    <item>
+      <title>Add-ins for Reflector</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-26-175/</link>
+      <pubDate>Thu, 26 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-26-175/</guid>
+      <description>之前的文章有提過 Lutz Roeder 的 Reflector，最近它已成為我每天必用的工具。這麼棒的東西想當然愛用者不只我一個人，有許多人已經開始為它擴充新的功能，例如：
+Reflector.FileDisassembler
+Reflector.Graph</description>
+    </item>
+    
+    <item>
+      <title>XAML &amp; Avalon</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-14-173/</link>
+      <pubDate>Sat, 14 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-14-173/</guid>
+      <description>Ian Griffiths&amp;rsquo;s articles about XAML and Avalon:
+ Inside XAML Graphical Composition in AvalonBesides, Avalon Dissected is a series of articles about the architecture of Avalon. IMO, Avalon will enable Windows programmers to develop much richer applications than the ones we have today. It will change how we think about Windows application. I am excited about that. :-)  </description>
+    </item>
+    
+    <item>
+      <title>Minidump</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-10-172/</link>
+      <pubDate>Tue, 10 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-10-172/</guid>
+      <description>Some links about minidump:
+John Robbins - Symbols and Crash DumpsMatt Pietrek - Improved Error Reporting with DBGHELP 5.1 APIsAndy Pennell - Post-Mortem Debugging Your Application&amp;hellip;Kim Gräsman - Minidumps and Security</description>
+    </item>
+    
+    <item>
+      <title>Comments in Windows Source Code</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-30-168/</link>
+      <pubDate>Wed, 30 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-30-168/</guid>
+      <description>相信很多人看過流傳在網路上的 Windows 原始碼，有沒有注意到這些在原始碼裡的有趣註解？
+private\shell\shell32\util.cpp: // the fucking alpha cpp compiler seems to fuck up the goddam type &amp;quot;LPITEMIDLIST&amp;quot;, so to work&amp;lt;BR&amp;gt;// around the fucking peice of shit compiler we pass the last param as an void *instead of a LPITEMIDLIST private\windows\media\avi\verinfo.16\verinfo.h: * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! * !!!!!!!IF YOU CHANGE TABS TO SPACES, YOU WILL BE KILLED!!!!!!! * !!!!!!!!!!!!!!DOING SO FUCKS THE BUILD PROCESS!!!!!!!!!!!!!!!! * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! private\ntos\rtl\heap.c: // The specific idiot in this case is Office95, which likes // to free a random pointer when you start Word95 from a desktop // shortcut.</description>
+    </item>
+    
+    <item>
+      <title>Programming Quotes from WikiQuote</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-30-167/</link>
+      <pubDate>Wed, 30 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-30-167/</guid>
+      <description>Programmer 真的是一個很怪的族群，因為他們看到這些對平常人根本是無厘頭的話居然會覺得好笑：
+&amp;ldquo;God is Real, unless declared Integer&amp;rdquo; - J.Allan Toogood, FORTRAN programmer
+&amp;ldquo;Pascal keeps your hand tied. C gives you enough rope to hang yourself.&amp;rdquo;
+&amp;ldquo;He who hasn&amp;rsquo;t hacked assemply language as a youth has no heart. He who does as an adult has no brain.&amp;rdquo; - John Moore
+&amp;ldquo;Real programmers can write assembly code in any language.&amp;rdquo; - Larry Wall
+&amp;ldquo;In C++ it&amp;rsquo;s harder to shoot yourself in the foot, but when you do, you blow off your whole leg&amp;rdquo; - Bjarne Stroustrup</description>
+    </item>
+    
+    <item>
+      <title>The BASIC Programming Language</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-30-166/</link>
+      <pubDate>Wed, 30 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-30-166/</guid>
+      <description>&amp;ldquo;It is practically impossible to teach good programming to students that have had a prior exposure to BASIC: as potential programmers they are mentally mutilated beyond hope of regeneration.&amp;rdquo; - Edsger Dijkstra
+&amp;ldquo;Teaching BASIC should be a criminal offense.&amp;rdquo; - Edsger Dijkstra
+&amp;ldquo;BASIC - A programming language. Related to certain social diseases in that those who have it will not admit it in polite company.&amp;rdquo;
+&amp;ldquo;Real Programmers don&amp;rsquo;t write in BASIC.</description>
+    </item>
+    
+    <item>
+      <title>.NET, Just for Fun</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-24-165/</link>
+      <pubDate>Thu, 24 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-24-165/</guid>
+      <description>好久沒看過這麼精彩的文章了！Joel 在 How Microsoft Lost the API War 裡的文筆依然犀利卻也帶著一貫的幽默。
+雖然我第一個學會的程式語言是 Basic，就在我厭煩了要把行號從 50 改成 100 來放入更多的程式碼時，我就移情別戀，投入了 C 的懷抱。好吧，我承認我不用 Visual Basic 的部分原因是跟它的名字裡有 Basic 這個字有關，雖然有時候用它來開發程式真的又快又方便。因此當 C#出現時，它有著 VB 的簡單及方便性，但是語法及名字又是根源於 C 時，我就迷上它了。
+因此 .NET 的出現對於已經厭煩了惱人的記憶體管理的我，如同 C 與 Basic 比較起來，不啻是個極大的誘惑。對一個 programmer 而言，.NET is fun，它可以我在陰暗的 Win32 API 角落裡還看得到一絲絲的希望。至於 .NET 是不是會普及，我倒是不那麼擔心，畢竟 Microsoft 把賭注都下在上面了，就讓他們去操心好了。
+我覺得 Joel 有點太悲觀了，畢竟 Win32 API 仍然存在於 Longhorn 或 Windows N；舊的 Win32 程式依然可以在 Longhorn 上執行；許多公司依然使用 Win32 API 開發 Longhorn 的程式；只是 developers 多了一種新的、可以讓 developers 少掉幾根頭髮的選擇，不是很好嗎？
+『Just for Fun』是我現在對 .</description>
+    </item>
+    
+    <item>
+      <title>NoStepInto in VS 2003</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-17-164/</link>
+      <pubDate>Thu, 17 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-17-164/</guid>
+      <description>今天發現在 Visual Studio 6 可以用 autoexp.dat 來取消 step into的功能在 VS 2003 沒有作用。Google 了一下，原來是做法改了，詳情參考《 How to Not Step Into Functions using the Visual C++ Debugger 》。 </description>
+    </item>
+    
+    <item>
+      <title>Custom Attribues and eXtensible C#</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-09-161/</link>
+      <pubDate>Wed, 09 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-09-161/</guid>
+      <description>Pierre Nallet 的文章《Get Personal with C# Custom Attributes》介紹了 custom attributes 的應用。他把 custom attributes 分成了三類：user attributes, runtime attributes, 及 compile time attributes。一般常用的 System.Runtime.InteropServices.StructLayoutAttribute 就是屬於 runtime attributes，因為 JIT 是在執行時期才決定物件資料欄位的排列方式。
+如果你有仔細查閱 System.Diagnostics 裡面的一些 attribute class，你會發現一些有趣的 attribute 應用，如 DebuggerHiddenAttribute 可以阻止 debugger 設定中斷點、DebuggerStepThroughAttribute 可以阻止 debugger 的 step into 功能。
+Pierre Nallet 同時也是 eXtensible C# (XC#) 的作者。
+對 Attributed Programming 有興趣的人可以參考《Applied .NET Attributes》這本書。</description>
+    </item>
+    
+    <item>
+      <title>Enjoy Code</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-04-160/</link>
+      <pubDate>Fri, 04 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-04-160/</guid>
+      <description>博客堂 (http://blog.joycode.com/) 有蠻多對岸的 .NET 技術人員聚集，有興趣的人可以訂閱他們的 RSS。 對我而言，除了從中吸收別人的知識經驗，也是一個不錯的管道可以了解對岸的程序員文化。</description>
+    </item>
+    
+    <item>
+      <title>Nullable types</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-04-159/</link>
+      <pubDate>Fri, 04 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-04-159/</guid>
+      <description>又有一項新的功能或者說是 syntax sugar 加入 C# 2.0 的規格，詳情參考 Nullable types in C# 中的討論。
+簡單地說就是『允許 value type 也能有 null 值』。例如
+int? x = 125; if (x != null) { ... } 我喜歡這個概念，總比一般把『整數初始化成 -1 代表不合法值』的手法好多了。</description>
+    </item>
+    
+    <item>
+      <title>The Weird &#34;break;&#34; in switch/case</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-04-158/</link>
+      <pubDate>Fri, 04 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-04-158/</guid>
+      <description>Ask a Language Designer 解答了一個困惑我很久的問題：為什麼 C# 中的 switch/case 不允許 fall-through 卻需要 break 來離開 case 區塊？
+雖然這個答案還是不能說服我去接受它，但至少我知道了為什麼。</description>
+    </item>
+    
+    <item>
+      <title>x86-64</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-05-31-155/</link>
+      <pubDate>Mon, 31 May 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-05-31-155/</guid>
+      <description>Yes, the age of 64-bit computing is coming: An Introduction to 64-bit Computing and x86-64.
+在個人電腦上的 RAM 動輒以 GB 來計算的今日，32-bit 帶來的 4GB 定址空間已經不再是個遙不可及的龐大數字。就讓我們猜猜 x86-64 及 IA-64 何者能勝出&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Free Visual C&#43;&#43; Compiler</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-05-07-152/</link>
+      <pubDate>Fri, 07 May 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-05-07-152/</guid>
+      <description>Microsoft 提供免費的 Microsoft Visual C++ Toolkit 2003，其中包含了跟 Visual Studio .NET 2003 一樣的 C++ compiler。其實 Microsoft 早就應該這樣做了，畢竟現在有誰在 Windows 上不用整合開發環境 (IDE) 來寫程式，提供免費的 C++ compiler 一點也不會影響 Visual Studio 的銷售。提供免費的 C++ 編譯器來推廣 .NET 平台的普及，我想是這個事情最主要的原因吧。</description>
+    </item>
+    
+    <item>
+      <title>CC2</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-04-16-146/</link>
+      <pubDate>Fri, 16 Apr 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-04-16-146/</guid>
+      <description>我已經不記得第一次讀 Code Complete 是幾年前了，但是對於書中的許多內容我還是記憶猶新，它可說是影響我程式設計風格最重要的一本書。十年後，令人引頸期盼的 Code Complete 第二版 即將於六月就要上市。想靠 progamming 吃飯卻沒看過這本書的人一定要看，而看過第一版的人可以買第二版再看一遍&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Avalon &amp; Indigo</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-04-09-144/</link>
+      <pubDate>Fri, 09 Apr 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-04-09-144/</guid>
+      <description>兩篇入門 Avalon 及 Indigo 的文章:
+ Introducing the New Avalon Graphics Model Inside &amp;ldquo;Indigo,&amp;rdquo; Chapter 2: The Journey of a Message  </description>
+    </item>
+    
+    <item>
+      <title>Quit thinking and look</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-04-02-140/</link>
+      <pubDate>Fri, 02 Apr 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-04-02-140/</guid>
+      <description>最近遇到了一個頗為難纏的 bug，症狀是當燒錄光碟的動作完成後，有些視窗的背景會變成黑色而不是原來的背景圖案；如果燒錄的資料量越大，這問題就越快出現；更奇怪的是這問題只會發生在安裝的版本而不是開發人員自己編譯出來的版本。
+根據 debugging rules 的第二條規則 &amp;ldquo;Make it fail&amp;rdquo;，最重要的事情是在開發人員的機器上重現這個問題。我們首先嘗試將開發人員編譯的執行碼來覆蓋安裝的版本，結果問題還是會發生；反之，用安裝版本來覆蓋開發人員編譯的執行碼也不會有問題。對於這樣的結果，我們感到相當困惑，因為如果不是程式碼造成的差異，那會是什麼因素造成這樣的結果？
+根據 rule 3 &amp;ldquo;Quit thinking and look&amp;rdquo;，我們決定多做一點嘗試，完整複製整個環境而不是只有執行碼。花了一番功夫，我們發現居然是執行檔 manifest 的問題，關鍵在於 manifest 中的這一段：
+&amp;lt;dependentAssembly&amp;gt; &amp;lt;assemblyIdentity type=&amp;quot;win32&amp;quot; name=&amp;quot;Microsoft.Windows.Common-Controls&amp;quot; version=&amp;quot;6.0.0.0&amp;quot; publicKeyToken=&amp;quot;6595b64144ccf1df&amp;quot; language=&amp;quot;*&amp;quot; processorArchitecture=&amp;quot;x86&amp;quot;/&amp;gt; &amp;lt;/dependentAssembly&amp;gt; 這差異會導致 common control 6.0 被使用，於是我們在開發人員的電腦採用這樣的 manifest 很快就重現這症狀了。現在問題是那裡的程式碼導致這樣的錯誤？由於當初猜測是 GDI 方面的問題，我們把 Windows Task Manager 叫出來，並且追蹤程式執行時的 GDI objects 數量，才赫然發現當問題發生前的一瞬間，GDI objects 的數量會暴增至 10000。此時我們很確定這是由 GDI leak 產生的問題，但對於為什麼換用新版的 common control 會導致這個 bug 卻是沒什麼頭緒。
+於是我們採用檢查問題發生點附近的程式碼，一邊單步執行一邊觀察 GDI Objects 的數量。用這樣的方法慢慢檢查，發現只要一呼叫 CStatic::SetBitmap，就會有一個 GDI leak 產生。我們終於明瞭新版的 common control 對於 STM_SETIMAGE 有不一樣的處理方式：static control 有可能複製我們傳進去的 bitmap handle，因此我們有義務把傳回來的 bitmap handle 釋放掉。</description>
+    </item>
+    
+    <item>
+      <title>The n Habits of Highly Defective Windows Applications</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-04-01-139/</link>
+      <pubDate>Thu, 01 Apr 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-04-01-139/</guid>
+      <description>這篇文章《The n Habits of Highly Defective Windows Applications》是上班時努力地 google，想要找出方法來解決一個 GDI leak 時，不小心發現的。文章點出了許多撰寫 Windows 程式的壞方法、壞習慣，裡面包含了許多我曾經犯過而且其他新手也常常在犯的錯誤。假如你想把 Windows programming 學好，你應該嚴肅地看待文章中提出的警告。
+文章作者對於 Win32 programming 相當有研究，他的其他相關的技術文章可以在 MVP Tips, Techniques, and Goodies 找到，篇篇精采。</description>
+    </item>
+    
+    <item>
+      <title>10 Tips from the Ruby Creator</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-03-30-138/</link>
+      <pubDate>Tue, 30 Mar 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-03-30-138/</guid>
+      <description>出自於 Ruby Creator Y. Matsumoto, CIPS Connections:
+ Learn more than one programming languages, preferably many different style ones, like scripting, object-oriented, functional, logic, etc. Learning languages teaches you many about programming. Read good books, for example, &amp;ldquo;Pragmatic Programmers&amp;rdquo;, &amp;ldquo;Refactoring&amp;rdquo;, and &amp;ldquo;Art of Computer Science&amp;rdquo;. Read the source code. The source code is the source of information and knowledge. Thanks to the opensource. Don&amp;rsquo;t focus too much on tools. Tools changes.</description>
+    </item>
+    
+    <item>
+      <title>Anonymous Methods in C# 2.0</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-24-133/</link>
+      <pubDate>Tue, 24 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-24-133/</guid>
+      <description>Anonymous method 是 C# 2.0 的新功能之一，從這兩篇文章可以看到 C# 如何在 CLR 上實作 closure 的機制。
+ C# V2.0 Delegate Syntax and Conceptual Integrity, Ian Griffiths Introduction to Anonymous Methods and Higher-Order Procedures in C#, Steve Maine  </description>
+    </item>
+    
+    <item>
+      <title>Hard Reading on Garbage Collection</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-24-134/</link>
+      <pubDate>Tue, 24 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-24-134/</guid>
+      <description>幾篇跟 CLR 的 garbage collection 有關的技術文章：
+ Finalization, Chris Brumme 對於 finalization 的機制做了深入的探討，包括 finalizer 帶來的成本、一些使用限制的緣由、及一些必須謹記在心的原則。 Dispose Idiom, Tristan Cartony 提供了範例程式說明在各種情況下如何實作 Dispose Idiom。 Resource management, Brian Harry 探討了如何在 garbage collection 的環境下實現 deterministic finalization。 .NET Framework Resource Management 把所有的 type 根據管理資源的方式分成了 simple, finalizable, disposable, 及 disposable and finalizable (both) 四種類型，並且詳細地說明了各種類型適用的時機。除此之外，有幾個比較少被談到的主題也涵括在內，如 threading issues, versioning, resource collector pattern, IEnumerable with expensive resources。個人認為是蠻實用的一篇文章。  </description>
+    </item>
+    
+    <item>
+      <title>Visual Assist</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-19-130/</link>
+      <pubDate>Thu, 19 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-19-130/</guid>
+      <description>打一下廣告： Visual Assist 有新的 beta 版本了。我不知道該怎麼形容這個東西，但是寫程式時沒有它我就渾身不自在&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>名人談軟體</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-10-129/</link>
+      <pubDate>Tue, 10 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-10-129/</guid>
+      <description>看完了Anders Hejlsberg 的訪談錄之後，我才發現 Bill Venners 其實訪問過許多軟體業界的知名人物，如 James Gosling, Bruce Eckel, Andy Hunt &amp;amp; Dave Thomas, Guido van Rossum, Scott Meyers, Martin Fowler, Josh Bloch, Ward Cunningham, Bertrand Meyer, Bjarne Stroustrup, &amp;hellip; 哇！都是我的偶像！
+只是我的 To-Read List 霎時多了八、九十篇文章&amp;hellip; 傻眼&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Bruce Eckel&#39;s Weblog</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-08-128/</link>
+      <pubDate>Sun, 08 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-08-128/</guid>
+      <description>今天在閱讀一些關於 checked/unchecked exception 爭議的文章時，忽然發現 Bruce Eckel 也有自己的 weblog: Thinking About Computing。
+從 5-2-03 Strong Typing vs. Strong Testing 及 Does Java need Checked Exceptions? 可以看出 Bruce 是傾向於支持 unchecked exception。
+下面是我找到這些文章的連結路徑：
+ 13 Exceptional Exception Handling Techniques   Best Practices for Exception Handling  Does Java need Checked Exceptions?   Three Rules for Effective Exception Handling    </description>
+    </item>
+    
+    <item>
+      <title>Leaky Abstractions</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-05-126/</link>
+      <pubDate>Thu, 05 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-05-126/</guid>
+      <description>Joel 總是能將事情解釋地比別人更好：《 The Law of Leaky Abstractions》(相關討論) 是 Joel 的文章中我最喜歡的幾篇之ㄧ。
+寫過 Java 或是 .NET 程式的人大概都知道什麼是 garbage collection，甚至連 garbage collection 是什麼都不知道的人還是可以寫出一個正確無誤的程式。在這裡 garbage collection 就是一個簡化記憶體配置機制的抽象概念，這概念大大簡化了程式員要花在追蹤記憶體配置情況的心力；然而從此程式員就過著幸福快樂的日子了嗎？喔不&amp;hellip; 根據 The Law of Leaky Abstractions，garbage collection 在某些情況下反而會帶來更多問題。其中一個明顯的漏洞就是它的不可預期性，也就是你無法預期系統那時候會進行 garbage collection，因此這漏洞逼迫你要了解 garbage collection 的基本運作原理，並且要用另外一個方法來彌補它。因此 garbage collection 帶給我們的並不是完美的世界，如果你不了解其中的運作原理，很容易誤入背後潛藏的陷阱而不自知。
+所以最好的策略就是：Try your best to know what&amp;rsquo;s under the hood.
+附帶一提，對 .NET Framework 的 garbage collection 機制有興趣的人可以參考 Jeffrey Richter 的兩篇文章，《Garbage Collection: Automatic Memory Management in the Microsoft .NET Framework》及《Garbage Collection-Part 2: Automatic Memory Management in the Microsoft .</description>
+    </item>
+    
+    <item>
+      <title>科技設計</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-05-127/</link>
+      <pubDate>Thu, 05 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-05-127/</guid>
+      <description>科技演進及其對社會的影響 The evolution of technology and its social impacts：蠻有趣的，我想應該大學的資訊科系應該開一些類似的課程，尤其是偏重軟體設計的。
+我想我們需要更多有品味的軟體開發人員。:-)</description>
+    </item>
+    
+    <item>
+      <title>.NET Performace Optimization</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-04-125/</link>
+      <pubDate>Wed, 04 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-04-125/</guid>
+      <description>Several articles about .NET performace from Microsoft CLR Performance Team:
+ Gregor Noriskin, Writing High-Performance Managed Applications : A Primer, MSDN. Jan Gray, Writing Faster Code: Knowing What Things Cost, MSDN. Rico Mariani, Garbage Collector Basics and Performance Hints, MSDN.  </description>
+    </item>
+    
+    <item>
+      <title>A Conversation with Anders Hejlsberg</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-02-124/</link>
+      <pubDate>Mon, 02 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-02-124/</guid>
+      <description>Anders Hejlsberg 在 Bill Venners 及 Bruce Eckel 的專訪下暢談了 C# 的設計理念，一共有八篇訪文，我直接條列如下以方便點閱。
+ Part I: The C# Design Process Part II: The Trouble with Checked Exceptions Part III: Delegates, Components, and Simplexity Part IV: Versioning, Virtual, and Override Part V: Contracts and Interoperability Part VI: Inappropriate Abstractions Part VII: Generics in C#, Java, and C++ Part VIII: CLR Design Choices  訪問的內容篇篇精彩，我個人尤其佩服 Anders 設計 C# 時採行的務實 (pragmatic) 觀點。事實上，了解「一個程式語言為何被如此設計」消極地能避免語言特性的誤用，積極地能讓你寫出更好的程式。&amp;ldquo;Know Why&amp;rdquo; 絕對是精通一個語言的必經過程。
+這裡是另外一篇更早的專訪 (08/01/2000)：Deep Inside C#: An Interview with Microsoft Chief Architect Anders Hejlsberg</description>
+    </item>
+    
+    <item>
+      <title>C# Generics</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-02-123/</link>
+      <pubDate>Mon, 02 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-02-123/</guid>
+      <description>兩篇關於 C# Generics 的技術文章：
+ An Introduction to C# Generics by Juval Lowy Brandon Bray 對 C++ Templates 及 C# Generics 做了一番深入的比較。  </description>
+    </item>
+    
+    <item>
+      <title>Partial Types</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-01-121/</link>
+      <pubDate>Sun, 01 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-01-121/</guid>
+      <description>由這段話可以一窺 partial types 的原始構想：
+ Host: Anders (Microsoft) Q: What&amp;rsquo;s the aim of partial types in C#? A: Two reasons. First, people often ask us for include files. When we dig a little deeper, it turns out they want to split large classes into multiple files. Partial types will allow you to do that, but in a structured fashion. Second, partial classes solve the round trip problem with auto generated code.</description>
+    </item>
+    
+    <item>
+      <title>W32 API -&gt; .NET Framework</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-01-30-119/</link>
+      <pubDate>Fri, 30 Jan 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-01-30-119/</guid>
+      <description>在寫 .NET 的程式時，我最常有的疑問就是“某個 Win32 API 是否在 .NET Framework 有相對應的部分？”
+意外地發現 Microsoft Win32 to Microsoft .NET Framework API Map 就是這個問題的解答。此外 C Run-Time Library Routines and .NET Framework Equivalents 也是很棒的參考。</description>
+    </item>
+    
+    <item>
+      <title>Selected Software Engineering Books</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-01-28-118/</link>
+      <pubDate>Wed, 28 Jan 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-01-28-118/</guid>
+      <description>Jason Elliot Robbins 推薦的一些軟體技術書籍。Jason 同時也是 ReadySET 的作者。</description>
+    </item>
+    
+    <item>
+      <title>Calling Convention</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-01-14-116/</link>
+      <pubDate>Wed, 14 Jan 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-01-14-116/</guid>
+      <description>我知道有點硬，但是有興趣的就看看吧。
+一系列的四篇文章介紹 calling convention：
+  The history of calling conventions, part 1
+  The history of calling conventions, part 2
+  The history of calling conventions, part 3
+  The history of calling conventions, part 4: ia64
+  Why do member functions need to be &amp;ldquo;static&amp;rdquo; to be used as a callback?
+  What can go wrong when you mismatch the calling convention?</description>
+    </item>
+    
+    <item>
+      <title>Exception Handling Techniques</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-01-14-117/</link>
+      <pubDate>Wed, 14 Jan 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-01-14-117/</guid>
+      <description>13 Exceptional Exception Handling Techniques
+Best Practices for Exception Handling</description>
+    </item>
+    
+    <item>
+      <title>Pragmatic Starter Kit</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-26-111/</link>
+      <pubDate>Fri, 26 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-26-111/</guid>
+      <description>驚喜地發現 Andy 跟 Dave 出新書了，不需要多考慮，掏錢買就對了。
+看《Pragmatic Version Control using CVS》的目錄感覺內容有點單薄，當成入門書籍還說的過去。我個人比較期待《Pragmatic Unit Testing》及《Pragmatic Project Automation 》。
+ Software development is difficult enough; if you try to build on a shaky foundation it can make development almost impossible; (which might account for the fact that about 50% of software projects fail). The Starter Kit fixes that. It&amp;rsquo;s a set of three books covering basic practices that are applicable in all software development situations.</description>
+    </item>
+    
+    <item>
+      <title>學習 - 最值得投資的事</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-22-110/</link>
+      <pubDate>Mon, 22 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-22-110/</guid>
+      <description>身為一位 software engineer，你有多久沒有買書了？
+我尤其指跟 software development 有關的書。在軟體業已經工作了四年的我很訝異地發現：大部分的人投資在技術書籍上的錢真的少的可憐。許多人的藉口都是『原文書太貴了』、『英文看不懂或是閱讀英文速度很慢』、『網路上找方法就好了，何必買書？』、『下班回家後就已經很累了，根本不想看書』。但我認為這些都是推託的藉口：原文書太貴？也沒看到你買中文書來看；英文能力不好？那你可能不太適合這個行業；網路可以找到所有的答案？網路上的知識都太零散了，沒辦法提供完整而有組織的學習；加班太累，沒時間讀？早點回家唸書，想想該怎麼有效率的工作，你就會發現不用每天加班了。
+想要在這個產業成功，『積極學習』絶對是不二法門。我強力推薦 Eric 的短文《Career Calculus》。你也可以參考 How to Keep Your Job。</description>
+    </item>
+    
+    <item>
+      <title>Design Guidelines for Class Library Developers</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-20-108/</link>
+      <pubDate>Sat, 20 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-20-108/</guid>
+      <description>Design Guidelines for Class Library Developers (.NET Framework General Reference) should be a good reference document for .NET developers.</description>
+    </item>
+    
+    <item>
+      <title>Debugging</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-12-105/</link>
+      <pubDate>Fri, 12 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-12-105/</guid>
+      <description>最令程式員頭痛的莫過於各式各樣的 bug，它們也通常是讓程式員每天加班晚歸的最大兇手。程式新手通常缺乏 debug 的有效技巧，對於問題的應對方式不是瞎子摸象就是一籌莫展。然而你會發現老經驗的程式員總是能很快地把 bug 解決掉，差別就是聰明的他們會從過去的經驗累積一些經驗法則，運用這些法則往往能將 90% 的 bug 一網打盡。
+《Debugging》是一本奇特的書，David Agans 教導程式員如何使用系統化及科學化的方法來對付各種 bug。整本書的重點在於 David 提出的的九大原則：
+ Understand the system Make it fail Quit thinking and look Divide and conquer Change one thing at a time Keep an audit trail Check the plug Get a fresh view If you didn&amp;rsquo;t fix it, it ain&amp;rsquo;t fixed  不論你是新手或是老手，我相信你一定能在這本書中獲益良多。Don&amp;rsquo;t Debug Hard - Debug Smart.</description>
+    </item>
+    
+    <item>
+      <title>News Aggregator in C#</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-03-102/</link>
+      <pubDate>Wed, 03 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-03-102/</guid>
+      <description>由於常逛的 blog 實在太多了，還是找了個 RSS reader 來用。如果你對用 C# 實作一個 RSS reader 有興趣的話，請看《Building a Desktop News Aggregator》。此外 O&amp;rsquo;Reilly 出版的《Content Syndication with RSS》也是不錯的參考。
+哈哈，用 Syndirella 看呆伯特漫畫比用瀏覽器輕鬆多了。FeedDemon 也是不錯的選擇。</description>
+    </item>
+    
+    <item>
+      <title>Compiling a Compiler</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-02-100/</link>
+      <pubDate>Tue, 02 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-02-100/</guid>
+      <description>最近不知道為什麼又對 Programming Language 感興趣起來了，算了，看這個關於 C compiler 的有趣故事吧：《Compiling a Compiler》。</description>
+    </item>
+    
+    <item>
+      <title>Beyond Chaos</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-11-24-95/</link>
+      <pubDate>Mon, 24 Nov 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-11-24-95/</guid>
+      <description>《Beyond Chaos: The Expert Edge in Managing Software Development》
+是我最近在 Amazon 買的一本二手書，請在美國出差的同事幫我帶回來。價錢 $4.14 加上運費 $3.49，折合台幣才兩百五十元，實在是非常划算。對於常買原文書的我，這樣的方式倒是能幫我省下不少錢。
+喜歡買原文技術書籍的人，可以試試看 AddALL 或是 Google 新的比價服務 Froogle。</description>
+    </item>
+    
+    <item>
+      <title>Programming Embedded Systems</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-11-24-94/</link>
+      <pubDate>Mon, 24 Nov 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-11-24-94/</guid>
+      <description>最近剛讀完《Programming Embedded Systems in C and C++》，讓完全不懂 embedded system 的我很快地就對嵌入式系統有了一定程度的了解。推薦給任何對 embedded system programming 有興趣的人。</description>
+    </item>
+    
+    <item>
+      <title>數位的花園</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-11-21-92/</link>
+      <pubDate>Fri, 21 Nov 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-11-21-92/</guid>
+      <description>第一次看到這方面的話題：《Turning Over Software》討論如何順利地移交你的程式碼給其他人接手。
+我喜歡作者把程式比喻成需要細心灌溉維護的花園：
+ Programs are not static creations like buildings, they are more like gardens. They have an initial plan and form and implementation, but they require ongoing care and maintenance, and enhancements. If you don&amp;rsquo;t turn your code over to someone else, eventually you will spend all your time caring for your existing code, and you&amp;rsquo;ll be trapped.
+ 而這句話我舉雙手贊成： &amp;ldquo;In order for programmers to be productive and happy, they must feel a sense of ownership.</description>
+    </item>
+    
+    <item>
+      <title>程式員救星</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-11-21-93/</link>
+      <pubDate>Fri, 21 Nov 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-11-21-93/</guid>
+      <description>程式員都不喜歡寫 spec，因為寫 spec 比寫程式難多了。儘管如此，《The Lead Bullet - Writing Specs》告訴我們：好的 spec 是過勞的程式員值得依賴的救星。</description>
+    </item>
+    
+    <item>
+      <title>The Two Switches</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-11-20-91/</link>
+      <pubDate>Thu, 20 Nov 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-11-20-91/</guid>
+      <description>一個有趣的易智題目： The Two Switches，在 Moving Mount Fuji 可以找到更多類似的題目。喜歡出這些奇奇怪怪的題目來測試應徵者的公司中，最有名的就是 Microsoft 了，有興趣的可以看 Microsoft Interview Questions。
+要進 MS 似乎不是件容易的事。 :-)</description>
+    </item>
+    
+    <item>
+      <title>Microsoft and G5</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-11-04-86/</link>
+      <pubDate>Tue, 04 Nov 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-11-04-86/</guid>
+      <description>Even Microsoft wants G5s
+因為 blog 而丟了工作？
+我想 Michael 也沒想到拍一張照片會把這新聞炒的這麼大。正所謂樹大招風，Microsoft 開除了這名員工，反而引來更多的人來關注這件事。
+雖然我認為 Microsoft 以違反公司安全為由開除員工有他的道理，只是更輕鬆地處理這件事不是很好？畢竟 Microsoft 有太多的負面消息了，還是他們不在乎多這一則？</description>
+    </item>
+    
+    <item>
+      <title>Aspect-Oriented Programming, Part II</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-09-29-76/</link>
+      <pubDate>Mon, 29 Sep 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-09-29-76/</guid>
+      <description>IBM、JBoss聯手Java新功能
+ IBM與開放原始碼Java軟體商JBoss有意進行一項Java標準化計劃，意在反制日益受到歡迎的微軟C#語言。
+兩家公司目前獨立投資於一項軟體開發技術稱為AOP(aspect-oriented programming)，可加速應用開發速度，且更具彈性，同時也更不容易出錯。
+JBoss企業開發與策略副總裁Bob Bickel透露，現在兩家公司則有意把AOP變成Java的標準功能。
+ 看來 AOP 將成為 Java 與 C# 互較長短的新戰場。Java 方面已經有頗為成熟的 AspectJ，而 C# 方面則是積極發展中。就我看來，要普及 AOP 並讓程式員了解並使用這個嶄新的概念，整合開發環境的支援扮演了一個重要的角色；在這方面，似乎又是 Java 領先 (參考 AJDT in Eclipse)。
+對 AOP 有興趣的可以參考葉秉哲在 JavaTwo 2003 研討會的演講《AspectJ: Beyond OOP》。</description>
+    </item>
+    
+    <item>
+      <title>SSCLI</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-09-16-74/</link>
+      <pubDate>Tue, 16 Sep 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-09-16-74/</guid>
+      <description>《Extending SSCLI》非常酷的一份教學，告訴你如何擴充 CLI 的功能。
+SSCLI (Shared Source Common Language Infrestrcuture) 是 Microsoft 代號為 Rotor 的一個計畫，目的是公開 CLI 的原始碼，讓更多的人參與 .NET 的開發與研究。微軟的這些傢伙真的非常聰明，曉得就是會有許多無聊的人(例如我)喜歡去探究系統內部的運作，當這些人對整個系統熟悉了自然就會成為 .NET 技術的支持者。不可否認地，閱讀 SSCLI 的原始碼真的有讓人如入寶庫的感覺，正如同這份教學裡的一段話:
+A runtime such as SSCLI is a neat example of knowledge repository of the past 30 years of computer science.
+或許 computer science 30 年的精華是有點誇張，但你絕對可以從中學到一點東西。然而學習最快的方法就是親自動手去做囉，這份教學藉由增加一個新的 IL instruction 來讓你對整個 CLI 的架構有一個大致的了解，值得一試!
+如果你對 SSCLI 有興趣，歡迎一起來討論。Jason Whittington 在 MSDN 的這篇文章《Rotor: Shared Source CLI Provides Source Code for a FreeBSD Implementation of .</description>
+    </item>
+    
+    <item>
+      <title>Multithreading in Windows Froms</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-09-08-71/</link>
+      <pubDate>Mon, 08 Sep 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-09-08-71/</guid>
+      <description>Four interesting articles about multitheading programming in Windows Form by Chris Sells and Ian Griffiths:
+ Safe, Simple Multithreading in Windows Forms, Part 1, Chris Sells Safe, Simple Multithreading in Windows Forms, Part 2, Chris Sells Safe, Simple Multithreading in Windows Forms, Part 3, Chris Sells Give Your .NET-based Application a Fast and Responsive UI with Multiple Threads, Ian Griffiths  You should read this article if you don&amp;rsquo;t know what delegate is: .</description>
+    </item>
+    
+    <item>
+      <title>developer vs. programmer, part II</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-07-05-65/</link>
+      <pubDate>Sat, 05 Jul 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-07-05-65/</guid>
+      <description>我在之前的一篇文章中提到了 Developer 跟 Programmer 的差別，而 Eric 的文章《Small ISVs: You need Developers, not Programmers》把這一點講的更清楚了。
+Developers 可以比喻為軟體設計的『通才』，而 Programmers 則是軟體設計的『專才』。正如其他一般的行業，通才是比較吃得開的，因為他們的彈性比起專才大的多，也較受企業的歡迎。然而現實上，一般的大學教育還是以訓練專才為主，也就是寫程式的能力。在學校，沒有人教你如何寫 spec、如何管理 software configuration、如何寫程式文件、如何測試及偵錯程式等等必需的技能，這些東西往往是到業界來才邊做邊學的。事實上，別小看這些看起來很簡單的事情，如果你能比同儕更快學會這些事或是做的更好，你很有可能就會得到上司的賞識而晉升。
+總之，別侷限於自己的專精領域，看的更廣會讓你做的更好。</description>
+    </item>
+    
+    <item>
+      <title>Refactoring &amp; Patterns</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-07-03-62/</link>
+      <pubDate>Thu, 03 Jul 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-07-03-62/</guid>
+      <description>《Refactoring To Patterns》提供了許多『經由 refactoring 的手法來改善物件導向程式架構的方法』，我個人認為相當地具有實用價值，值得一看。</description>
+    </item>
+    
+    <item>
+      <title>Aspect-Oriented Programming</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-07-01-59/</link>
+      <pubDate>Tue, 01 Jul 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-07-01-59/</guid>
+      <description>「Aspect-Oriented Programming」是繼OOP之後的新程式設計思維， 大陸的譯名是「面向方面」(有夠饒口的)。
+aspect 在字典裡的定義是:
+ A distinct feature or element in a problem A characteristic to be considered &amp;hellip;  我想 1. 跟 2. 的解釋是比較貼近 AOP 中 Aspect 的定義。
+我個人比較有興趣的是 AOP 與 C# 的結合，在 Google 可以找到一些相關的資訊。在這個領域將會產生許多有趣的東西，我想。
+這裡是一些介紹 AOP 的入門文章：
+ Extract Aspect Refactoring ? I want my AOP! The AspectJ Programming Guide Improve modularity with aspect-oriented programming  </description>
+    </item>
+    
+    <item>
+      <title>M.C. Escher</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-17-52/</link>
+      <pubDate>Tue, 17 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-17-52/</guid>
+      <description>很驚訝地發現今天 Google 的 Logo 是模仿 M.C. Escher 的名畫『互繪的雙手』。 在 Google Holiday Logos 可以找到所有的 Logo。</description>
+    </item>
+    
+    <item>
+      <title>Hardware breakpoints</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-10-46/</link>
+      <pubDate>Tue, 10 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-10-46/</guid>
+      <description>嗯，VC++ 的確有提供 data breakpoint，但是使用起來卻不大方便，原因是你必須知道資料的位址然後填入例如 *((DWORD*)0x12345678) 的表示式才行。
+現在，試試 Mike Morearty 的 CBreakpoint，你可以這樣做：
+DWORD x = 1; CBreakpoint bp; bp.Set(&amp;amp;x, sizeof(x), CBreakpoint::Write); 相當地酷！</description>
+    </item>
+    
+    <item>
+      <title>ILDASM</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-10-47/</link>
+      <pubDate>Tue, 10 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-10-47/</guid>
+      <description>ILDASM is Your New Best Friend John Robbins 在 MSDN 上簡介 MSIL (Microsoft Intermediate Language) 及 CLR 的基本概念，想要成為 .Net 的專家，對於 MSIL 必然要下一番功夫。
+ Knowing how things work at the lowest level does make it easier to see the big picture.
+ </description>
+    </item>
+    
+    <item>
+      <title>Winamp author</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-10-48/</link>
+      <pubDate>Tue, 10 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-10-48/</guid>
+      <description> For me, coding is a form of self-expression. It&amp;rsquo;s probably the form I&amp;rsquo;m most effective at.
+&amp;ndash; Justin Frankel
+ </description>
+    </item>
+    
+    <item>
+      <title>developer vs. programmer</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-09-45/</link>
+      <pubDate>Mon, 09 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-09-45/</guid>
+      <description>Being a good developer in BCB requires that you remember you are a developer rather than a programmer - which is to say that you have responsibility for much more than the excellence of developed code. You are also responsible for the excellence of the design of the software and databases, the user interface, and for the reusability and maintainability of the result. And of course, an understanding and appreciation of the business context of your development effort is essential.</description>
+    </item>
+    
+    <item>
+      <title>Assertions and Error Handling</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-08-43/</link>
+      <pubDate>Sun, 08 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-08-43/</guid>
+      <description>Andrei 在 C++ User Journal 發表了幾篇關於 C++ error handling 的文章，蠻有趣的，也解決了一些困擾我很久的問題。
+ Assertions Enforcements Change the Way You Write Exception-Safe Code — Forever  關於 Exception，大部分的人已經能夠接受其觀念，並且也被許多主流的的程式語言所支援。然而 Exception 帶來的似乎不是期待中的天堂，而是更多的困惑。也就是 Exception 解決了舊的問題，卻也帶來了新的挑戰。程序員慢慢地了解『撰寫 exception-safe 的程式碼卻不容易』，而解決的方法往往需要去使用一些非內建的機制，如 Andrei 所提到的方法。例如 C++ 中缺乏 finally 的支援就使我覺得非常困擾。
+我想程式語言除了支援 Exception 外，還需再多提供一些錯誤處理的支援，像我就蠻喜歡 C# 中的 using (…) {}。</description>
+    </item>
+    
+    <item>
+      <title>Language of the Year</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-04-38/</link>
+      <pubDate>Wed, 04 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-04-38/</guid>
+      <description>“Learn at least one new [programming] language every year. Different languages solve the same problems in different ways. By learning several different approaches, you can help broaden your thinking and avoid getting stuck in a rut.”
+  — The Pragmatic Programmer
+ 檢視一下你現在手頭熟悉的技術，你是否很久都沒學什麼新東西了？所謂『老狗變不出新花樣』，該接觸一些新事物來充實一下自己了。採用新的流程、新的思考方式、新的設計方式、或是新的程式語言都可幫你提昇自己思考的廣度。別懼怕『樣樣通，樣樣鬆』的批評，學習新的事物反而可以提昇自己專精領域的深度。 準備好了嗎？一起參加 Language of the Year 來學習 Haskell 吧。</description>
+    </item>
+    
+    <item>
+      <title>Exceptional C&#43;&#43;</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-22-35/</link>
+      <pubDate>Thu, 22 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-22-35/</guid>
+      <description>C++ 的信徒應該對 Herb Sutter 不感到陌生。草藥兄最常發表技術文章的地方是C/C++ Users Journal 的 C++ 專欄。不才也有一本他寫的 Exceptional C++，雖是薄薄的一本卻是字字珠璣，沒有多餘的廢話。任何自認為 C++ 的專家都應該來挑戰看看書中所提的問題。每次我誤入書中所設的的陷阱時，彷彿都能聽見 Herb 在耳邊說 &amp;ldquo;gotcha&amp;quot;。</description>
+    </item>
+    
+    <item>
+      <title>Cleaning up code</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-21-33/</link>
+      <pubDate>Wed, 21 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-21-33/</guid>
+      <description>&amp;lsquo;Cleaning up code&amp;rsquo; is a terrible thing. Redesigning WORKING code into different WORKING code (also known as refactoring) is terrible. The reason is that once you touch WORKING code, it becomes NON-WORKING code, and the changes you make (once you get it working again) will never be known. It&amp;rsquo;s like Programmer masturbation, it might make you feel good, but no one will probably know you did it.
+  &amp;ndash; Paul Tyma</description>
+    </item>
+    
+    <item>
+      <title>C# and Beautiful Code</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-20-31/</link>
+      <pubDate>Tue, 20 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-20-31/</guid>
+      <description>O’Reilly Network: Beautiful Code C++ 或是 Java 的語法的確是 boring 了一點，但就可讀性而言的確可以讓 programmer 把程式寫得中規中矩一點。
+Perl 提供了許多 syntactic sugar，但讀起別人寫的 Perl 程式可就不是那麼輕鬆…
+我想這傢伙是不是在暗指 C# 比 Java 寫起來漂亮些，因為這段程式用 C# 來表示就相當地簡明易懂：
+foreach (User user in dao.getUsers()) { // do something with user } </description>
+    </item>
+    
+    <item>
+      <title>To Speak Perl</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-17-29/</link>
+      <pubDate>Sat, 17 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-17-29/</guid>
+      <description>似乎是最近才對 Perl 開了竅，不會覺得寫 Perl Script 是件很彆扭的事。也許是自己拋棄了以前對它的成見，願意用異於平常的觀點去了解其背後的設計哲學。
+希望有一天也能做到 &amp;ldquo;I don&amp;rsquo;t write Perl, I speak it.&amp;rdquo; 的境界。</description>
+    </item>
+    
+    <item>
+      <title>Programmer Dvorak Keyboard Layout</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-14-26/</link>
+      <pubDate>Wed, 14 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-14-26/</guid>
+      <description>常常寫 C++ 的你是否有想過『為什麼 { 是 shift + ] ?』，畢竟 { 比 [ 更常被用到不是嗎？如果你是 LISP 的愛好者， 我更可以了解你對於要輸入許多 () 的無奈。
+Programmer Dvorak 似乎是 programmer 的救星。只是在這個被 QWERTY 鍵盤佔據的世界中，當個使用 Dvorak 鍵盤的異類是很辛苦的。</description>
+    </item>
+    
+    <item>
+      <title>~ ! @ # $ % ^ &amp; * 到底要怎麼唸?</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-07-20/</link>
+      <pubDate>Wed, 07 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-07-20/</guid>
+      <description>有時跟老外交談時會不曉得這些符號怎麼唸，就查查這篇文章《pronunciation guide for unix》吧。</description>
+    </item>
+    
+    <item>
+      <title>Pragmatic Programmers</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-05-14/</link>
+      <pubDate>Mon, 05 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-05-14/</guid>
+      <description>Dave Thomas 跟 Andy Hunt 在 IEEE Software 的專欄是我最近最喜歡看的文章。幽默簡潔而務實是我對他們文章的最大印象，喜歡談大道理的作者一向不是我的偏好，這兩位就剛剛合我的胃口。是除了 Demarco &amp;amp; Lister 外我最喜歡的一對作者。</description>
+    </item>
+    
+    <item>
+      <title>Gödel, Escher, Bach</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-02-10/</link>
+      <pubDate>Fri, 02 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-02-10/</guid>
+      <description>或許是今天太閒了吧，心血來潮地把 Douglas Hofstadter 的《Gödel, Escher, Bach - An Eternal Golden Braid》拿出來翻了一遍。
+如果要硬掰一個理由解釋為什麼買這本書以來從沒能夠好好地把它讀懂，我只能說 Escher 的版畫太迷人了。往往書一拿起來，就有一股衝動想把所有的畫看一遍。畢竟我對巴哈的音樂不熟悉，歌德爾的數學又太難懂了… :-)
+Escher 的數學藝術 Google 的相關連結</description>
+    </item>
+    
+    <item>
+      <title>Applied Microsoft .Net framework programming</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-01-9/</link>
+      <pubDate>Thu, 01 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-01-9/</guid>
+      <description>衝著 Jeffrey Richter 的名字，我還是買了這本由文魁出版的中譯本。看了三章後，我後悔了。
+這本書被翻的實在是慘不忍睹，不僅文義謬誤而且錯字連篇，專有名詞也翻得非常饒口，你能想像什麼是『資料名單中繼資料表格』嗎？最經典的例子是原文的：
+『You Can’t Have Too Many finally Blocks - I think finally blocks are awesome!』
+正確意思應該是：
+『finally 區塊再多也不為過 - 我覺得 finally 區塊實在是棒透了！』
+在中譯本的 18-26 頁居然被翻成：
+『不能使用太多 finally 區段 - 我認為 finally 區段式可怕的！』
+連續兩個句子都譯成相反的意思，而且還有錯字『是』=&amp;gt;『式』。
+為了省五百元，買了生平第一本文魁出版的書，現在只想『趕快把內容看完，然後把書丟掉』。
+在此向 Jeffrey 表達深深的懺悔。 Jeffrey, Your book is great but Kingsinfo sucks.</description>
+    </item>
+    
+  </channel>
+</rss>

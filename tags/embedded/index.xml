@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>embedded on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/embedded/</link>
+    <description>Recent content in embedded on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 24 Dec 2011 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/embedded/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ARM Architecture for Mobile Developers</title>
+      <link>https://blog.simplypatrick.com/posts/2011/12-24-arm-architecture-for-mobile-developers/</link>
+      <pubDate>Sat, 24 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/12-24-arm-architecture-for-mobile-developers/</guid>
+      <description>目前幾乎市場上所有的 mobile device 用的 processor 都是基於 ARM Architecture 的，而做為一位 Android 或是 iOS 平台的應用程序開發人員對於 ARM 有一定的認識雖非必要，但多了解一點對優化程序及偵錯問題是有很大幫助的。關於 ARM 的基本介紹，可以參考 Pierre Lebeaupin 的 A few things iOS developers ought to know about the ARM architecture。
+最基本要知道的是 ARM Architecture 是有分版本的:
+目前主流的 Smartphone 都是採用 ARMv7a 的架構。
+而另一個需要了解的觀念是 ABI (Application Binary Interface)，要了解 ARM 的 ABI 最快的就是參考 Application Binary Interface for the ARM Architecture 裡的這張圖：
+從圖上可以看到在 ABI for the ARM Architecure 實際涵蓋了許多範圍，各個平台的 ABI 通常就是參考標準的 ARM ABI 然後把不明確的地方或是有差異的部份定義清楚。</description>
+    </item>
+    
+    <item>
+      <title>Michael Barr </title>
+      <link>https://blog.simplypatrick.com/posts/2007/2007-09-03-399/</link>
+      <pubDate>Mon, 03 Sep 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2007/2007-09-03-399/</guid>
+      <description>初次知道 Michael Barr 是因為讀了他寫的 Programming Embedded Systems in C and C++ 這本關於 embedded system programming 的書。後來陸陸續續在網路上找到蠻多他寫的技術文章，才發現他是 Embedded Systems Programming magazine (現已改名叫 Embedded Systems Design) 的前總編輯，難怪文筆相當不錯。我還蠻喜歡看他寫的東西，主要是他的文章都有假設讀者的程度，因此不會有一堆太基本的內容，或是過於複雜難懂的技術細節。
+現在任職於顧問公司的 Michael 將他以前的一些文章集結整理起來在這裡，裡面內容對於從事 embedded system programming 的技術人員應該都頗有幫助。尤其是今天看完這篇 The Perils of Preemption配合下面這張圖，雖然內容都是已經熟悉的東西，經由 Michael 這樣的整理與講解，還是讓整個人有打通任督二脈的感覺：</description>
+    </item>
+    
+    <item>
+      <title>ARM&#39;s way</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-09-24-341/</link>
+      <pubDate>Sun, 24 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-09-24-341/</guid>
+      <description>ARM 除了產品的設計優異之外，主要的成功之道大家都曉得是在於他們只提供 IP core 的授權，而不從事實體 chip 的製造。這篇刊登於 Electronics Weekly 1998 四月號的文章描述了 ARM 的起源：ARM&amp;rsquo;s way。</description>
+    </item>
+    
+    <item>
+      <title>Books on Embedding System Programming</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-04-01-329/</link>
+      <pubDate>Sat, 01 Apr 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-04-01-329/</guid>
+      <description>在辭掉工作短暫休息的這段時間，我讀完了這本《MicroC OS II: The Real Time Kernel 》。會想要去讀它的原因是因為既然要做嵌入式系統的開發，那就必須對 RTOS 的特性有相當程度的掌握，而最快的方式莫過於直接去深入了解一個 RTOS 的實作，而短小精幹的 MicroC/OS-II 因為有原作者的詳細解說，當然是最適合學習的目標。老實說，讀這本書前，自己對於即時系統的一些概念是似懂非懂，但是看完這本書之後卻是豁然開朗。我覺得這本書更適合作為一般學校基礎 OS 的教材，之前大學上的 OS 課程都太理論性了，有點後悔當時沒有去修即時系統的課。強力推薦這本給想要自修學習 RTOS 的人。
+另外一本的入門好書則是 David E. Simon 寫的《An Embedded Software Primer》。這本書關於 RTOS 的部分我是覺得沒有前一本講的清楚，但是可讀性倒是高了些，畢竟這本書就是要給入門者看的。後面關於 embedded software design, development, 及 debugging 的觀念我覺得寫的相當不錯，一樣推薦給想要了解 embedded system programming 的人。</description>
+    </item>
+    
+    <item>
+      <title>Programming Embedded Systems</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-11-24-94/</link>
+      <pubDate>Mon, 24 Nov 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-11-24-94/</guid>
+      <description>最近剛讀完《Programming Embedded Systems in C and C++》，讓完全不懂 embedded system 的我很快地就對嵌入式系統有了一定程度的了解。推薦給任何對 embedded system programming 有興趣的人。</description>
+    </item>
+    
+  </channel>
+</rss>

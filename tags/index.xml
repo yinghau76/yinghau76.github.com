@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/</link>
+    <description>Recent content in Tags on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 02 Jan 2021 18:42:35 -0800</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>jupyter</title>
+      <link>https://blog.simplypatrick.com/tags/jupyter/</link>
+      <pubDate>Sat, 02 Jan 2021 18:42:35 -0800</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/jupyter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust</title>
+      <link>https://blog.simplypatrick.com/tags/rust/</link>
+      <pubDate>Sat, 02 Jan 2021 18:42:35 -0800</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fuchsia</title>
+      <link>https://blog.simplypatrick.com/tags/fuchsia/</link>
+      <pubDate>Thu, 06 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/fuchsia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>c&#43;&#43;</title>
+      <link>https://blog.simplypatrick.com/tags/c&#43;&#43;/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>android</title>
+      <link>https://blog.simplypatrick.com/tags/android/</link>
+      <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kotlin</title>
+      <link>https://blog.simplypatrick.com/tags/kotlin/</link>
+      <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/kotlin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>build</title>
+      <link>https://blog.simplypatrick.com/tags/build/</link>
+      <pubDate>Sat, 23 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/build/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>process</title>
+      <link>https://blog.simplypatrick.com/tags/process/</link>
+      <pubDate>Fri, 12 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/process/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>osx</title>
+      <link>https://blog.simplypatrick.com/tags/osx/</link>
+      <pubDate>Fri, 16 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/osx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://blog.simplypatrick.com/tags/go/</link>
+      <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ios</title>
+      <link>https://blog.simplypatrick.com/tags/ios/</link>
+      <pubDate>Thu, 27 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ruby</title>
+      <link>https://blog.simplypatrick.com/tags/ruby/</link>
+      <pubDate>Thu, 27 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>book</title>
+      <link>https://blog.simplypatrick.com/tags/book/</link>
+      <pubDate>Wed, 19 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://blog.simplypatrick.com/tags/java/</link>
+      <pubDate>Sat, 04 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cloud</title>
+      <link>https://blog.simplypatrick.com/tags/cloud/</link>
+      <pubDate>Sun, 15 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scala</title>
+      <link>https://blog.simplypatrick.com/tags/scala/</link>
+      <pubDate>Mon, 11 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/scala/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>agile</title>
+      <link>https://blog.simplypatrick.com/tags/agile/</link>
+      <pubDate>Sun, 14 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/agile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>font</title>
+      <link>https://blog.simplypatrick.com/tags/font/</link>
+      <pubDate>Thu, 27 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/font/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>octopress</title>
+      <link>https://blog.simplypatrick.com/tags/octopress/</link>
+      <pubDate>Sun, 19 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/octopress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cxx</title>
+      <link>https://blog.simplypatrick.com/tags/cxx/</link>
+      <pubDate>Sun, 12 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/cxx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webkit</title>
+      <link>https://blog.simplypatrick.com/tags/webkit/</link>
+      <pubDate>Sun, 29 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/webkit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crack</title>
+      <link>https://blog.simplypatrick.com/tags/crack/</link>
+      <pubDate>Sat, 24 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/crack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>embedded</title>
+      <link>https://blog.simplypatrick.com/tags/embedded/</link>
+      <pubDate>Sat, 24 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/embedded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://blog.simplypatrick.com/tags/git/</link>
+      <pubDate>Sat, 03 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>https://blog.simplypatrick.com/tags/web/</link>
+      <pubDate>Sat, 03 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>game</title>
+      <link>https://blog.simplypatrick.com/tags/game/</link>
+      <pubDate>Sat, 28 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/game/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>engineer</title>
+      <link>https://blog.simplypatrick.com/tags/engineer/</link>
+      <pubDate>Mon, 21 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/engineer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>work</title>
+      <link>https://blog.simplypatrick.com/tags/work/</link>
+      <pubDate>Mon, 21 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/work/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kuso</title>
+      <link>https://blog.simplypatrick.com/tags/kuso/</link>
+      <pubDate>Sat, 19 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/kuso/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://blog.simplypatrick.com/tags/windows/</link>
+      <pubDate>Tue, 31 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dotnet</title>
+      <link>https://blog.simplypatrick.com/tags/dotnet/</link>
+      <pubDate>Mon, 30 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/dotnet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>google</title>
+      <link>https://blog.simplypatrick.com/tags/google/</link>
+      <pubDate>Thu, 12 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/google/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>patterns</title>
+      <link>https://blog.simplypatrick.com/tags/patterns/</link>
+      <pubDate>Mon, 25 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/patterns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>microsoft</title>
+      <link>https://blog.simplypatrick.com/tags/microsoft/</link>
+      <pubDate>Thu, 29 Sep 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/microsoft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>management</title>
+      <link>https://blog.simplypatrick.com/tags/management/</link>
+      <pubDate>Mon, 18 Jul 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>startup</title>
+      <link>https://blog.simplypatrick.com/tags/startup/</link>
+      <pubDate>Wed, 25 May 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tags/startup/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

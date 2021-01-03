@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>windows on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/windows/</link>
+    <description>Recent content in windows on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 31 Oct 2006 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows 1.0</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-10-31-358/</link>
+      <pubDate>Tue, 31 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-10-31-358/</guid>
+      <description>這&amp;hellip; 真的是 Steve Ballmer 嗎？</description>
+    </item>
+    
+    <item>
+      <title>Windows Internals Guru - Mark Russinovich</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-04-12-236/</link>
+      <pubDate>Tue, 12 Apr 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-04-12-236/</guid>
+      <description>Mark Russinovich 也開始 blog 了。對 Windows 內部運作有興趣的人可以持續關注他的文章。</description>
+    </item>
+    
+    <item>
+      <title>Comments in Windows Source Code</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-30-168/</link>
+      <pubDate>Wed, 30 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-30-168/</guid>
+      <description>相信很多人看過流傳在網路上的 Windows 原始碼，有沒有注意到這些在原始碼裡的有趣註解？
+private\shell\shell32\util.cpp: // the fucking alpha cpp compiler seems to fuck up the goddam type &amp;quot;LPITEMIDLIST&amp;quot;, so to work&amp;lt;BR&amp;gt;// around the fucking peice of shit compiler we pass the last param as an void *instead of a LPITEMIDLIST private\windows\media\avi\verinfo.16\verinfo.h: * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! * !!!!!!!IF YOU CHANGE TABS TO SPACES, YOU WILL BE KILLED!!!!!!! * !!!!!!!!!!!!!!DOING SO FUCKS THE BUILD PROCESS!!!!!!!!!!!!!!!! * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! private\ntos\rtl\heap.c: // The specific idiot in this case is Office95, which likes // to free a random pointer when you start Word95 from a desktop // shortcut.</description>
+    </item>
+    
+    <item>
+      <title>Quit thinking and look</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-04-02-140/</link>
+      <pubDate>Fri, 02 Apr 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-04-02-140/</guid>
+      <description>最近遇到了一個頗為難纏的 bug，症狀是當燒錄光碟的動作完成後，有些視窗的背景會變成黑色而不是原來的背景圖案；如果燒錄的資料量越大，這問題就越快出現；更奇怪的是這問題只會發生在安裝的版本而不是開發人員自己編譯出來的版本。
+根據 debugging rules 的第二條規則 &amp;ldquo;Make it fail&amp;rdquo;，最重要的事情是在開發人員的機器上重現這個問題。我們首先嘗試將開發人員編譯的執行碼來覆蓋安裝的版本，結果問題還是會發生；反之，用安裝版本來覆蓋開發人員編譯的執行碼也不會有問題。對於這樣的結果，我們感到相當困惑，因為如果不是程式碼造成的差異，那會是什麼因素造成這樣的結果？
+根據 rule 3 &amp;ldquo;Quit thinking and look&amp;rdquo;，我們決定多做一點嘗試，完整複製整個環境而不是只有執行碼。花了一番功夫，我們發現居然是執行檔 manifest 的問題，關鍵在於 manifest 中的這一段：
+&amp;lt;dependentAssembly&amp;gt; &amp;lt;assemblyIdentity type=&amp;quot;win32&amp;quot; name=&amp;quot;Microsoft.Windows.Common-Controls&amp;quot; version=&amp;quot;6.0.0.0&amp;quot; publicKeyToken=&amp;quot;6595b64144ccf1df&amp;quot; language=&amp;quot;*&amp;quot; processorArchitecture=&amp;quot;x86&amp;quot;/&amp;gt; &amp;lt;/dependentAssembly&amp;gt; 這差異會導致 common control 6.0 被使用，於是我們在開發人員的電腦採用這樣的 manifest 很快就重現這症狀了。現在問題是那裡的程式碼導致這樣的錯誤？由於當初猜測是 GDI 方面的問題，我們把 Windows Task Manager 叫出來，並且追蹤程式執行時的 GDI objects 數量，才赫然發現當問題發生前的一瞬間，GDI objects 的數量會暴增至 10000。此時我們很確定這是由 GDI leak 產生的問題，但對於為什麼換用新版的 common control 會導致這個 bug 卻是沒什麼頭緒。
+於是我們採用檢查問題發生點附近的程式碼，一邊單步執行一邊觀察 GDI Objects 的數量。用這樣的方法慢慢檢查，發現只要一呼叫 CStatic::SetBitmap，就會有一個 GDI leak 產生。我們終於明瞭新版的 common control 對於 STM_SETIMAGE 有不一樣的處理方式：static control 有可能複製我們傳進去的 bitmap handle，因此我們有義務把傳回來的 bitmap handle 釋放掉。</description>
+    </item>
+    
+    <item>
+      <title>The n Habits of Highly Defective Windows Applications</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-04-01-139/</link>
+      <pubDate>Thu, 01 Apr 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-04-01-139/</guid>
+      <description>這篇文章《The n Habits of Highly Defective Windows Applications》是上班時努力地 google，想要找出方法來解決一個 GDI leak 時，不小心發現的。文章點出了許多撰寫 Windows 程式的壞方法、壞習慣，裡面包含了許多我曾經犯過而且其他新手也常常在犯的錯誤。假如你想把 Windows programming 學好，你應該嚴肅地看待文章中提出的警告。
+文章作者對於 Win32 programming 相當有研究，他的其他相關的技術文章可以在 MVP Tips, Techniques, and Goodies 找到，篇篇精采。</description>
+    </item>
+    
+  </channel>
+</rss>

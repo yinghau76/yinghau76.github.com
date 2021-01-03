@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>android on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/android/</link>
+    <description>Recent content in android on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 14 Feb 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin Coroutines and Threads</title>
+      <link>https://blog.simplypatrick.com/posts/2018/02-14-kotlin-coroutines-and-threads/</link>
+      <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/02-14-kotlin-coroutines-and-threads/</guid>
+      <description>Coroutine 跟 thread 的關係 Coroutine 通常可以理解成輕量化的 thread，但實際運作還是需要被排程到作業系統層級的 thread，然後再被排程到某個 CPU來執行：
+相對於 thread，使用 coroutine 的好處是， coroutine 之間的切換快速，需要耗用的系統資源也比較小。
+Coroutine 如何排程？ Kotlin 的 coroutine 會被分派到那個 thread 是由呼叫 coroutine builder 時提供的 CoroutineContext 參數來決定。
+透過觀察這個範例的輸出，我們可以了解不同 CoroutineContext 的行為：
+class CoroutineContextActivity : ConsoleActivity() { override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) logThread(&amp;#34;Begin onCreate&amp;#34;) launch(UI) { logThread(&amp;#34;Begin launch(UI)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(UI)&amp;#34;) } launch(CommonPool) { logThread(&amp;#34;Begin launch(CommonPool)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(CommonPool)&amp;#34;) } launch(Unconfined) { logThread(&amp;#34;Begin launch(Unconfined)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(Unconfined)&amp;#34;) } launch(newSingleThreadContext(&amp;#34;MyOwnThread&amp;#34;)) { logThread(&amp;#34;Begin launch(newSingleThreadContext)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(newSingleThreadContext)&amp;#34;) } logThread(&amp;#34;End onCreate&amp;#34;) } fun logThread(msg: String) { println(&amp;#34;$msg: ${Thread.</description>
+    </item>
+    
+    <item>
+      <title>Kotlin Coroutine API</title>
+      <link>https://blog.simplypatrick.com/posts/2018/02-13-kotlin-coroutines-api/</link>
+      <pubDate>Tue, 13 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/02-13-kotlin-coroutines-api/</guid>
+      <description>Kotlin Coroutine 的架構 Kotlin 從 1.1 版開始實驗性地支援 coroutine，主要的目標是簡化非同步編程的複雜度。Diving deep into Kotlin Coroutines 解釋了 coroutine 跟一般常用的 callback 及目前蠻多人在用的 reactive 模式有何不同。
+由於目前 kotlinx-coroutines-core 的實現包含了不同抽象程度的 API，初學者建議可以用下面這張圖來學習如何使用 Kotlin coroutine：
+範例分析 套用下面這個範例來理解:
+suspend fun sendEmail(r: String, msg: String): Boolean { // 3  delay(2000) // 4  println(&amp;#34;Sent &amp;#39;$msg&amp;#39; to $r&amp;#34;) return true } suspend fun getReceiverAddressFromDatabase(): String { // 3  delay(1000) // 4  return &amp;#34;coroutine@kotlin.org&amp;#34; } suspend fun sendEmailSuspending(): Boolean { // 3  val msg = /* 1 */ async(CommonPool) { // 2  delay(500) &amp;#34;The message content&amp;#34; } val recipient = /* 1 */ async(CommonPool) { // 2  getReceiverAddressFromDatabase() } println(&amp;#34;Waiting for email data&amp;#34;) val sendStatus = /* 1 */ async(CommonPool) { // 2  sendEmail(recipient.</description>
+    </item>
+    
+    <item>
+      <title>Better Way to Request Runtime Permissions</title>
+      <link>https://blog.simplypatrick.com/posts/2016/05-30-requesting-runtime-permission/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/05-30-requesting-runtime-permission/</guid>
+      <description>If you are an Android developer, you definitely know an important change beginning in Android 6.0 (API 23) is run time permission: users grant permissions to apps while the app is running, not when they install the app. This official training guide explains clearly how you can check for permission and request them at runtime.
+Let me list the sample code in the training guide so that you can understand what improvements I would like to do with them:</description>
+    </item>
+    
+    <item>
+      <title>在 Android 上使用 OpenCV 的臉部偵測及辨識</title>
+      <link>https://blog.simplypatrick.com/posts/2016/03-05-face-detection-with-opencv-on-android/</link>
+      <pubDate>Sat, 05 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/03-05-face-detection-with-opencv-on-android/</guid>
+      <description>兩年多前研究了一下在 Android 上如何用 OpenCV 做臉部偵測及辨識。主要的使用情境如下圖:
+因為輸入來源是攝影機的視訊，當時的想法是初步的偵測及辨識還是由裝置執行，比較複雜的計算再上傳到 server 執行：
+這幾年許多大廠例如 Google, Facebook, 及 Microsoft 都積極投入發展人工智慧及臉部辨識技術，現在臉部辨識已經是 Mobile OS 上的必備功能:
+ Face API of Microsoft Project Oxford Face API of Mobile Video from Google Detecting Faces in an Image on Apple iOS  當時只是簡單弄了一個 prototype，現在回頭看，大致上設計沒有差太多，倒是 API 設計上可以多跟人家學習學習:
+public class Tracker&amp;lt;T&amp;gt; { public Tracker() {} public void onNewItem(int id, T item) {} public void onUpdate(Detections&amp;lt;T&amp;gt; detections, T item) {} public void onMissing(Detections&amp;lt;T&amp;gt; detections) {} public void onDone() {} } </description>
+    </item>
+    
+    <item>
+      <title>Redesign Listener with RxJava on Android</title>
+      <link>https://blog.simplypatrick.com/posts/2016/03-04-using-rxjava-on-android/</link>
+      <pubDate>Fri, 04 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/03-04-using-rxjava-on-android/</guid>
+      <description>Background In my Android app, I used the following typical Listener pattern to monitor updates from models:
+public interface Listener { void onUpdate(List&amp;lt;Item&amp;gt; list); } public interface Model { void addListener(Listener l); void removeListener(Listener l); } Listeners are implemented by several Fragments that expect update notifications coming from a global model object. The updating may be triggered manually by user or periodically by a scheduler.
+After learning RxJava, I would like to simplify the model interface and at the same time remove the boilerplate of maintaining listener list in model implementation:</description>
+    </item>
+    
+    <item>
+      <title>Running Android Studio with Custom JDK</title>
+      <link>https://blog.simplypatrick.com/posts/2016/02-28-running-android-studio-with-custom-jdk/</link>
+      <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2016/02-28-running-android-studio-with-custom-jdk/</guid>
+      <description>IntelliJ is certainly the best Java IDE ever. However, IntelliJ-based Android Studio really bothers me much because it fails to render font antialiasing correctly compared with older version on OS X:
+Google&amp;rsquo;s suggestion to this issue is to use Oracle JDK 1.6 but I don&amp;rsquo;t like the idea to stick with out-of-dated JDK.
+Recently IntelliJ 15 fixed this issue by bundling custom JDK. After realizing the same fix is probably not on the priority list of Android Studio 2.</description>
+    </item>
+    
+    <item>
+      <title>Using Native Libraries in Android</title>
+      <link>https://blog.simplypatrick.com/posts/2014/01-04-using-native-libraries-in-android/</link>
+      <pubDate>Sat, 04 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/01-04-using-native-libraries-in-android/</guid>
+      <description>基本概念 開發 Android app 如果需要使用 native library，簡單地說其實不複雜，就是把 .so 檔放到 lib/&amp;lt;abi&amp;gt; 目錄，然後不管你是用 Eclipse ADT, Ant, 或是 Gradle 來產生 APK, 這些工具都會把這些 .so 包到 .apk 裡面，然後這些 .so 就可以在運作時期用 System.loadLibrary 或是 System.load 來載入。
+接下來說明幾個常見的 .so 產生及載入方式：
+使用 NDK 如果是自己開發自己使用，通常建議用 Android NDK，只要一個 ndk-build 命令就可以將 jni/ 目錄裡的 C/C++ code 編譯成 libs/&amp;lt;abi&amp;gt;/ 裡的 lib&amp;lt;name&amp;gt;.so。
+載入方式就是直接使用 System.loadLibrary。
+Third-party library 但如果角色換成是要提供 library 給 App 開發者使用，方法就比較多樣一點：
+jni/ + src/ 也就是直接給 JNI 及 Java code 由 App 開發自己整合。
+Library Project 如果你要提供的 library 有自帶的 resource，這是目前唯一可以用的方式。把 .</description>
+    </item>
+    
+    <item>
+      <title>用 Scala 來開發 Android App 入門</title>
+      <link>https://blog.simplypatrick.com/posts/2013/11-11-develop-android-app-with-scala/</link>
+      <pubDate>Mon, 11 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2013/11-11-develop-android-app-with-scala/</guid>
+      <description>最近想寫些 Android 的小程式，但是用 Java 實在是太無趣了，於是就想嘗試用 Scala 來做，分享一下怎麼入門的心得。
+基本工具 我假設你已經安裝好下列工具 (標上我目前使用的版本):
+ Scala (2.10.3) 及 SBT (0.13.0) IntelliJ 12  Scala plugin (0.22.302) SBT plugin (1.5.1)    產生一個基本的 Scala Android App  執行 android create project --target android-19 --path ./MyProject --package com.example.myproject --activity Main 在 project 目錄下新建 project/plugins.sbt，內容如下 (注意中間的空白行不可省略):  addSbtPlugin(&amp;#34;com.hanhuy.sbt&amp;#34; % &amp;#34;android-sdk-plugin&amp;#34; % &amp;#34;1.2.2&amp;#34;) addSbtPlugin(&amp;#34;com.hanhuy.sbt&amp;#34; % &amp;#34;sbt-idea&amp;#34; % &amp;#34;1.6.0&amp;#34;)  在 project 目錄下新建 build.sbt，同樣中間空白行不可省略:  android.Plugin.androidBuild name := &amp;#34;MyProject&amp;#34;  執行 sbt android:package-debug，到這一步應該就能把 APK 建立出來了  把 Java 轉成 Scala 然後你可以試著把 android 幫你產生的 Java 手動改寫成 Scala (副檔名也要改 .</description>
+    </item>
+    
+    <item>
+      <title>Trying Scala on Android</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-08-trying-scala-on-android/</link>
+      <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-08-trying-scala-on-android/</guid>
+      <description>Scala 是基於 Java 平台的多範式程式語言，最著名的使用者就是原本從 Ruby 起家的 Twitter。由於 Java 平台賦予的可攜性，除了應用於各式各樣的後端程式，Scala 也能用來撰寫 Android 的 app。
+我嘗試的環境如下：
+ Mac OS X 10.8.2 Android 4.2 SDK Scala 2.9.2  由於我習慣用 ant 來建置，需要先做的就是修改 build.xml 加入以下步驟：
+&amp;lt;import file=&amp;quot;mac-shim.xml&amp;quot; /&amp;gt; &amp;lt;import file=&amp;quot;build-scala.xml&amp;quot; /&amp;gt; &amp;lt;target name=&amp;quot;-post-compile&amp;quot; depends=&amp;quot;-post-compile-scala&amp;quot; /&amp;gt; 重點在於加入 -post-compile-scala 這個步驟來編譯 src/ 下的 .scala 檔案。mac-shim.xml 是為了解決 Android SDK 的 ant script 在 Linux/MacOS 下的差異；build-scala.xml 則是包含可重複使用的 Scala 建置規則。
+另外執行 ant 前要先用 android update project 把 local.properties 產生出來，並把 scala.dir 指向 Scala 的安裝位置：</description>
+    </item>
+    
+    <item>
+      <title>ACRA and BugSense</title>
+      <link>https://blog.simplypatrick.com/posts/2012/08-19-acra-and-bugsense/</link>
+      <pubDate>Sun, 19 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/08-19-acra-and-bugsense/</guid>
+      <description>ACRA (Application Crash Report for Android) 是個很受歡迎的 Android library，因為當你的 app 掛點時，它可以送一份驗屍報告 (crash report) 到 server 保存，以便開發者能做事後分析並修正問題。
+你需要做的只是下面簡短幾行設定：
+@ReportsCrashes(formKey = &amp;#34;dGp6WmNqdXNMM2lkTkJiUmhHRlM014615&amp;#34;) // Add this line public class Globals extends Application { private static Airport sAirport; public static Airport getAirport(Context context) { if (sAirport == null) { sAirport = new TaoyuanAirport(context.getApplicationContext()); } return sAirport; } @Override public void onCreate() { ACRA.init(this); // Add this line  super.onCreate(); } } 然後 manifest 裡面加上以下設定：</description>
+    </item>
+    
+    <item>
+      <title>AQuery - JQuery-like library for Android App</title>
+      <link>https://blog.simplypatrick.com/posts/2012/08-19-aquery-jquery-like-library-for-android-app/</link>
+      <pubDate>Sun, 19 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/08-19-aquery-jquery-like-library-for-android-app/</guid>
+      <description>Android Query 是個頗酷的 Android library，顧名思義就是給 Android 用但用法很像 jQuery 的東西。
+跟 jQuery 一樣，AQuery 的目標是讓 Android developer 可以 write less and do more：
+public void renderContent(Content content, View view) { AQuery aq = new AQuery(view); aq.id(R.id.icon).image(R.drawable.icon).visible().clicked(this, &amp;#34;someMethod&amp;#34;); aq.id(R.id.name).text(content.getPname()); aq.id(R.id.time).text(FormatUtility.relativeTime(System.currentTimeMillis(), content.getCreate())).visible(); aq.id(R.id.desc).text(content.getDesc()).visible(); } 也可以輕鬆地執行 AJAX:
+public void asyncJson(){ // perform a Google search in just a few lines of code  String url = &amp;#34;http://www.google.com/uds/GnewsSearch?q=Obama&amp;amp;v=1.0&amp;#34;; aq.ajax(url, JSONObject.class, this, &amp;#34;jsonCallback&amp;#34;); } public void jsonCallback(String url, JSONObject json, AjaxStatus status) { if (json !</description>
+    </item>
+    
+    <item>
+      <title>Reference Counting in Android libutils</title>
+      <link>https://blog.simplypatrick.com/posts/2012/08-12-reference-counting-in-android-libutils/</link>
+      <pubDate>Sun, 12 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/08-12-reference-counting-in-android-libutils/</guid>
+      <description>從事 Android native framework 層的開發一定會接觸到兩個 C++ template class: sp 及 wp，分別是 strong pointer 及 weak pointer 的簡稱，是兩個看似簡單但卻有著魔鬼細節的 utility class。
+一個比較典型使用 weak pointer 的狀況就是 Listener pattern，例如:
+class TimedTextPlayer { wp&amp;lt;MediaPlayerBase&amp;gt; mListener; } void TimedTextPlayer::postTextEvent(const sp&amp;lt;ParcelEvent&amp;gt;&amp;amp; parcel, int64_t timeUs) { sp&amp;lt;MediaPlayerBase&amp;gt; listener = mListener.promote(); if (listener != NULL) { // ...  listener-&amp;gt;getCurrentPosition(&amp;amp;positionMs); // ...  } } 這個例子如果使用 sp 來記錄 listener 很容易因為忘了移除 listener 而造成 memory leak。用了 wp 也就沒有這個困擾，不過額外的開銷就是 wp 必須先呼叫 promote() 拿到一個 sp 才能使用。</description>
+    </item>
+    
+  </channel>
+</rss>

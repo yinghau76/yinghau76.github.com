@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ruby on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/ruby/</link>
+    <description>Recent content in ruby on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 27 Mar 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RubyMotion v.s. Xcode &#43; Objective-C</title>
+      <link>https://blog.simplypatrick.com/posts/2014/03-27-rubymotion-vs-xcode-objective-c/</link>
+      <pubDate>Thu, 27 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/03-27-rubymotion-vs-xcode-objective-c/</guid>
+      <description>優點 RubyMotion 的優點說穿了就是儘量讓你不會碰到 Objective-C, Xcode, 及 iOS API 的摧殘：
+使用 Ruby 語法 應該不是只有我覺得 Objective-C 的語法很醜，Cocoa/iOS 的 API 也都是囉嗦的長， 但相對地 Ruby 就有漂亮易讀的語法及好用的內建 library。
+與其要寫：
+NSMutableArray *array = [NSMutableArray arrayWithObjects: @&amp;#34;one&amp;#34;, @&amp;#34;two&amp;#34;, @&amp;#34;three&amp;#34;, @&amp;#34;four&amp;#34;, nil]; NSArray *newAdditions = [NSArray arrayWithObjects: @&amp;#34;a&amp;#34;, @&amp;#34;b&amp;#34;, nil]; NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1,newAdditions.count)]; [array insertObjects:newAdditions atIndexes:indexes]; 我更喜歡寫：
+array = %w{one two three four} newAdditions = %w{a b} array.insert(1, *newAdditions) 可利用 RubyMotion gems 在 RubyMotion Wrappers 可以找到許多專爲 RubyMotion 設計的 gem，通常是把 iOS API 或是有名 的 library (例如 AFNetworking 或 Cocos2D) 包裝成 Ruby 的慣用方式，例如 SugarCube 可以把：</description>
+    </item>
+    
+    <item>
+      <title>RubyMotion</title>
+      <link>https://blog.simplypatrick.com/posts/2014/03-16-rubymotion/</link>
+      <pubDate>Sun, 16 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/03-16-rubymotion/</guid>
+      <description>使用 RubyMotion 來撰寫 iOS app 已經有一年多的時間，踩了不少坑後有了一些小心得可以分享，目前想到的題目有：
+ 相較於用 Xcode 開發的優缺點 RubyMotion Rakefile 的使用 與 Xcode 搭配的方法 開發環境的設定 推薦閱讀的書 用 Ruby 風格來架構 app Crash report 的機制 推薦使用的 gem 其他推薦閱讀&amp;hellip;  有一個需要先釐清的是：使用 RubyMotion 不表示你可以不用懂 Objective-C 及 Cocoa Touch， 相反地，學習原生 iOS 開發的方法對於有效駕馭 RubyMotion 是必要的。
+有興趣的人可以先聽聽 Joseph Ku 在 TechTalk@TW 的專訪。另外也可以看 Jim Weirich 在 CincyCocoaDev 對 RubyMotion 的介紹：</description>
+    </item>
+    
+    <item>
+      <title>Ruby&#39;s Object Model</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-08-rubys-object-model/</link>
+      <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-08-rubys-object-model/</guid>
+      <description>Ruby 強大的 metaprogramming 能力就是來自於它簡單又優雅的 object model。
+ </description>
+    </item>
+    
+    <item>
+      <title>rb-appscript and iTunes</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-02-rb-appscript-and-itunes/</link>
+      <pubDate>Sun, 02 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-02-rb-appscript-and-itunes/</guid>
+      <description>iTunes 11 出來了，界面變簡潔漂亮了，所以就比較有把音樂資料庫整理一下的動力。手上有很久以前下載的 Rolling Stone Magazine&amp;rsquo;s Top 500 Songs，可惜的是加入 iTunes 資料庫後由於沒有音軌數字的資訊，整個次序都不大對：
+手動一個一個改對我來說是不可能的，於是想到了 iTunes 似乎是有提供 AppleScript API 界面的，但第一個問題就是我跟 AppleScript 不熟，於是在網路上搜尋發現有個 Ruby gem 叫 rb-appscript 可以用 Ruby 來做類似的功能，二話不說就 gem install rb-appscript 下來用了。
+但接著第二個問題是我跟 iTunes 的 AppleScript API 也不熟，但也很快地發現可以從 AppleScript editor 裡面查到：
+於是在 irb 裡小試了一下發現可以成功運作後，就直接動手寫了：
+require &amp;#39;appscript&amp;#39; Appscript.app.by_name(&amp;#34;iTunes&amp;#34;).selection.get.each do |t| t.track_number.set $1 if t.name.get =~ /^(\d+)/ end 哈，大功告成。</description>
+    </item>
+    
+    <item>
+      <title>Ruby Singleton Class</title>
+      <link>https://blog.simplypatrick.com/posts/2012/09-16-ruby-singleton-class/</link>
+      <pubDate>Sun, 16 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/09-16-ruby-singleton-class/</guid>
+      <description>今天花了點時間試著了解 Ruby Class/Object 的內部實現：
+以及 singleton class 的創建機制：
+ eval.c - eval.c: rb_extend_object activate eval.c eval.c - class.c: rb_singleton_class activate class.c class.c - class.c: singleton_class_of activate class.c class.c - class.c: rb_make_metaclass activate class.c class.c - class.c: make_singleton_class activate class.c class.c - class.c: rb_class_boot activate class.c class.c - class.c: rb_class_alloc activate class.c deactivate class.c deactivate class.c class.c - class.c: rb_singleton_class_attached activate class.c deactivate class.c deactivate class.c deactivate class.c deactivate class.c deactivate class.</description>
+    </item>
+    
+    <item>
+      <title>Terminal syntax highlight</title>
+      <link>https://blog.simplypatrick.com/posts/2012/09-16-terminal-syntax-highlight/</link>
+      <pubDate>Sun, 16 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/09-16-terminal-syntax-highlight/</guid>
+      <description>由於會需要在 blog 裡分享命令列指令，所以模仿其他的 CodeRay plug-in 寫了一個新的來高亮命令行。
+在 Octopress 的目錄裡只需要新增一個 plugins/coderay_term.rb:
+require &amp;#39;coderay&amp;#39; module CodeRay module Scanners # Scanner for terminal commands class Term &amp;lt; Scanner register_for :term protected def scan_tokens encoder, options state = :initial until eos? case state when :initial if match = scan(/^\s*\$/) encoder.text_token match, :directive state = :command_found elsif match = scan(/.*[\n$]/) encoder.text_token match, :comment end when :command_found if match = scan(/.*[\n$]/) encoder.text_token match, :function state = :initial end end end encoder end end end end </description>
+    </item>
+    
+    <item>
+      <title>Build iOS App with rake</title>
+      <link>https://blog.simplypatrick.com/posts/2011/12-24-build-ios-app-with-rake/</link>
+      <pubDate>Sat, 24 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/12-24-build-ios-app-with-rake/</guid>
+      <description>上次說到 rake 是幫忙 iOS App 本地化的好用工具，但其實幾乎所有要自動化的事情都能請它幫忙， 例如寫 game 的人需要做的 sprite sheet 也能請 rake 自動產生。
+除此之外，準備各種不同的 build 也是頗煩人的事，如果你也用 rake 的話就可以用 wox 這個 gem 來幫忙，下面的範例是 wox 文檔建議的方式：
+# Rakefile Wox::Tasks.create :info_plist =&amp;gt; &amp;#39;Resources/Info.plist&amp;#39;, :sdk =&amp;gt; &amp;#39;iphoneos&amp;#39;, :configuration =&amp;gt; &amp;#39;Release&amp;#39; do build :debug, :configuration =&amp;gt; &amp;#39;Debug&amp;#39; build :release, :developer_certificate =&amp;gt; &amp;#39;iPhone Developer: Dangerous Dave (9GZ84DL0DZ)&amp;#39; do ipa :app_store, :provisioning_profile =&amp;gt; &amp;#39;App Store&amp;#39; ipa :adhoc, :provisioning_profile =&amp;gt; &amp;#39;Team Provisioning Profile&amp;#39; do testflight :publish, :api_token =&amp;gt; &amp;#39;nphsZ6nVXMl0brDEsevLY0wRfU6iP0NLaQH3nqoh8jG&amp;#39;, :team_token =&amp;gt; &amp;#39;Qfom2HnGGJnXrUVnOKAxKAmpNO3wdQ9panhtqcA&amp;#39;, :notes =&amp;gt; proc { File.</description>
+    </item>
+    
+    <item>
+      <title>iOS App Localization using rake</title>
+      <link>https://blog.simplypatrick.com/posts/2011/12-24-ios-app-localization-using-rake/</link>
+      <pubDate>Sat, 24 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/12-24-ios-app-localization-using-rake/</guid>
+      <description>一般要幫 iOS App 本地化，其中比較繁瑣的就是翻譯 xib 檔案中的字串，通常是需要下面三個步驟 (可參考 ICanLocalize 的教學)：
+ 使用 ibtool 把字串從 xib 中抓出來 找人翻譯字串 使用 ibtool 再把翻譯好的字串放到 xib 中  不過我是不能忍受這些工作要手動進行的，所以最好的方式是用 rake 來自動化這些事情：
+DEF_LPROJ = &amp;#39;en.lproj&amp;#39; REGIONS = Dir[&amp;#39;*.lproj&amp;#39;].delete_if {|p| p == DEF_LPROJ}.map {|p| File.basename(p, &amp;#39;.lproj&amp;#39;)} XIBS = Dir[&amp;#34;#{DEF_LPROJ}/*.xib&amp;#34;].map {|x| File.basename(x)} namespace :l10n do task :regions do REGIONS.each {|region| puts region} end task :xibs do XIBS.each {|xib| puts xib} end desc &amp;#39;Generate strings file for XIB&amp;#39; task :genstrings do REGIONS.</description>
+    </item>
+    
+    <item>
+      <title>LiveReload and Octopress</title>
+      <link>https://blog.simplypatrick.com/posts/2011/12-03-livereload/</link>
+      <pubDate>Sat, 03 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/12-03-livereload/</guid>
+      <description>雖然平常沒什麼時間寫 blog，但總是希望寫的時候能夠專注在所寫的內容，而不必被發佈 blog 的一些瑣事而干擾，例如現在雖然已經習慣用 Pow 了，然後把 rake watch 開著，但要預覽時還是要回 Chrome 按一下 Reload 才能預覽目前的內容，有點小煩，所以看到有 LiveReload 這種好東西當然要拿來用啊。
+簡單描述一下安裝的步驟:
+ 安裝 guard-livereload:  $ gem install guard-livereload  修改 Gemfile 把下列這一行加進去 &amp;lsquo;guard-livereload&amp;rsquo;:  $ gem &amp;#39;guard-livereload&amp;#39;  再來是改完 Gemfile 後的標準步驟:  $ bundle install  產生一份基本的 Guardfile:  $ guard init livereload  再來要修改 Rakefile 把啟動 guard 的動作放到 rake watch 裡面:  desc &amp;#34;Watch the site and regenerate when it changes&amp;#34; task :watch do raise &amp;#34;### You haven&amp;#39;t set anything up yet.</description>
+    </item>
+    
+    <item>
+      <title>The Best Programming Language</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-12-06-384/</link>
+      <pubDate>Wed, 06 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-12-06-384/</guid>
+      <description>UnSpun by Amazon: Best Programming Language
+Ruby 遙遙領先第二名 Java，不過現在會去 UnSpun 逛的人大概都是 Ruby 迷吧，所以這樣的投票實在是不太公平了，就像是在德國投票選誰是史上最偉大賽車手一樣。 :-)</description>
+    </item>
+    
+    <item>
+      <title>Recursive Descent Parser in Ruby</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-11-08-368/</link>
+      <pubDate>Wed, 08 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-11-08-368/</guid>
+      <description>嗯嗯嗯&amp;hellip; 用 Ruby 來寫 recursive descent parser 真是妙，因為所有的 grammar 都可以用 Ruby 的語法來寫，換句話說，就是把 code 當成 data 來使用，例如：
+start :expr do match(:expr, &amp;#39;+&amp;#39;, :term) {|a, op, b| a + b} match(:expr, &amp;#39;-&amp;#39;, :term) {|a, op, b| a - b} match(:term) end 要增刪一條 rule 非常地直覺與簡單，同樣的方式要用 C 來寫就麻煩多了。本來是想自己寫一份新的，但是看了 Dennis Ranke 的方法後，不知不覺就跟著他的方法一直抄了，我覺得不太可能寫得比他的版本更好了。下面是我的版本：
+class Parser class Lexer TokenMatch = Struct.new(:name, :pattern, :eval) attr_accessor :pos attr_reader :matches def initialize @matches = [] end def add_match(name, pattern, eval) @matches &amp;lt;&amp;lt; TokenMatch.</description>
+    </item>
+    
+    <item>
+      <title>Ruby Quiz</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-11-06-364/</link>
+      <pubDate>Mon, 06 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-11-06-364/</guid>
+      <description>今天才發現原來有個 Ruby Quiz 網站，在上面每週會提供一個題目讓你思考及練習 Ruby programming 的技巧，對於有 programming language 的經驗但是沒有接觸過 Ruby 的人應該是不錯的學習方式。正如同網站所述：We use the Ruby Quiz to learn more about the Ruby programming language, not as a race. 就把它當作遊戲來玩玩吧。
+這是我對 Quiz #28: Mad Libs 的解答：
+class MadLibs def ask(word) print &amp;#34;Give me #{word}: &amp;#34; $stdin.gets.chomp end def play(file) keywords = {} story = file.read.gsub(/\(\((.+?)\)\)/) do word = $1 if word =~ /(.+):(.+)/ keywords[$1] = ask($2) elsif keywords.include?(word) keywords[word] else ask(word) end end puts print story end end raise &amp;#34;No template is given!</description>
+    </item>
+    
+    <item>
+      <title>My Second Ruby Program</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-11-05-363/</link>
+      <pubDate>Sun, 05 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-11-05-363/</guid>
+      <description>今天寫的一個 Ruby 程式，解 Interpreter 這個問題：
+# PC/UVa IDs: 110106/10033 class Computer def initialize(file) @regs = Array.new(10, 0) @ram = Array.new(1000, 0) load_inst(file) end def load_inst(file) pc = 0 file.each_line do |line| line.chomp! line.strip! if line.length &amp;gt; 0 then @ram[pc] = line pc += 1 elsif pc &amp;gt; 0 break end end end MAX_INST = 1000 def execute executed = 0 pc = 0 opcodes = { &amp;#39;1&amp;#39; =&amp;gt; Proc.new { return executed }, &amp;#39;2&amp;#39; =&amp;gt; Proc.</description>
+    </item>
+    
+    <item>
+      <title>My First Ruby Program</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-11-03-361/</link>
+      <pubDate>Fri, 03 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-11-03-361/</guid>
+      <description>最近在學 Ruby，而要學一個 programming language 最快的方法就是動手去寫，可是工作之餘我又沒太多時間可以寫大一點的程式，因此我通常會找 Programming Challenges 裡面的題目來自娛。
+下面的程式就是我的第一個 Ruby 程式： 解 Check The Check 這個問題：
+class Chess @@capture = { &amp;#39;p&amp;#39; =&amp;gt; [[-1, 1, 1], [ 1, 1, 1]], &amp;#39;P&amp;#39; =&amp;gt; [[-1, -1, 1], [ 1, -1, 1]], &amp;#39;r&amp;#39; =&amp;gt; [[ 1, 0, 8], [-1, 0, 8], [0, 1, 8], [ 1, 0, 8]], &amp;#39;b&amp;#39; =&amp;gt; [[-1, 1, 8], [ 1, 1, 8], [1, -1, 8], [-1, -1, 8]], &amp;#39;n&amp;#39; =&amp;gt; [[-2, -1, 1], [-1, -2, 1], [1, -2, 1], [ 2, -1, 1], [2, 1, 1], [1, 2, 1], [-1, -2, 1], [-2, -1, 1]], &amp;#39;k&amp;#39; =&amp;gt; [[-1, 1, 1], [ 1, 1, 1], [1, -1, 1], [-1, -1, 1], [1, 0, 1], [0, 1, 1], [-1, 0, 1], [ 0, -1, 1]], &amp;#39;q&amp;#39; =&amp;gt; [[-1, 1, 8], [ 1, 1, 8], [1, -1, 8], [-1, -1, 8], [1, 0, 8], [0, 1, 8], [-1, 0, 8], [ 0, -1, 8]], } @@capture.</description>
+    </item>
+    
+    <item>
+      <title>10 Tips from the Ruby Creator</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-03-30-138/</link>
+      <pubDate>Tue, 30 Mar 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-03-30-138/</guid>
+      <description>出自於 Ruby Creator Y. Matsumoto, CIPS Connections:
+ Learn more than one programming languages, preferably many different style ones, like scripting, object-oriented, functional, logic, etc. Learning languages teaches you many about programming. Read good books, for example, &amp;ldquo;Pragmatic Programmers&amp;rdquo;, &amp;ldquo;Refactoring&amp;rdquo;, and &amp;ldquo;Art of Computer Science&amp;rdquo;. Read the source code. The source code is the source of information and knowledge. Thanks to the opensource. Don&amp;rsquo;t focus too much on tools. Tools changes.</description>
+    </item>
+    
+  </channel>
+</rss>

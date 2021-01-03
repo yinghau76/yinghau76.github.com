@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>process on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/process/</link>
+    <description>Recent content in process on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 12 Jun 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/process/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Code Review</title>
+      <link>https://blog.simplypatrick.com/posts/2015/06-12-about-code-review/</link>
+      <pubDate>Fri, 12 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2015/06-12-about-code-review/</guid>
+      <description>著重品質及效率的軟體開發團隊一定會做 code review，因為它是開發流程裡唯一讓開發人員有機會針對代碼進行深入討論的關鍵活動。
+因爲不同的團隊會用不同的方式執行 code review，並沒有一套固定的方法可以適用所有情況，所以我試著根據過去的經驗，整理我心中認為理想的 code review 運作方式。
+要用什麼工具？ 我認為使用 code review system 這類的工具是必須的，否則管理版本修改 (patches) 或是追蹤 reviewer 給的建議 (comments) 就會太過費力，反而削減了 code review 帶來的好處。
+免費的選擇我會推薦 Gerrit 或是 Phabricator ，架設其實都蠻簡單的。
+Gerrit 的使用建議可以參考：
+ Gerrit and Code Review Best Practices Gerrit Best Practices  Review 那些東西？ 以下是我認為除了 bug 以外需要檢查的部分，依照重要程度列舉如下：
+ 符合原始架構設計 API 設計 易讀性及可維護性 安全性 代碼風格  有幾個原則可以遵循：
+ 團隊應該有一致的代碼標準 (coding standards)，這樣比較不會有爭議。 盡量使用代碼檢查工具 (static analysis) 來代替人工的檢查。 善用 astyle 或是 uncrustify 這類的 code formatting 工具來維持代碼風格的一致性。  如何有效溝通？  Commit message 很重要，好的 commit message 可以讓 review 快速理解為什麼這個改動是必要的。 Review 的改動不應該太大，一次改個上千行是很難仔細檢查的，所以 reviewer 有權利退回太大的改動。   Ask a programmer to review 10 lines of code, he&amp;rsquo;ll find 10 issues.</description>
+    </item>
+    
+    <item>
+      <title>Continuous Integration and Android</title>
+      <link>https://blog.simplypatrick.com/posts/2012/04-07-continuous-integration-and-android/</link>
+      <pubDate>Sat, 07 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/04-07-continuous-integration-and-android/</guid>
+      <description>在 Jenkins 上設定 Android app 的持續整合 並不困難，而且是頗讓人愉快的一件事，因為這充分體現了工程師懶惰的美德，要我自己去弄這些可以自動化的工作會要我的命，而剩下唯一的問題就是需要架設 server，但在雲端運算盛行的今日，你可以大膽地賭有人已經提供這樣的服務了。
+CloudBees 提供的正是 &amp;ldquo;Jenkins as a Service&amp;rdquo; 這種服務，講白了就是可以把 Jenkins server 架在 CloudBees 的 server 上，你要做的就是把 sourec code 推到它提供的的 git repository 或是 GitHub 上即可。
+如果你是獨立的 Android app 開發者，CloudBees 提供的免費服務其實還不錯，非常值得考慮使用：
+ 附帶一提，Hudson/Jenkins 的創造人 Kohsuke Kawaguchi 目前就是在 CloudBees 擔任 Architect。
+參考：
+ 7 Ways to Optimize Jenkins/Hudson White Paper  </description>
+    </item>
+    
+  </channel>
+</rss>

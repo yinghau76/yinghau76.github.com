@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tils on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tils/</link>
+    <description>Recent content in Tils on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 25 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tils/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用 CLion 開發使用 Makefile 建置的專案</title>
+      <link>https://blog.simplypatrick.com/tils/2019/2019-12-25-clion-makefile-projects/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2019/2019-12-25-clion-makefile-projects/</guid>
+      <description>目前 CLion 只支持使用 CMake 建置的專案，但對於使用 Makefile 的專案，官方其實也有提供稍微麻煩但還能用的解決辦法: Managing Makefile Projects</description>
+    </item>
+    
+    <item>
+      <title>Building AOSP on MacOS</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-04-15-building-aosp-on-mac/</link>
+      <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-04-15-building-aosp-on-mac/</guid>
+      <description>Although I am familiar with building AOSP source, I still learn something from the following blog post series by Udi Cohen in 2014:
+ AOSP Part 1: Get the code using the Manifest and Repo tool AOSP Part 2: Build variants AOSP Part 3: Developing Efficiently  The last time I built AOSP on Mac, there were still some pitfalls. I finally gave up and settled on doing it in Ubuntu.</description>
+    </item>
+    
+    <item>
+      <title>Reactor Pattern</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-03-07-reactor-pattern/</link>
+      <pubDate>Mon, 07 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-03-07-reactor-pattern/</guid>
+      <description>I knew about Reactor pattern since I have a copy of POSA Vol. 2. I admit that it have been years since I opened the book for the last time.
+I never implement a reactor by myself but I am interested to see how it is implemented in various projects. Today I learned how eventfd and epoll can be used together to implement a simple reactor from Bluetooth library in AOSP:</description>
+    </item>
+    
+    <item>
+      <title>Aggregate Subject using RxJava</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-03-04-aggregate-subject/</link>
+      <pubDate>Fri, 04 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-03-04-aggregate-subject/</guid>
+      <description>private static &amp;lt;T&amp;gt; Subject&amp;lt;T, List&amp;lt;T&amp;gt;&amp;gt; createAggregateSubject() { final List&amp;lt;Subscriber&amp;lt;? super List&amp;lt;T&amp;gt;&amp;gt;&amp;gt; observers = new LinkedList&amp;lt;&amp;gt;(); final Observable.OnSubscribe&amp;lt;List&amp;lt;T&amp;gt;&amp;gt; onSubscribe = o -&amp;gt; { o.onStart(); observers.add(o); }; return new Subject&amp;lt;T, List&amp;lt;T&amp;gt;&amp;gt;(onSubscribe) { private List&amp;lt;T&amp;gt; list = new LinkedList&amp;lt;&amp;gt;(); @Override public boolean hasObservers() { return !observers.isEmpty(); } @Override public void onCompleted() { Iterables.removeIf(observers, Subscriber::isUnsubscribed); for (Subscriber&amp;lt;? super List&amp;lt;T&amp;gt;&amp;gt; o: observers) { o.onNext(list); } list.clear(); } @Override public void onError(Throwable e) { for (Subscriber&amp;lt;? super List&amp;lt;T&amp;gt;&amp;gt; o: observers) { o.</description>
+    </item>
+    
+    <item>
+      <title>Gradle Daemon</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-03-03-gradle-ademon/</link>
+      <pubDate>Thu, 03 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-03-03-gradle-ademon/</guid>
+      <description>Today I learned that Gradle Daemon can be enabled by add the following line to ~/.gradle/gradle.properties:
+org.gradle.daemon=true It does reduce the startup delay a lot.</description>
+    </item>
+    
+    <item>
+      <title>Retrolambda</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-03-03-retrolambda/</link>
+      <pubDate>Thu, 03 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-03-03-retrolambda/</guid>
+      <description>Today I learned how to apply retrolambda in order to use Java 8 lambda expression in my Android app. It does work well but it also introduces some trouble when running Android lint. You may see a lot of loud warnings like this:
+Failed converting ECJ parse tree to Lombok for file [...skipped] java.lang.UnsupportedOperationException: Unknown ASTNode child: LambdaExpression at lombok.ast.ecj.EcjTreeVisitor.visitOther(EcjTreeVisitor.java:368) ... The workaround is to use android-retrolambda-lombok that replace original lombok AST with a modified version that allows lint to run on Java 8 sources without error.</description>
+    </item>
+    
+    <item>
+      <title>Post-processing GSON deserization</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-03-02-post-processing-gson-deserialization/</link>
+      <pubDate>Wed, 02 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-03-02-post-processing-gson-deserialization/</guid>
+      <description>Sometimes, when deserializing an Java object with GSON, you may want GSON to provide some hook for initializing transient fields according to other deserialized fields. By default GSON does not provide an easy way to do that. One possible solution is to use gson-fire but it is probably too overkill for me. Adding a new library is a really serious commitment.
+After searching on StackOverflow, The solution to How to invoke default deserialize with gson is closest to what I want.</description>
+    </item>
+    
+    <item>
+      <title>RxJava</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-03-01-rxjava/</link>
+      <pubDate>Tue, 01 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-03-01-rxjava/</guid>
+      <description>Today I learned what RxJava is by reading Functional Reactive Programming with RxJava - JavaOne 2013. I know I lagged.
+ </description>
+    </item>
+    
+    <item>
+      <title>Gradle :app:dexDebug OOM</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-02-29-dexdebug-oom/</link>
+      <pubDate>Mon, 29 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-02-29-dexdebug-oom/</guid>
+      <description>Encountered the following error when building my Android app with Android Studio:
+:app:dexDebug AGPBI: {&amp;quot;kind&amp;quot;:&amp;quot;simple&amp;quot;,&amp;quot;text&amp;quot;:&amp;quot;UNEXPECTED TOP-LEVEL ERROR:&amp;quot;,&amp;quot;sources&amp;quot;:[{}]} AGPBI: {&amp;quot;kind&amp;quot;:&amp;quot;simple&amp;quot;,&amp;quot;text&amp;quot;:&amp;quot;java.lang.OutOfMemoryError: GC overhead limit exceeded&amp;quot;,&amp;quot;sources&amp;quot;:[{}]} FAILED FAILURE: Build failed with an exception. * What went wrong: Execution failed for task &#39;:app:dexDebug&#39;. &amp;gt; com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process &#39;command &#39;/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/bin/java&#39;&#39; finished with non-zero exit value 3 I didn&amp;rsquo;t see this problem before upgrading Android Studio and incorporating some new libraries. Anyway I learned how to fix it with the following snippets in root Gradle build script:</description>
+    </item>
+    
+    <item>
+      <title>Test Asynchronous Callback with LinkedBlockingQueue</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-02-25-test-callback/</link>
+      <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-02-25-test-callback/</guid>
+      <description>Today I learned how to test asynchronous callback with LinkedBlockingQueue by reading TestKeepaliveCallback implementation in AOSP.
+The basic idea is to use LinkedBlockingQueue.poll with timeout to wait for a method to be called. A private inner class is designed to capture the details of a method callback. A few expectSomething helper methods are defined to make the test code more readable.
+Here is the test class for testing callback to PacketKeepaliveCallback:</description>
+    </item>
+    
+    <item>
+      <title>Dependency between Upstart and SysV Service</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-02-23-dependency-between-upstart-and-sysv-service/</link>
+      <pubDate>Tue, 23 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-02-23-dependency-between-upstart-and-sysv-service/</guid>
+      <description>I wrote a web application with Go and setup it to be launched by upstart during system boot. However, it failed to start after reboot. Checked dmsg and found out it cannot connect to PostgreSQL that was launched by SysV init script rather than upstart.
+One possible solution is to also lunch PostgreSQL with upstart and start my app after PostgreSQL is started as suggested by 6.33.2 Start depends on another service:</description>
+    </item>
+    
+    <item>
+      <title>Memory Sanitizer</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-02-20-memory-sanitizer/</link>
+      <pubDate>Sat, 20 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-02-20-memory-sanitizer/</guid>
+      <description>Today I learned that MemorySanitizer somehow cannot work in my environment:
+ Host OS: OS X 10.11.3 VirtualBox 5.0.14 Guest OS: Ubuntu 14.04.4 Clang 3.7.1  Use the very first example from MemorySantizer documentation:
+// umr.cc #include &amp;lt;stdio.h&amp;gt; int main(int argc, char** argv) { int* a = new int[10]; a[5] = 0; if (a[argc]) printf(&amp;#34;xx\n&amp;#34;); return 0; } Compile it with MemorySanitizer enabled:
+$ clang -fsanitize=memory -fno-omit-frame-pointer -g -O2 umr.cc When running the generated executable:</description>
+    </item>
+    
+    <item>
+      <title>SSO with auth_request</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-02-19-sso-with-auth_request/</link>
+      <pubDate>Fri, 19 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-02-19-sso-with-auth_request/</guid>
+      <description>Today I learned how to implement SSO using nginx auth_request module.
+The basic idea is to autheticate a user based on the result of a suberequest to authentication server. If the subrequest returns 401, redirect the user to login authetication server. After the user login successfully, user info is stored in cookies to allow subsequent access to the web application.
+Refer to &amp;ldquo;SSO with Nginx auth_request module&amp;rdquo; for details.
+To autheticate a user, I implemented a simple Go program based on new web project generated by go-bootstrap.</description>
+    </item>
+    
+    <item>
+      <title>Pseudo-terminal</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-02-16-pseudo-terminal/</link>
+      <pubDate>Tue, 16 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-02-16-pseudo-terminal/</guid>
+      <description>Today I learned how pseudo-terminal, pseudo-tty, or PTY works by reading The TTY demystified.
+In short, pseudo-terminal is used for running and interacting with programs. A pseudo-terminal consists of a master and slave device. The slave device emulates a terminal device and connects with master device. Master device provides means for a terminal emulator process to control the slave devices. Terminal multiplexers, such as tmux, create multiple pseudo-terminals to interact with multiple running programs.</description>
+    </item>
+    
+    <item>
+      <title>Disable Wi-Fi Sleep on Rasberry Pi 2</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-02-11-disable-wifi-sleep-on-rpi2/</link>
+      <pubDate>Thu, 11 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-02-11-disable-wifi-sleep-on-rpi2/</guid>
+      <description>Previously I installed Ububtu 15.04 on my Raspberry Pi 2 that has Wi-Fi connectivity provided by Edimax EW-7811Un:
+$ lsusb Bus 001 Device 005: ID 7392:7811 Edimax Technology Co., Ltd EW-7811Un 802.11n Wireless Adapter [Realtek RTL8188CUS] One annoyance is that the Wi-Fi will be off automatically after no network traffic for a while.
+Today I learned from Rasberry Pi Forum that the power management feature can be turned off by adding /etc/modprobe.</description>
+    </item>
+    
+    <item>
+      <title>My first TIL</title>
+      <link>https://blog.simplypatrick.com/tils/2016/2016-02-10-first-til/</link>
+      <pubDate>Wed, 10 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/tils/2016/2016-02-10-first-til/</guid>
+      <description>Today I learned that I can do TIL:
+ We constantly learn new things. This is a repo to share those learnings. TILs are short Markdown documents (a few sentences + example code) explaining concepts, bits of syntax, commands, or tips we&amp;rsquo;ve recently learned.
+ Inspired by jbranchaud, I am going to write all TILs in English and keep doing it at least for every working day.</description>
+    </item>
+    
+  </channel>
+</rss>

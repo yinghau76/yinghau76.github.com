@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>agile on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/agile/</link>
+    <description>Recent content in agile on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 14 Oct 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/agile/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SCRUM and PDCA</title>
+      <link>https://blog.simplypatrick.com/posts/2012/10-14-scrum-and-pdca/</link>
+      <pubDate>Sun, 14 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/10-14-scrum-and-pdca/</guid>
+      <description>SCRUM 用 PDCA 的精神來闡述：
+圖片出處：magia3e</description>
+    </item>
+    
+    <item>
+      <title>Getting Real</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-10-27-354/</link>
+      <pubDate>Fri, 27 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-10-27-354/</guid>
+      <description>因為 Ruby on Rails 而聲名大噪的 37signals 出了一本書叫《Getting Real》來宣傳他們如何快速地開發小型 web application 的方法，內容涵蓋組織、市場、需求、流程、設計、實作、宣傳、定價、客戶支援等等。
+我只有大致瀏覽過內容，不過就可以感受到 Getting Real 的精神其實也正反映在 RoR 的設計上，也跟 Agile Methodology 的理念相當契合。 讓我不禁想起這句話『It&amp;rsquo;s not the gig that eat the small&amp;hellip;It&amp;rsquo;s the fast that eat the slow』。 我個人相當推薦閱讀，但我不建議盲目地遵循這些規則，我向來認為如果這些東西能刺激一些新的思考，進而造成實際工作的改進，那就值得了。
+37signals 真是頗屌的一家小公司。</description>
+    </item>
+    
+    <item>
+      <title>New Books about Agile Development</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-12-10-208/</link>
+      <pubDate>Fri, 10 Dec 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-12-10-208/</guid>
+      <description>似乎是兩本很有趣的書:
+Agile and Iterative Development: A Manager&amp;rsquo;s Guide by Craig Larman
+Balancing Agility and Discipline: A Guide for the Perplexed by Barry Boehm, Richard Turner
+Agile Methodology 近年來已經成為軟體開發的顯學，每個人都在討論，確實對傳統軟體開發的觀念有許多衝擊。但是改變個人的觀念容易，改變一個團隊的觀念難，改變整個公司的觀 念更難，如何導入 Agile Methodology 將考驗決策者的智慧。問題是這種開發流程的改造能夠由下而上地進行嗎？或者是需要高層主管的支持才行？思考中&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Manifesto for Agile Software Development</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-11-51/</link>
+      <pubDate>Wed, 11 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-11-51/</guid>
+      <description>Agile Manifesto 代表的是 Agile Software Development 的核心精神。
+ We are uncovering better ways of developing software by doing it and helping others do it. Through this work we have come to value:
+   Individuals and interactions over processes and tools Working software over comprehensive documentation Customer collaboration over contract negotiation Responding to change over following a plan    That is, while there is value in the items on the right, we value the items on the left more.</description>
+    </item>
+    
+  </channel>
+</rss>

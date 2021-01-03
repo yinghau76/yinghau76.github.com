@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dotnet on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/dotnet/</link>
+    <description>Recent content in dotnet on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 30 Oct 2006 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Goodbye XAML</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-10-30-357/</link>
+      <pubDate>Mon, 30 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-10-30-357/</guid>
+      <description>Goodbye XAML, Hello AvalonBuilder
+使用 RubyCLR 或是 IronPython 來跟 WPF 搭配應該是蠻有趣的，或許以後有人會為 WPF 搞個類似 Rails 的 framework 喔。</description>
+    </item>
+    
+    <item>
+      <title>C# 3.0</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-10-02-296/</link>
+      <pubDate>Sun, 02 Oct 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-10-02-296/</guid>
+      <description>Ian Griffiths 對於 C# 3.0 新功能的介紹：
+C# 3.0 and LINQ - Expression Trees C# 3.0 - Extension Methods C# 3.0 - Var Isn&amp;rsquo;t Object</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Campus</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-09-29-295/</link>
+      <pubDate>Thu, 29 Sep 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-09-29-295/</guid>
+      <description>這次的美國行，除了洛杉磯及舊金山，也意外地必須造訪 Microsoft 位於西雅圖的總部。其實大概三四年前就曾經跟朋友到西雅圖遊覽過一次，本來是有計畫要去 Microsoft 園區逛逛，不過似乎是除了我之外的其他人都認為這樣的行程實在太過無趣、太沒有文化層次，當時只好作罷。那時的我覺得大家的想法頗奇怪，難道他們都不會好奇嗎？或者其實真正奇怪的人是我。 :-)
+不過這次總算有機會跟 David 一起去看看了，David 或許因為常常去的關係，並不覺得那裡有什麼特別的，我倒是頗為期待能瞧瞧 Microsoft 園區長什麼樣子。我想大家一定認為我這麼好奇應該會拍一堆照片回來吧，很不幸地，因為我的相機居然只拍了一張就沒電了！希望很快又會有機會一遊。
+如果你跟我之前一樣好奇，可以瞧瞧Dylan Greene 的 Microsoft 遊記。</description>
+    </item>
+    
+    <item>
+      <title>.NET Performance Tuning</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-09-23-292/</link>
+      <pubDate>Fri, 23 Sep 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-09-23-292/</guid>
+      <description>我向來相信 managed code 可以讓 programmer 把事情做的更快更好，但這一切美好事物的背後是要付出其他代價的，因此這次去 PDC 特別挑了 Rico Mariani 主講的兩個 session 來聽：
+ FUNL04 Tips &amp;amp; Tricks: Writing Performant Managed Code FUNL05 Tips &amp;amp; Tricks: Common Memory Management Pitfalls and Profiling for Managed Applications  如果你問 Rico &amp;ldquo;在開始 performance tuning 之前，最重要的三件準備工作是什麼？&amp;quot;，他的答案肯定是 &amp;ldquo;measure, measure, measure&amp;rdquo;。這幾乎是每個專家、每本書都會跟你強調的重點，但是很多 programmer 卻總是喜歡憑自己的直覺判斷來決定怎麼做，似乎他們就是刻意或者下意識地忘掉這件事，為什麼？因為 measure 實在是件麻煩事，有時甚至不可能做到。相反地，如果有一些工具程式的輔助，measure &amp;amp; performance tuning 可以是件頗有趣的事。除此之外，因為 managed code 有 metadata 可以輔助這些工具的分析，做起來其實比 native code 的 tuning 容易多了。
+這兩場 session 都蠻短的，Rico 並沒有足夠的時間能夠用實際的例子 demo 怎麼使用這些工具並分析其結果，所以我就拿自己寫的一些程式來練習使用 vadump 及 SOS，我向來認為花點時間熟悉這些基本的工具使用可以在將來幫你省下更多的時間。</description>
+    </item>
+    
+    <item>
+      <title>9/16 Anders Hejlsberg on C# 3.0</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-09-16-289/</link>
+      <pubDate>Fri, 16 Sep 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-09-16-289/</guid>
+      <description>呵呵，今天去聽 Anders Hejlsberg 講 C# 3.0，內容真的是很精采啊。Anders 本人有一種說不上來的獨特魅力，不會讓你因為覺得他非常聰明而不敢接近他，感覺是個很有親和力的人。在這個 session 他很有條理、循序漸進地告訴你為什麼這些 C# 的新功能需要被加進來：
+ Lambda expressions Extension methods Local variable type inference Object initializers Anonymous types Query expressions Expression trees  本來我一直以為 C# 3.0 只是新增了 query language 的語法 (Microsoft 所謂的 Language Integrated Query, 簡稱 LINQ)，今天才知道 C# 為了實現 LINQ 也新增了許多令人興奮的新功能。這段 code 真是越看越酷：
+var contacts = from c in customers where c.State == &amp;#34;WA&amp;#34; select new { c.Name, c.Phone }; 有興趣的可以參考 Overview of C# 3.</description>
+    </item>
+    
+    <item>
+      <title>Counting Semaphore in .NET</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-19-254/</link>
+      <pubDate>Sun, 19 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-19-254/</guid>
+      <description>另一篇在 CSDN 也是有問題的程式，程式的目的是限制一定數量的 threads 同時執行某項工作。我的想法是用 System.Threading.Monitor 就可以很優雅地解決這問題：
+class Program { static void Main(string[] args) { Program p = new Program(); Thread[] threads = new Thread[10]; for (int i = 0; i &amp;amp;lt; threads.Length; i++) { threads[i] = new Thread(p.Run); threads[i].Name = &amp;#34;Thread(&amp;#34; + i.ToString() + &amp;#34;)&amp;#34;; threads[i].Start(); Thread.Sleep(1000); } foreach (Thread t in threads) { t.Join(); } Console.ReadLine(); } private int allowed = 3; public void Run() { Thread t = Thread.</description>
+    </item>
+    
+    <item>
+      <title>Implement Singleton Pattern by Generic (in C#  2.0)</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-19-253/</link>
+      <pubDate>Sun, 19 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-19-253/</guid>
+      <description>在 CSDN 看到的這個範例有兩個問題：
+ 不是 thread-safe 假如 T 沒有公開無參數的建構函數，會在 runtime 時拋出異常。事實上，這個問題可以使用 generic constraint 在 compiler time 時避免。  所以下面是改良過的版本：
+public class Singleton where T : new() { private static T _instance = new T(); // to disable beforefieldinit flag  static Singleton() {} public static T Instance { get { return _instance; } } } </description>
+    </item>
+    
+    <item>
+      <title>Cdecl Calling Convention for Delegates</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-15-248/</link>
+      <pubDate>Wed, 15 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-15-248/</guid>
+      <description>如何使用 C# 建立 cdecl callback 給 unmanaged code 使用？
+SQLite.NET 所採用的方法如下：
+ 用 ildasm 反組譯 DLL 產生 IL 碼 用 Perl script 為 delegate 的 Invoke() 加上 modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) 再用 ilasm 組譯出新的 DLL  參考下列詳細的方法 (摘自 SQLite.NET 的文件檔)：
+ The C# does not allow you to specify the calling convention of the callback. It is just one of the C# limitations. IL, managed C++ and the runtime itself supports the cdecl calling convention for delegates through modopt([mscorlib]System.</description>
+    </item>
+    
+    <item>
+      <title>Cdecl Calling Convention for Delegates, Part II</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-15-249/</link>
+      <pubDate>Wed, 15 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-15-249/</guid>
+      <description>想了一下，前一篇文章裡的方法似乎有點麻煩。雖然 C# 的實作有這樣的限制，但是我們應該可以用 System.Reflection.Emit.TypeBuilder 來動態產生一個使用 cdecl 的 delegate。理論上，透過 dynamic code generation 這種方式是可以突破任何語法上或是實作上的限制。因此參考下列的這兩篇文章，其實這問題是可以用更優雅的方式來解決：
+ Creating delegate types via Reflection.Emit, Joel Pobar Calling Code Dynamically, Eric Gunnerson  下列的程式列出了新的作法，產生出來的 delegate 跟用 ildasm/perl/ilasm 是一樣的效果 (注意 new Type[] { typeof(System.Runtime.CompilerServices.CallConvCdecl) } 的使用)，酷！
+using System; using System.Collections.Generic; using System.Text; using System.Reflection; using System.Reflection.Emit; namespace EmitCdeclDelegate { class Program { static void Main(string[] args) { Program program = new Program(); program.TestCdeclDelegate(); } private void TestCdeclDelegate() { MethodInfo methodInfo = typeof(Program).</description>
+    </item>
+    
+    <item>
+      <title>Exception Handling Best Practices in .NET</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-03-12-225/</link>
+      <pubDate>Sat, 12 Mar 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-03-12-225/</guid>
+      <description>Daniel Turini 寫的這篇《Exception Handling Best Practices in .NET》相當不錯，內容正好跟 Brad Abrams 的《Exception handing and Memory Management》相呼應。
+我不明白的是，為什麼 Brad Abrams 會認為 &amp;ldquo;catch (Exception e) is your friend&amp;rdquo;？ 因為 catch {&amp;hellip;} 中我所能想到最好的處理方式就是 &amp;ldquo;log the Exception, rethrow it, and let the program terminate&amp;rdquo;；如果不這樣做而把這個 Exception 忽略掉，反而會造成以後偵錯的困難。
+有興趣的人可以參考 Is &amp;ldquo;throw new Exception(&amp;hellip;)&amp;rdquo; a good practice 這個討論，我喜歡 David Levine 給我的答案。</description>
+    </item>
+    
+    <item>
+      <title>John Lam on CLI Metadata</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-12-08-207/</link>
+      <pubDate>Wed, 08 Dec 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-12-08-207/</guid>
+      <description>John Lam 的 Metadata Internals 實在是太棒了，單單看這份簡報就可以對 CLI metadata 的結構有了清楚的認識，可以看出來 John 是個很會教導的老師。
+我想大部分的 .NET programmer 也只要了解到這個程度就夠了，如果想要更深入才需要去看 CLI Partition II - Metadata and File Format 這份長達174頁的正式規格。
+John 的 iunknown.com blog 也很值得去看喔。</description>
+    </item>
+    
+    <item>
+      <title>Windows Forms Programming Tips</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-12-03-204/</link>
+      <pubDate>Fri, 03 Dec 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-12-03-204/</guid>
+      <description>在 jfo&amp;rsquo;s coding 有一些 Windows Forms 的技術文章，內容頗為實用而且都是一般市面的 Windows Forms 書籍沒討論到的課題：
+ Picking your base class wisely All About Handles in Windows Forms How When Where and Why to use Dispose Painting Best Practices Understanding DockLayout and Splitters Building NotifyIcon Applications/Understanding the Application class How to make a readonly controls collection  </description>
+    </item>
+    
+    <item>
+      <title>Don&#39;t throw System.Exception directly!</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-27-203/</link>
+      <pubDate>Sat, 27 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-27-203/</guid>
+      <description>在寫下列這一段程式時，發現 System.Drawing.Graphics.FromImage 居然會直接拋出 System.Exception：
+public class AddImageInfo : BaseImageOp { private Font _drawFont = new Font( &amp;#34;Verdana&amp;#34;, 10); private SolidBrush _drawBrush = new SolidBrush(Color.White); public AddImageInfo(ImageOp innerOp) : base(innerOp) { } public override Image Execute(Image image) { using (Graphics g = Graphics.FromImage(_innerOp.Execute(image))) { string info = String.Format( &amp;#34;{0}x{1}&amp;#34;, image.Width, image.Height); g.DrawString( info, _drawFont, _drawBrush, 10, 10); } return image; } } 用 Reflector 查了 System.Drawing.Graphics.FromImage() 的實作：
+public static Graphics FromImage(Image image) { if (image == null) { throw new ArgumentNullException(&amp;#34;image&amp;#34;); } if ((image.</description>
+    </item>
+    
+    <item>
+      <title>beforefieldinit</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-16-200/</link>
+      <pubDate>Tue, 16 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-16-200/</guid>
+      <description>兩篇文章讓你可以把 static initializer, static constructor, 及 beforefieldinit 的觀念搞清楚：
+ Implementing the Singleton Pattern in C# C# and beforefieldinit  兩篇文章都是出自於 Jon Skeet 的網站，裡面還有一些很不錯的 .NET 技術文章。</description>
+    </item>
+    
+    <item>
+      <title>Applied .NET Attributes</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-10-04-183/</link>
+      <pubDate>Mon, 04 Oct 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-10-04-183/</guid>
+      <description>《Applied .NET Attributes》是本有趣的書：精簡而專注。精簡是因為它只有短短的 232 頁；專注則是因為 custom attributes 是它的唯一主題。一開始我蠻訝異會有這樣主題的書籍出現，但仔細想了一下，custom attributes 的確是 .NET 中最值得討論的一個技術，因為它帶來了許多創新的可能性。
+這本書在第一二三章首先解釋 attribute 的基本精神以及它在 compile-time, design-time, 及 runtime 所能發揮的功用。我尤其喜歡第四章中關於 ContextBoundObject 以及 AOP 的討論，這一章釐清了我以前不甚明白的一些概念。對於如何在 .NET 的環境實現 AOP 的人可以也參考下面這兩篇在 MSDN Magazine 的文章：
+ Aspect-Oriented Programming Enables Better Code Encapsulation and Reuse Decouple Components by Injecting Custom Services into Your Object&amp;rsquo;s Interception Chain  </description>
+    </item>
+    
+    <item>
+      <title>.NET is better than COM</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-09-04-181/</link>
+      <pubDate>Sat, 04 Sep 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-09-04-181/</guid>
+      <description>Top 10 Reasons .NET is better than COM 很幽默地消遣了 Don Box&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Data Binding in Avalon</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-31-180/</link>
+      <pubDate>Tue, 31 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-31-180/</guid>
+      <description>A good introduction to the data binding mechanism in Avalon.</description>
+    </item>
+    
+    <item>
+      <title>Coroutine implementation in C# 2.0</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-30-178/</link>
+      <pubDate>Mon, 30 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-30-178/</guid>
+      <description>Matt Pietrek 的《Fun with Iterators and state machines》解釋了 C# 2.0 如何使用 state machine 來實現 coroutine。</description>
+    </item>
+    
+    <item>
+      <title>Dependency properties</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-30-177/</link>
+      <pubDate>Mon, 30 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-30-177/</guid>
+      <description>剛接觸 Avalon 的人可能會對所謂的 Dependency properties 感到困惑 ，在《Three Extensibility Models: A Bad Thing?》裡，Drew 清楚地解釋 Attached properties (一種特別的 Dependency properties) 的用法及原理。
+懂了 Attached properties 後可以再參考 Wesner Moise 的《Dynamic Properties and Code Generation》來了解 Dynamic properties 的概念。
+最後《Core Concepts of the Presentation Subsystem (code-named &amp;ldquo;Avalon&amp;rdquo;)》可以讓你透視 Dependency properties 的目的，也就是實現下列這些機制： styling, databinding, animation, default values, value expressions, property invalidations, and inherence。</description>
+    </item>
+    
+    <item>
+      <title>Add-ins for Reflector</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-26-175/</link>
+      <pubDate>Thu, 26 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-26-175/</guid>
+      <description>之前的文章有提過 Lutz Roeder 的 Reflector，最近它已成為我每天必用的工具。這麼棒的東西想當然愛用者不只我一個人，有許多人已經開始為它擴充新的功能，例如：
+Reflector.FileDisassembler
+Reflector.Graph</description>
+    </item>
+    
+    <item>
+      <title>XAML &amp; Avalon</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-14-173/</link>
+      <pubDate>Sat, 14 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-14-173/</guid>
+      <description>Ian Griffiths&amp;rsquo;s articles about XAML and Avalon:
+ Inside XAML Graphical Composition in AvalonBesides, Avalon Dissected is a series of articles about the architecture of Avalon. IMO, Avalon will enable Windows programmers to develop much richer applications than the ones we have today. It will change how we think about Windows application. I am excited about that. :-)  </description>
+    </item>
+    
+    <item>
+      <title>.NET, Just for Fun</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-24-165/</link>
+      <pubDate>Thu, 24 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-24-165/</guid>
+      <description>好久沒看過這麼精彩的文章了！Joel 在 How Microsoft Lost the API War 裡的文筆依然犀利卻也帶著一貫的幽默。
+雖然我第一個學會的程式語言是 Basic，就在我厭煩了要把行號從 50 改成 100 來放入更多的程式碼時，我就移情別戀，投入了 C 的懷抱。好吧，我承認我不用 Visual Basic 的部分原因是跟它的名字裡有 Basic 這個字有關，雖然有時候用它來開發程式真的又快又方便。因此當 C#出現時，它有著 VB 的簡單及方便性，但是語法及名字又是根源於 C 時，我就迷上它了。
+因此 .NET 的出現對於已經厭煩了惱人的記憶體管理的我，如同 C 與 Basic 比較起來，不啻是個極大的誘惑。對一個 programmer 而言，.NET is fun，它可以我在陰暗的 Win32 API 角落裡還看得到一絲絲的希望。至於 .NET 是不是會普及，我倒是不那麼擔心，畢竟 Microsoft 把賭注都下在上面了，就讓他們去操心好了。
+我覺得 Joel 有點太悲觀了，畢竟 Win32 API 仍然存在於 Longhorn 或 Windows N；舊的 Win32 程式依然可以在 Longhorn 上執行；許多公司依然使用 Win32 API 開發 Longhorn 的程式；只是 developers 多了一種新的、可以讓 developers 少掉幾根頭髮的選擇，不是很好嗎？
+『Just for Fun』是我現在對 .</description>
+    </item>
+    
+    <item>
+      <title>Streamed Lines</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-15-163/</link>
+      <pubDate>Tue, 15 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-15-163/</guid>
+      <description>軟體開發流程裡頗為複雜的一項工作就是 source code branching，也就是為了某個目的，將程式碼複製為數個分支，分別以不同的方式進行開發與維護。
+Streamed Lines: Branching Patterns for Parallel Software Development 是 Brad Appleton 等人為了實現平行開發而提出的 patterns。整篇文章有 67 頁之多，已經快要可以出一本書了，不過值得對 SCM 有興趣的人細讀。</description>
+    </item>
+    
+    <item>
+      <title>Custom Attribues and eXtensible C#</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-09-161/</link>
+      <pubDate>Wed, 09 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-09-161/</guid>
+      <description>Pierre Nallet 的文章《Get Personal with C# Custom Attributes》介紹了 custom attributes 的應用。他把 custom attributes 分成了三類：user attributes, runtime attributes, 及 compile time attributes。一般常用的 System.Runtime.InteropServices.StructLayoutAttribute 就是屬於 runtime attributes，因為 JIT 是在執行時期才決定物件資料欄位的排列方式。
+如果你有仔細查閱 System.Diagnostics 裡面的一些 attribute class，你會發現一些有趣的 attribute 應用，如 DebuggerHiddenAttribute 可以阻止 debugger 設定中斷點、DebuggerStepThroughAttribute 可以阻止 debugger 的 step into 功能。
+Pierre Nallet 同時也是 eXtensible C# (XC#) 的作者。
+對 Attributed Programming 有興趣的人可以參考《Applied .NET Attributes》這本書。</description>
+    </item>
+    
+    <item>
+      <title>Nullable types</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-04-159/</link>
+      <pubDate>Fri, 04 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-04-159/</guid>
+      <description>又有一項新的功能或者說是 syntax sugar 加入 C# 2.0 的規格，詳情參考 Nullable types in C# 中的討論。
+簡單地說就是『允許 value type 也能有 null 值』。例如
+int? x = 125; if (x != null) { ... } 我喜歡這個概念，總比一般把『整數初始化成 -1 代表不合法值』的手法好多了。</description>
+    </item>
+    
+    <item>
+      <title>The Weird &#34;break;&#34; in switch/case</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-04-158/</link>
+      <pubDate>Fri, 04 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-04-158/</guid>
+      <description>Ask a Language Designer 解答了一個困惑我很久的問題：為什麼 C# 中的 switch/case 不允許 fall-through 卻需要 break 來離開 case 區塊？
+雖然這個答案還是不能說服我去接受它，但至少我知道了為什麼。</description>
+    </item>
+    
+    <item>
+      <title>Avalon &amp; Indigo</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-04-09-144/</link>
+      <pubDate>Fri, 09 Apr 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-04-09-144/</guid>
+      <description>兩篇入門 Avalon 及 Indigo 的文章:
+ Introducing the New Avalon Graphics Model Inside &amp;ldquo;Indigo,&amp;rdquo; Chapter 2: The Journey of a Message  </description>
+    </item>
+    
+    <item>
+      <title>Anonymous Methods in C# 2.0</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-24-133/</link>
+      <pubDate>Tue, 24 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-24-133/</guid>
+      <description>Anonymous method 是 C# 2.0 的新功能之一，從這兩篇文章可以看到 C# 如何在 CLR 上實作 closure 的機制。
+ C# V2.0 Delegate Syntax and Conceptual Integrity, Ian Griffiths Introduction to Anonymous Methods and Higher-Order Procedures in C#, Steve Maine  </description>
+    </item>
+    
+    <item>
+      <title>Hard Reading on Garbage Collection</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-24-134/</link>
+      <pubDate>Tue, 24 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-24-134/</guid>
+      <description>幾篇跟 CLR 的 garbage collection 有關的技術文章：
+ Finalization, Chris Brumme 對於 finalization 的機制做了深入的探討，包括 finalizer 帶來的成本、一些使用限制的緣由、及一些必須謹記在心的原則。 Dispose Idiom, Tristan Cartony 提供了範例程式說明在各種情況下如何實作 Dispose Idiom。 Resource management, Brian Harry 探討了如何在 garbage collection 的環境下實現 deterministic finalization。 .NET Framework Resource Management 把所有的 type 根據管理資源的方式分成了 simple, finalizable, disposable, 及 disposable and finalizable (both) 四種類型，並且詳細地說明了各種類型適用的時機。除此之外，有幾個比較少被談到的主題也涵括在內，如 threading issues, versioning, resource collector pattern, IEnumerable with expensive resources。個人認為是蠻實用的一篇文章。  </description>
+    </item>
+    
+    <item>
+      <title>.NET Performace Optimization</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-04-125/</link>
+      <pubDate>Wed, 04 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-04-125/</guid>
+      <description>Several articles about .NET performace from Microsoft CLR Performance Team:
+ Gregor Noriskin, Writing High-Performance Managed Applications : A Primer, MSDN. Jan Gray, Writing Faster Code: Knowing What Things Cost, MSDN. Rico Mariani, Garbage Collector Basics and Performance Hints, MSDN.  </description>
+    </item>
+    
+    <item>
+      <title>A Conversation with Anders Hejlsberg</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-02-124/</link>
+      <pubDate>Mon, 02 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-02-124/</guid>
+      <description>Anders Hejlsberg 在 Bill Venners 及 Bruce Eckel 的專訪下暢談了 C# 的設計理念，一共有八篇訪文，我直接條列如下以方便點閱。
+ Part I: The C# Design Process Part II: The Trouble with Checked Exceptions Part III: Delegates, Components, and Simplexity Part IV: Versioning, Virtual, and Override Part V: Contracts and Interoperability Part VI: Inappropriate Abstractions Part VII: Generics in C#, Java, and C++ Part VIII: CLR Design Choices  訪問的內容篇篇精彩，我個人尤其佩服 Anders 設計 C# 時採行的務實 (pragmatic) 觀點。事實上，了解「一個程式語言為何被如此設計」消極地能避免語言特性的誤用，積極地能讓你寫出更好的程式。&amp;ldquo;Know Why&amp;rdquo; 絕對是精通一個語言的必經過程。
+這裡是另外一篇更早的專訪 (08/01/2000)：Deep Inside C#: An Interview with Microsoft Chief Architect Anders Hejlsberg</description>
+    </item>
+    
+    <item>
+      <title>C# Generics</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-02-123/</link>
+      <pubDate>Mon, 02 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-02-123/</guid>
+      <description>兩篇關於 C# Generics 的技術文章：
+ An Introduction to C# Generics by Juval Lowy Brandon Bray 對 C++ Templates 及 C# Generics 做了一番深入的比較。  </description>
+    </item>
+    
+    <item>
+      <title>Partial Types</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-01-121/</link>
+      <pubDate>Sun, 01 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-01-121/</guid>
+      <description>由這段話可以一窺 partial types 的原始構想：
+ Host: Anders (Microsoft) Q: What&amp;rsquo;s the aim of partial types in C#? A: Two reasons. First, people often ask us for include files. When we dig a little deeper, it turns out they want to split large classes into multiple files. Partial types will allow you to do that, but in a structured fashion. Second, partial classes solve the round trip problem with auto generated code.</description>
+    </item>
+    
+    <item>
+      <title>W32 API -&gt; .NET Framework</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-01-30-119/</link>
+      <pubDate>Fri, 30 Jan 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-01-30-119/</guid>
+      <description>在寫 .NET 的程式時，我最常有的疑問就是“某個 Win32 API 是否在 .NET Framework 有相對應的部分？”
+意外地發現 Microsoft Win32 to Microsoft .NET Framework API Map 就是這個問題的解答。此外 C Run-Time Library Routines and .NET Framework Equivalents 也是很棒的參考。</description>
+    </item>
+    
+    <item>
+      <title>News Aggregator in C#</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-03-102/</link>
+      <pubDate>Wed, 03 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-03-102/</guid>
+      <description>由於常逛的 blog 實在太多了，還是找了個 RSS reader 來用。如果你對用 C# 實作一個 RSS reader 有興趣的話，請看《Building a Desktop News Aggregator》。此外 O&amp;rsquo;Reilly 出版的《Content Syndication with RSS》也是不錯的參考。
+哈哈，用 Syndirella 看呆伯特漫畫比用瀏覽器輕鬆多了。FeedDemon 也是不錯的選擇。</description>
+    </item>
+    
+    <item>
+      <title>SSCLI</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-09-16-74/</link>
+      <pubDate>Tue, 16 Sep 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-09-16-74/</guid>
+      <description>《Extending SSCLI》非常酷的一份教學，告訴你如何擴充 CLI 的功能。
+SSCLI (Shared Source Common Language Infrestrcuture) 是 Microsoft 代號為 Rotor 的一個計畫，目的是公開 CLI 的原始碼，讓更多的人參與 .NET 的開發與研究。微軟的這些傢伙真的非常聰明，曉得就是會有許多無聊的人(例如我)喜歡去探究系統內部的運作，當這些人對整個系統熟悉了自然就會成為 .NET 技術的支持者。不可否認地，閱讀 SSCLI 的原始碼真的有讓人如入寶庫的感覺，正如同這份教學裡的一段話:
+A runtime such as SSCLI is a neat example of knowledge repository of the past 30 years of computer science.
+或許 computer science 30 年的精華是有點誇張，但你絕對可以從中學到一點東西。然而學習最快的方法就是親自動手去做囉，這份教學藉由增加一個新的 IL instruction 來讓你對整個 CLI 的架構有一個大致的了解，值得一試!
+如果你對 SSCLI 有興趣，歡迎一起來討論。Jason Whittington 在 MSDN 的這篇文章《Rotor: Shared Source CLI Provides Source Code for a FreeBSD Implementation of .</description>
+    </item>
+    
+    <item>
+      <title>Multithreading in Windows Froms</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-09-08-71/</link>
+      <pubDate>Mon, 08 Sep 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-09-08-71/</guid>
+      <description>Four interesting articles about multitheading programming in Windows Form by Chris Sells and Ian Griffiths:
+ Safe, Simple Multithreading in Windows Forms, Part 1, Chris Sells Safe, Simple Multithreading in Windows Forms, Part 2, Chris Sells Safe, Simple Multithreading in Windows Forms, Part 3, Chris Sells Give Your .NET-based Application a Fast and Responsive UI with Multiple Threads, Ian Griffiths  You should read this article if you don&amp;rsquo;t know what delegate is: .</description>
+    </item>
+    
+    <item>
+      <title>Interview</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-11-50/</link>
+      <pubDate>Wed, 11 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-11-50/</guid>
+      <description>《How to Interview a Programmer》如果你的公司要找好的 programmer 的話，可以參考這篇文章看看。如果我是面試官的話，下列可能是我的問題：
+ 請列出最近讀過的技術書籍，並陳述你的讀後心得。 請陳述你自認為精通的技術，並回答我所提出的疑問。 請陳述對某項技術的觀點或分析不同技術的優缺點。 請展示任何以前所寫過的程式碼來證明你的程式設計能力。 請批評這段程式碼，並提出任何改進的方法。  或許你也想知道 Microsoft 如何面試新人及另一個有趣的面試故事。</description>
+    </item>
+    
+    <item>
+      <title>ILDASM</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-06-10-47/</link>
+      <pubDate>Tue, 10 Jun 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-06-10-47/</guid>
+      <description>ILDASM is Your New Best Friend John Robbins 在 MSDN 上簡介 MSIL (Microsoft Intermediate Language) 及 CLR 的基本概念，想要成為 .Net 的專家，對於 MSIL 必然要下一番功夫。
+ Knowing how things work at the lowest level does make it easier to see the big picture.
+ </description>
+    </item>
+    
+    <item>
+      <title>C# and Beautiful Code</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-20-31/</link>
+      <pubDate>Tue, 20 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-20-31/</guid>
+      <description>O’Reilly Network: Beautiful Code C++ 或是 Java 的語法的確是 boring 了一點，但就可讀性而言的確可以讓 programmer 把程式寫得中規中矩一點。
+Perl 提供了許多 syntactic sugar，但讀起別人寫的 Perl 程式可就不是那麼輕鬆…
+我想這傢伙是不是在暗指 C# 比 Java 寫起來漂亮些，因為這段程式用 C# 來表示就相當地簡明易懂：
+foreach (User user in dao.getUsers()) { // do something with user } </description>
+    </item>
+    
+    <item>
+      <title>Pair Programming</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-12-24/</link>
+      <pubDate>Mon, 12 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-12-24/</guid>
+      <description>那麼 Robert Fulghum 的《All I Really Need to Know I Learned in Kindergarten 》怎麼又會跟 Extreme Programming 所提倡的 Pair Programming 扯上關係呢？ 看看這篇曾經刊登於 Communications of the ACM 的文章《All I Really Need to Know about Pair Programming I Learned In Kindergarten》吧。
+  Pair programming is a style of programming in which two programmers work side-by-side at one computer, continuously collaborating on the same design, algorithm, code or test. As discussed below, use of this practice has been demonstrated to improve productivity and quality of software products.</description>
+    </item>
+    
+    <item>
+      <title>Applied Microsoft .Net framework programming</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-01-9/</link>
+      <pubDate>Thu, 01 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-01-9/</guid>
+      <description>衝著 Jeffrey Richter 的名字，我還是買了這本由文魁出版的中譯本。看了三章後，我後悔了。
+這本書被翻的實在是慘不忍睹，不僅文義謬誤而且錯字連篇，專有名詞也翻得非常饒口，你能想像什麼是『資料名單中繼資料表格』嗎？最經典的例子是原文的：
+『You Can’t Have Too Many finally Blocks - I think finally blocks are awesome!』
+正確意思應該是：
+『finally 區塊再多也不為過 - 我覺得 finally 區塊實在是棒透了！』
+在中譯本的 18-26 頁居然被翻成：
+『不能使用太多 finally 區段 - 我認為 finally 區段式可怕的！』
+連續兩個句子都譯成相反的意思，而且還有錯字『是』=&amp;gt;『式』。
+為了省五百元，買了生平第一本文魁出版的書，現在只想『趕快把內容看完，然後把書丟掉』。
+在此向 Jeffrey 表達深深的懺悔。 Jeffrey, Your book is great but Kingsinfo sucks.</description>
+    </item>
+    
+  </channel>
+</rss>

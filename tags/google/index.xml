@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>google on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/google/</link>
+    <description>Recent content in google on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 12 Oct 2006 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google /* Code Search */</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-10-12-345/</link>
+      <pubDate>Thu, 12 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-10-12-345/</guid>
+      <description>呵呵&amp;hellip; 這個 programmer 看了應該都不覺莞爾吧：Funny results from Google Code Search ? shakalaca
+不過以後要找 sample code 就容易多了吧&amp;hellip; :-)</description>
+    </item>
+    
+    <item>
+      <title>從台大與Google看資訊世界</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-05-06-334/</link>
+      <pubDate>Sat, 06 May 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-05-06-334/</guid>
+      <description>李開復在臺大的演講：從台大與Google看資訊世界。關於 Google 的東西大家已經聽的太多，難得的是可以一睹這位傳奇人物的風采。</description>
+    </item>
+    
+    <item>
+      <title>Examining Google Desktop</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-10-16-187/</link>
+      <pubDate>Sat, 16 Oct 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-10-16-187/</guid>
+      <description>下面是 Google Desktop 的一些觀察：
+ Index 儲存在 Documents and Settings\User\Local Settings\Application Data\Google\Google Desktop Search，體積似乎還不小 (1,941 items indexed so far)，可能要等到整個系統的索引做完才知道會佔用多少空間。 安裝目錄內有一個 gzlib.dll，因此這一版應該支援 ZIP 內的搜尋 (希望以後可以支援 RAR 內的搜尋) 。 安裝目錄內的有一個 GoogleDesktopAPI2.dll 但是看不到相關的內容，不知道 Google 是否會公開詳細的規格？ 安裝目錄內的 GoogleDesktopNetwork1.dll 及 GoogleDesktopNetwork2.dll 似乎是個 Winsock SPI 的 DLL？  </description>
+    </item>
+    
+    <item>
+      <title>Google Server On Your Machine</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-10-16-186/</link>
+      <pubDate>Sat, 16 Oct 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-10-16-186/</guid>
+      <description>傳聞中的 Google Desktop 搜尋工具終於出現，詳情可以參考 O&amp;rsquo;Reilly Network 上的介紹。
+整個使用者介面仍然遵循 Google 一貫簡單而直覺的風格，用起來跟網頁的搜尋一樣的順暢。下面是我的一些疑問 (或者說是期待的功能)：
+ 可以搜尋 MSN Messenger 交談紀錄嗎？ 可以搜尋我收集的一些 PDF 電子書嗎？ 可以搜尋 ZIP 起來的檔案嗎？ 可以搜尋我們公司那幾百萬行的程式碼嗎？ 可以寫 plug-in 擴充可以搜尋的檔案類型嗎？ Google 產生的 index 會佔多少硬碟空間？  </description>
+    </item>
+    
+    <item>
+      <title>10 things Google has found to be true</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-16-107/</link>
+      <pubDate>Tue, 16 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-16-107/</guid>
+      <description>引用《文森咖啡館: Google十大信條》，原文出處於《Google Today》。
+ Focus on the user and all else will follow. It&amp;rsquo;s best to do one thing really, really well. Fast is better than slow. Democracy on the web works. You don&amp;rsquo;t need to be at your desk to need an answer. You can make money without doing evil. There&amp;rsquo;s always more information out there. The need for information crosses all borders. You can be serious without a suit.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cxx on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/cxx/</link>
+    <description>Recent content in cxx on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 12 Aug 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/cxx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reference Counting in Android libutils</title>
+      <link>https://blog.simplypatrick.com/posts/2012/08-12-reference-counting-in-android-libutils/</link>
+      <pubDate>Sun, 12 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/08-12-reference-counting-in-android-libutils/</guid>
+      <description>從事 Android native framework 層的開發一定會接觸到兩個 C++ template class: sp 及 wp，分別是 strong pointer 及 weak pointer 的簡稱，是兩個看似簡單但卻有著魔鬼細節的 utility class。
+一個比較典型使用 weak pointer 的狀況就是 Listener pattern，例如:
+class TimedTextPlayer { wp&amp;lt;MediaPlayerBase&amp;gt; mListener; } void TimedTextPlayer::postTextEvent(const sp&amp;lt;ParcelEvent&amp;gt;&amp;amp; parcel, int64_t timeUs) { sp&amp;lt;MediaPlayerBase&amp;gt; listener = mListener.promote(); if (listener != NULL) { // ...  listener-&amp;gt;getCurrentPosition(&amp;amp;positionMs); // ...  } } 這個例子如果使用 sp 來記錄 listener 很容易因為忘了移除 listener 而造成 memory leak。用了 wp 也就沒有這個困擾，不過額外的開銷就是 wp 必須先呼叫 promote() 拿到一個 sp 才能使用。</description>
+    </item>
+    
+    <item>
+      <title>Stan Lippman on C&#43;&#43;/CLI</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-12-06-205/</link>
+      <pubDate>Mon, 06 Dec 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-12-06-205/</guid>
+      <description>我一直很好奇為什麼在 C++ 領域赫赫有名的 Stan Lippman 及 Herb Sutter 會加入 Microsoft?
+從孟岩對 Stan 的訪談或許可以一窺其究竟。從文中可以看出，透過 C++/CLI 一方面可以實現 Stan 個人對 C++ 改進的期許，一方面也大大增強了 C++ 在 .NET 平台上的實用性。或許有許多人認為 Stan 這樣的作法是叛離 C++ 的正統道路，我倒是很樂觀其成。如果今天 Microsoft 不做 C++ 與 .NET 的 Interop，一定會有其他的公司或開放原始碼的專案會去做，畢竟有需求就會有人想辦法供給。
+看看訪談文章的評論，發現有些人總是喜歡把別人當成笨蛋或是認為別人做任何事都是出於自私的目的，胸襟及眼光實在是小了些。人們所以為的往往是自己想法的反射。</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; Coding Standards</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-23-202/</link>
+      <pubDate>Tue, 23 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-23-202/</guid>
+      <description>預覽 Herb Sutter 及 Andrei Alexandrescu 的新書《C++ Coding Standards》。
+還沒有機會去書店買，但從 Amazon.com 裡的評論看來，這本書與 Effective C++ 似乎頗有互補作用。
+Don’t sweat the small stuff. (Or: Know what not to standardize.) 2 Compile cleanly at high warning levels. 4 Use an automated build system. 7 Use a version control system. 8 Invest in code reviews. 9 Give one entity one cohesive responsibility. 12 Correctness, simplicity, and clarity come first. 13 Know when and how to code for scalability.</description>
+    </item>
+    
+    <item>
+      <title>Free Visual C&#43;&#43; Compiler</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-05-07-152/</link>
+      <pubDate>Fri, 07 May 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-05-07-152/</guid>
+      <description>Microsoft 提供免費的 Microsoft Visual C++ Toolkit 2003，其中包含了跟 Visual Studio .NET 2003 一樣的 C++ compiler。其實 Microsoft 早就應該這樣做了，畢竟現在有誰在 Windows 上不用整合開發環境 (IDE) 來寫程式，提供免費的 C++ compiler 一點也不會影響 Visual Studio 的銷售。提供免費的 C++ 編譯器來推廣 .NET 平台的普及，我想是這個事情最主要的原因吧。</description>
+    </item>
+    
+    <item>
+      <title>Exceptional C&#43;&#43;</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-22-35/</link>
+      <pubDate>Thu, 22 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-22-35/</guid>
+      <description>C++ 的信徒應該對 Herb Sutter 不感到陌生。草藥兄最常發表技術文章的地方是C/C++ Users Journal 的 C++ 專欄。不才也有一本他寫的 Exceptional C++，雖是薄薄的一本卻是字字珠璣，沒有多餘的廢話。任何自認為 C++ 的專家都應該來挑戰看看書中所提的問題。每次我誤入書中所設的的陷阱時，彷彿都能聽見 Herb 在耳邊說 &amp;ldquo;gotcha&amp;quot;。</description>
+    </item>
+    
+  </channel>
+</rss>

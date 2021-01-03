@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kotlin on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/kotlin/</link>
+    <description>Recent content in kotlin on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 14 Feb 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin Coroutines and Threads</title>
+      <link>https://blog.simplypatrick.com/posts/2018/02-14-kotlin-coroutines-and-threads/</link>
+      <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/02-14-kotlin-coroutines-and-threads/</guid>
+      <description>Coroutine 跟 thread 的關係 Coroutine 通常可以理解成輕量化的 thread，但實際運作還是需要被排程到作業系統層級的 thread，然後再被排程到某個 CPU來執行：
+相對於 thread，使用 coroutine 的好處是， coroutine 之間的切換快速，需要耗用的系統資源也比較小。
+Coroutine 如何排程？ Kotlin 的 coroutine 會被分派到那個 thread 是由呼叫 coroutine builder 時提供的 CoroutineContext 參數來決定。
+透過觀察這個範例的輸出，我們可以了解不同 CoroutineContext 的行為：
+class CoroutineContextActivity : ConsoleActivity() { override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) logThread(&amp;#34;Begin onCreate&amp;#34;) launch(UI) { logThread(&amp;#34;Begin launch(UI)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(UI)&amp;#34;) } launch(CommonPool) { logThread(&amp;#34;Begin launch(CommonPool)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(CommonPool)&amp;#34;) } launch(Unconfined) { logThread(&amp;#34;Begin launch(Unconfined)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(Unconfined)&amp;#34;) } launch(newSingleThreadContext(&amp;#34;MyOwnThread&amp;#34;)) { logThread(&amp;#34;Begin launch(newSingleThreadContext)&amp;#34;) delay(10_000) logThread(&amp;#34;End launch(newSingleThreadContext)&amp;#34;) } logThread(&amp;#34;End onCreate&amp;#34;) } fun logThread(msg: String) { println(&amp;#34;$msg: ${Thread.</description>
+    </item>
+    
+    <item>
+      <title>Kotlin Coroutine API</title>
+      <link>https://blog.simplypatrick.com/posts/2018/02-13-kotlin-coroutines-api/</link>
+      <pubDate>Tue, 13 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/02-13-kotlin-coroutines-api/</guid>
+      <description>Kotlin Coroutine 的架構 Kotlin 從 1.1 版開始實驗性地支援 coroutine，主要的目標是簡化非同步編程的複雜度。Diving deep into Kotlin Coroutines 解釋了 coroutine 跟一般常用的 callback 及目前蠻多人在用的 reactive 模式有何不同。
+由於目前 kotlinx-coroutines-core 的實現包含了不同抽象程度的 API，初學者建議可以用下面這張圖來學習如何使用 Kotlin coroutine：
+範例分析 套用下面這個範例來理解:
+suspend fun sendEmail(r: String, msg: String): Boolean { // 3  delay(2000) // 4  println(&amp;#34;Sent &amp;#39;$msg&amp;#39; to $r&amp;#34;) return true } suspend fun getReceiverAddressFromDatabase(): String { // 3  delay(1000) // 4  return &amp;#34;coroutine@kotlin.org&amp;#34; } suspend fun sendEmailSuspending(): Boolean { // 3  val msg = /* 1 */ async(CommonPool) { // 2  delay(500) &amp;#34;The message content&amp;#34; } val recipient = /* 1 */ async(CommonPool) { // 2  getReceiverAddressFromDatabase() } println(&amp;#34;Waiting for email data&amp;#34;) val sendStatus = /* 1 */ async(CommonPool) { // 2  sendEmail(recipient.</description>
+    </item>
+    
+  </channel>
+</rss>

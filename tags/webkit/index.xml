@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webkit on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/webkit/</link>
+    <description>Recent content in webkit on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 29 Apr 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/webkit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Smart Pointers in WebKit</title>
+      <link>https://blog.simplypatrick.com/posts/2012/04-29-smart-pointers-in-webkit/</link>
+      <pubDate>Sun, 29 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/04-29-smart-pointers-in-webkit/</guid>
+      <description>上一篇講了 RefCounted，也講一下我看 RefPtr, PassRefPtr, OwnPtr, 及 PassOwnPtr 的心得：
+ RefPtr 定義了一個轉換至 pointer to data member 的 conversion operator:  // This conversion operator allows implicit conversion to bool but not to other integer types. typedef T* (RefPtr::*UnspecifiedBoolType); operator UnspecifiedBoolType() const { return m_ptr ? &amp;amp;RefPtr::m_ptr : 0; } 這個轉換運算子回傳的值可以被 compiler 自動轉換成 bool (非空時為 true)，但不能被轉換成數值來被使用，主要是用來避免一些可能的誤用狀況，有興趣的人可以參考 &amp;ldquo;The Safe Bool Idiom&amp;rdquo; 這篇文章。
+OwnPtr 運用了 type traits 的技巧來達到 OwnPtr 及 OwnPtr&amp;lt;T*&amp;gt; 都是宣告一個內含 T* 的 smart pointer：  typedef typename RemovePointer&amp;lt;T&amp;gt;::Type ValueType; typedef ValueType* PtrType; </description>
+    </item>
+    
+    <item>
+      <title>Reference Counting in WebKit</title>
+      <link>https://blog.simplypatrick.com/posts/2012/04-28-reference-counting-in-webkit/</link>
+      <pubDate>Sat, 28 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/04-28-reference-counting-in-webkit/</guid>
+      <description>WebKit 裡物件的生命週期很多都是由引用計數 (reference count) 控制的，今天有空看了一下，發現幾個巧妙之處：
+ RefCounted 是個 template class，並且繼承自 RefCountedBase:  template&amp;lt;typename T&amp;gt; class RefCounted : public RefCountedBase { WTF_MAKE_NONCOPYABLE(RefCounted); WTF_MAKE_FAST_ALLOCATED; public: void deref() { if (derefBase()) delete static_cast&amp;lt;T*&amp;gt;(this); } protected: RefCounted() { } ~RefCounted() { } }; 繼承 RefCountedBase 的技巧 (template hoisting) 是為了避免 template 實例化產生的 code bloating；而 destructor 裡的 delete static_cast&amp;lt;T*&amp;gt;(this); 則是為了避免不必要的 virtual table 產生，觀察 ~RefCountBase() 是個 non-virtual function 可以印證：
+~RefCountedBase() { ASSERT(m_deletionHasBegun); ASSERT(!m_adoptionIsRequired); } RefCountedBase 的設計相當輕量化， release 版本裡實際只會佔用一個 integer 的空間，而 debug 版裡則多了幾個輔助除錯的欄位:  #ifndef NDEBUG  bool m_deletionHasBegun; bool m_adoptionIsRequired; ThreadRestrictionVerifier m_verifier; #endif m_deletionHasBegun 是用來確保當物件當參考計數已經小於 1 之後是不能再做 ref/deref 的動作的；m_adoptionIsRequired 是用來確保 adoptRef() 一定要被呼叫到，也就是 new 出來的物件一定要先用 PassRefPtr 來管理；而 m_verifier 則是用來確認物件不會同時被兩個以上的 thread 引用。</description>
+    </item>
+    
+    <item>
+      <title>好久沒碰的 Buildbot 改的還不錯</title>
+      <link>https://blog.simplypatrick.com/posts/2011/05-30-buildbot/</link>
+      <pubDate>Mon, 30 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/05-30-buildbot/</guid>
+      <description>蠻久沒有碰 Buildbot 了，今天看到 Chromium project 在用，新增的這個 Console 界面還不錯，對於 Chromium 這種需要支援許多平台並且要執行許多測試項目的 project 是蠻適合的，整個狀況可以一目了然：
+ 有問題的部份也很明顯可以直接點進去看，比起之前要去拉長長的 waterfall 圖方便許多：</description>
+    </item>
+    
+  </channel>
+</rss>

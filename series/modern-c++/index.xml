@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Modern C&#43;&#43; on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/series/modern-c&#43;&#43;/</link>
+    <description>Recent content in Modern C&#43;&#43; on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 11 Mar 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/series/modern-c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43; 套件管理: 使用 Conan</title>
+      <link>https://blog.simplypatrick.com/posts/2018/03-12-c&#43;&#43;-conan/</link>
+      <pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/03-12-c&#43;&#43;-conan/</guid>
+      <description>手動管理 C/C++ 套件 想像你需要使用 LLVM 開發一個程式，如果在 macOS 上，最簡單的安裝方法是用 Homebrew，一行就搞定: brew install llvm。但 Homebrew 上的版本不一定是最新的而且也無法同時安裝不同的版本 (例如 LLVM 5.0/6.0 共存) 或同版本但不同設置（例如 LLVM 6.0 的 debug/release 版本)；而在 Linux 及 Windows 上也有各自不同的安裝問題。
+安裝完畢後，麻煩才剛開始：通常第一步是設置編譯環境的 CPPFLAGS 及 LDFLAGS:
+For compilers to find this software you may need to set: LDFLAGS: -L/usr/local/opt/llvm/lib CPPFLAGS: -I/usr/local/opt/llvm/include 根據不同的開發環境或編譯器，設置的方法也都不同。最後設置完後編譯及連結也不一定能成功，因為 LLVM 本身可能又依賴其他套件，還需要把它的 dependencies 一一安裝及設置。
+Conan 介紹 Conan 企圖幫助 C/C++ 脫離這個窘境：沒有一個像樣的套件管理 (package management) 工具。
+我建議先讀一下 Conan 的文檔來了解如何安裝 Conan 以及利用 Conan 來使用現成的程式庫。
+如果你是使用 CMake，事情會簡單一些，因為 Conan 提供的 CMake 整合還算好用，使用範例可以參考這個基於 LLVM 的小程式: clike。</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; 單元測試: 使用 Catch2</title>
+      <link>https://blog.simplypatrick.com/posts/2018/03-10-catch2/</link>
+      <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2018/03-10-catch2/</guid>
+      <description>Catch2 介紹 介紹一下最近有在使用的一個 C++ test framework, Catch2，它對自己的描述是:
+ A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD - using C++11, C++14, C++17 and later (or C++03 on the Catch1.x branch)
+ 我主要的用途是做一些 C++ 小程式的簡單驗證，因此簡單易用是我首要的選擇條件，而 Catch2 應該是目前找的到最好的選擇，例如這是個 Huffman coding 的測試代碼:
+TEST_CASE(&amp;#34;HuffmanEncoding&amp;#34;) { vector&amp;lt;Symbol&amp;gt; symbols{ {&amp;#39;a&amp;#39;, 8.17}, {&amp;#39;b&amp;#39;, 1.49}, {&amp;#39;c&amp;#39;, 2.78}, {&amp;#39;d&amp;#39;, 4.25}, {&amp;#39;e&amp;#39;, 12.7}, {&amp;#39;f&amp;#39;, 2.23}, {&amp;#39;g&amp;#39;, 2.02}, {&amp;#39;h&amp;#39;, 6.09}, {&amp;#39;i&amp;#39;, 6.97}, {&amp;#39;j&amp;#39;, 0.15}, {&amp;#39;k&amp;#39;, 0.77}, {&amp;#39;l&amp;#39;, 4.03}, {&amp;#39;m&amp;#39;, 2.</description>
+    </item>
+    
+  </channel>
+</rss>

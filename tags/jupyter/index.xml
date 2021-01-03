@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jupyter on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/jupyter/</link>
+    <description>Recent content in jupyter on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 02 Jan 2021 18:42:35 -0800</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>建置 Jupyter Notebook 的 Rust 運作環境</title>
+      <link>https://blog.simplypatrick.com/posts/2021/01-02-rust-jupyter-notebook/</link>
+      <pubDate>Sat, 02 Jan 2021 18:42:35 -0800</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2021/01-02-rust-jupyter-notebook/</guid>
+      <description>最近重新安裝了 macOS Big Sur，也順便想試試 Jupyter Notebook 的 Rust 運作環境，再加上這幾天放假比較有時間，就把安裝的過程記錄下來。
+安裝 Miniconda 過去一直覺得 Anaconda 有點肥大，所以這次決定先從安裝比較精簡的 miniconda 開始:
+$ brew install --cask miniconda 新增 conda-forge channel 等下才能安裝一些需要的套件如 jupyterlab:
+$ conda config --add channels conda-forge $ conda config --set channel_priority strict 然後需要初始化 conda 的 base 環境，一般都是跑 conda init，但它會加一段不是很通用的設定到我個人的 .zshrc，我不是很喜歡這種做法，所以就先只套用在目前的 shell 裡:
+$ eval `conda shell.zsh hook` 創建新的 conda 環境 創建一個新的環境叫 rust-notebook:
+(base) $ conda create -n rust-notebook python=3 (base) $ conda activate rust-notebook 安裝 JupyterLab 在新的環境指定安裝 jupyterlab 版本 2.</description>
+    </item>
+    
+  </channel>
+</rss>

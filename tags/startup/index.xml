@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>startup on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/startup/</link>
+    <description>Recent content in startup on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 25 May 2005 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/startup/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Start a Startup</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-05-25-237/</link>
+      <pubDate>Wed, 25 May 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-05-25-237/</guid>
+      <description>Joel Spolsky, Eric Sink, 及 Paul Graham 這三個人有什麼共同點？
+ 他們都是技術圈裡有名的 blogger 及 programmer。 比起一般人，他們顯然聰明許多。 他們都創立了自己的軟體公司。  事實上，我對他們的尊敬多半來自於第三點，原因是他們成功地做到了，而我卻連第一步都還不敢踏出。對我來說，創業最大的誘因是我可以用我認為對的方式及態度來做事，其次才是它有可能帶來的財富，當然最慘的下場可能是落的一文不值。另一方面，即將滿三十歲的我也怕這樣的熱情與精力會隨著年紀的增長而日漸消卻。
+如果你也是對創業有興趣的軟體人，可以好好地讀讀這兩篇對我影響頗深的文章：
+ Guy Kawasaki 的《the Art of the Start》 Paul Graham 的《How to Start a Startup》  你絕對不能放棄，我對自己這麼說。</description>
+    </item>
+    
+    <item>
+      <title>軟體公司創業指南</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-02-122/</link>
+      <pubDate>Mon, 02 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-02-122/</guid>
+      <description>我快變 Eric 的忠實讀者了：《Getting Started with Your Own Software Company》。</description>
+    </item>
+    
+    <item>
+      <title>Make More Mistakes</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-01-08-114/</link>
+      <pubDate>Thu, 08 Jan 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-01-08-114/</guid>
+      <description>&amp;ldquo;不畏懼失敗&amp;quot;是所有創業家的特質，而成功的創業家更能夠從失敗中學習；然而從技術人員出身的的創業家往往會陷入『技術至上』的迷思，忘記了他們現在從事的是真實世界的生意。Eric Sink 在 MSDN 的專欄文章《Make More Mistakes》分享了他在創業過程中學到的教訓：
+ Be careful about fixed-bid projects. Be careful about using bleeding-edge technologies. Small ISVs should do software and stay out of real estate. Investors don&amp;rsquo;t like low-margin business models. A market with no competition ain&amp;rsquo;t. The negative connotations of the word &amp;ldquo;middleman&amp;rdquo; are often deserved. All contracts must be reviewed by an attorney. No exceptions. Cash is supposed to flow from your customers to you, never the other way around.</description>
+    </item>
+    
+  </channel>
+</rss>

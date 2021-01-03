@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/java/</link>
+    <description>Recent content in java on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 04 Jan 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using Native Libraries in Android</title>
+      <link>https://blog.simplypatrick.com/posts/2014/01-04-using-native-libraries-in-android/</link>
+      <pubDate>Sat, 04 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/01-04-using-native-libraries-in-android/</guid>
+      <description>基本概念 開發 Android app 如果需要使用 native library，簡單地說其實不複雜，就是把 .so 檔放到 lib/&amp;lt;abi&amp;gt; 目錄，然後不管你是用 Eclipse ADT, Ant, 或是 Gradle 來產生 APK, 這些工具都會把這些 .so 包到 .apk 裡面，然後這些 .so 就可以在運作時期用 System.loadLibrary 或是 System.load 來載入。
+接下來說明幾個常見的 .so 產生及載入方式：
+使用 NDK 如果是自己開發自己使用，通常建議用 Android NDK，只要一個 ndk-build 命令就可以將 jni/ 目錄裡的 C/C++ code 編譯成 libs/&amp;lt;abi&amp;gt;/ 裡的 lib&amp;lt;name&amp;gt;.so。
+載入方式就是直接使用 System.loadLibrary。
+Third-party library 但如果角色換成是要提供 library 給 App 開發者使用，方法就比較多樣一點：
+jni/ + src/ 也就是直接給 JNI 及 Java code 由 App 開發自己整合。
+Library Project 如果你要提供的 library 有自帶的 resource，這是目前唯一可以用的方式。把 .</description>
+    </item>
+    
+    <item>
+      <title>Green Thread</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-10-29-356/</link>
+      <pubDate>Sun, 29 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-10-29-356/</guid>
+      <description>jGuru: What is the difference between green threads and native threads?
+突然看到 green thread 這個詞愣了一下，想說那時候有這種東西的。說穿了，就是 Sun JVM 裡的 user-level thread。</description>
+    </item>
+    
+    <item>
+      <title>Josh Bloch on Design</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-09-25-342/</link>
+      <pubDate>Mon, 25 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-09-25-342/</guid>
+      <description>不是什麼新的技術，Joshua Bloch 談的是更基本但也更重要的 API Design：How to Design a Good API and Why it Matters。
+其實軟體開發者的大部分工作就是和一大堆的 API 打交道，我是最討厭使用那種設計不良的 API，因為往往要用更多的 client code 來完成功能或者避過設計的缺陷。怎麼去設計“良好的 API”正是所有軟體開發者要必備的技巧，Joshua 所提出的這些設計準則，都是相當值得參考學習的。
+另一篇 Joshua 的訪談：Josh Bloch on Design。</description>
+    </item>
+    
+    <item>
+      <title>Java theory and practice</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-02-193/</link>
+      <pubDate>Tue, 02 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-02-193/</guid>
+      <description>想要對 Effective Java 裡面的課題有更多探討的人，可以參考 Brian Goetz 在 developerWorks 的專欄 Java theory and practice。</description>
+    </item>
+    
+    <item>
+      <title>Effective Java</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-11-01-192/</link>
+      <pubDate>Mon, 01 Nov 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-11-01-192/</guid>
+      <description>我的上一次 Java programming 經驗已經是將近六年前的事了，JDK 那時才剛從 1.0 版升級至 1.1，後來因為工作內容的關係，C++ 才變成是我最常使用的程式語言。
+前一陣子逛書店時瞄到了 Joshua Bloch 的《Effective Java Programming Language Guide》居然有中文版，原文的版本我是聞名已久卻沒空拜讀。我一看是侯捷翻譯的作品，二話不說便掏錢買下這本書，直到最近，我一時興起才把它讀完。
+就內容而言，這本書絕對有資格跟《Effective C++》享有一樣的經典地位，不僅 Java programmer 要看，.NET programmer 也應該人手一本，因為其中的許多物件導向編程的道理是同時適用於 Java 與 .NET。中文版裡不通順或是有錯誤的地方倒是比我期待的數目多了一點，不過我想侯捷應該是不介意別人用高標準來檢驗他的作品。
+下面是我發現的一些翻譯問題：
+原文: Not only can the class of an object returned by a public static factory method be nonpublic, but the class can vary from invocation to invocation depending on the values of the parameters to the static factory.譯文 p7: public static factory method 傳回的物件不僅可以是個 nonpublic class 物件，而且視 static factory 函式參數的不同，還可以涉及不同的 nonpublic class .</description>
+    </item>
+    
+    <item>
+      <title>Bruce Eckel&#39;s Weblog</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-02-08-128/</link>
+      <pubDate>Sun, 08 Feb 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-02-08-128/</guid>
+      <description>今天在閱讀一些關於 checked/unchecked exception 爭議的文章時，忽然發現 Bruce Eckel 也有自己的 weblog: Thinking About Computing。
+從 5-2-03 Strong Typing vs. Strong Testing 及 Does Java need Checked Exceptions? 可以看出 Bruce 是傾向於支持 unchecked exception。
+下面是我找到這些文章的連結路徑：
+ 13 Exceptional Exception Handling Techniques   Best Practices for Exception Handling  Does Java need Checked Exceptions?   Three Rules for Effective Exception Handling    </description>
+    </item>
+    
+    <item>
+      <title>Aspect-Oriented Programming, Part II</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-09-29-76/</link>
+      <pubDate>Mon, 29 Sep 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-09-29-76/</guid>
+      <description>IBM、JBoss聯手Java新功能
+ IBM與開放原始碼Java軟體商JBoss有意進行一項Java標準化計劃，意在反制日益受到歡迎的微軟C#語言。
+兩家公司目前獨立投資於一項軟體開發技術稱為AOP(aspect-oriented programming)，可加速應用開發速度，且更具彈性，同時也更不容易出錯。
+JBoss企業開發與策略副總裁Bob Bickel透露，現在兩家公司則有意把AOP變成Java的標準功能。
+ 看來 AOP 將成為 Java 與 C# 互較長短的新戰場。Java 方面已經有頗為成熟的 AspectJ，而 C# 方面則是積極發展中。就我看來，要普及 AOP 並讓程式員了解並使用這個嶄新的概念，整合開發環境的支援扮演了一個重要的角色；在這方面，似乎又是 Java 領先 (參考 AJDT in Eclipse)。
+對 AOP 有興趣的可以參考葉秉哲在 JavaTwo 2003 研討會的演講《AspectJ: Beyond OOP》。</description>
+    </item>
+    
+    <item>
+      <title>::Manageability::</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-07-04-63/</link>
+      <pubDate>Fri, 04 Jul 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-07-04-63/</guid>
+      <description>發現了一個很棒的 weblog: ::Manageability::，在那裡可以看到許多關於軟體開發的有趣討論〈大多數的文章都是有關 Java 的〉。
+其中的一則文章《Thinking Styles and Software Engineering 》提到了一個有趣的心理測驗，可以用來測試你或是他人偏向那一種思考模式，也許值得應用在面試新人上。</description>
+    </item>
+    
+    <item>
+      <title>Aspect-Oriented Programming</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-07-01-59/</link>
+      <pubDate>Tue, 01 Jul 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-07-01-59/</guid>
+      <description>「Aspect-Oriented Programming」是繼OOP之後的新程式設計思維， 大陸的譯名是「面向方面」(有夠饒口的)。
+aspect 在字典裡的定義是:
+ A distinct feature or element in a problem A characteristic to be considered &amp;hellip;  我想 1. 跟 2. 的解釋是比較貼近 AOP 中 Aspect 的定義。
+我個人比較有興趣的是 AOP 與 C# 的結合，在 Google 可以找到一些相關的資訊。在這個領域將會產生許多有趣的東西，我想。
+這裡是一些介紹 AOP 的入門文章：
+ Extract Aspect Refactoring ? I want my AOP! The AspectJ Programming Guide Improve modularity with aspect-oriented programming  </description>
+    </item>
+    
+  </channel>
+</rss>

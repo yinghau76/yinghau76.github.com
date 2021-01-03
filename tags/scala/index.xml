@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scala on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/scala/</link>
+    <description>Recent content in scala on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 11 Nov 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用 Scala 來開發 Android App 入門</title>
+      <link>https://blog.simplypatrick.com/posts/2013/11-11-develop-android-app-with-scala/</link>
+      <pubDate>Mon, 11 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2013/11-11-develop-android-app-with-scala/</guid>
+      <description>最近想寫些 Android 的小程式，但是用 Java 實在是太無趣了，於是就想嘗試用 Scala 來做，分享一下怎麼入門的心得。
+基本工具 我假設你已經安裝好下列工具 (標上我目前使用的版本):
+ Scala (2.10.3) 及 SBT (0.13.0) IntelliJ 12  Scala plugin (0.22.302) SBT plugin (1.5.1)    產生一個基本的 Scala Android App  執行 android create project --target android-19 --path ./MyProject --package com.example.myproject --activity Main 在 project 目錄下新建 project/plugins.sbt，內容如下 (注意中間的空白行不可省略):  addSbtPlugin(&amp;#34;com.hanhuy.sbt&amp;#34; % &amp;#34;android-sdk-plugin&amp;#34; % &amp;#34;1.2.2&amp;#34;) addSbtPlugin(&amp;#34;com.hanhuy.sbt&amp;#34; % &amp;#34;sbt-idea&amp;#34; % &amp;#34;1.6.0&amp;#34;)  在 project 目錄下新建 build.sbt，同樣中間空白行不可省略:  android.Plugin.androidBuild name := &amp;#34;MyProject&amp;#34;  執行 sbt android:package-debug，到這一步應該就能把 APK 建立出來了  把 Java 轉成 Scala 然後你可以試著把 android 幫你產生的 Java 手動改寫成 Scala (副檔名也要改 .</description>
+    </item>
+    
+    <item>
+      <title>Scala: Under the Hood #1</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-10-scala-under-the-hood-number-1/</link>
+      <pubDate>Mon, 10 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-10-scala-under-the-hood-number-1/</guid>
+      <description>我學一個東西向來喜歡盡量深入去瞭解它的運作原理，這兩天看了 Scala 覺得蠻有趣的，也會去想像如果翻譯成 Java 會是怎麼樣的做法。 如果想知道自己的想法跟 Scala 實作的差距，可以直接做些實驗來比對。例如下面就是個求解最大公因數的實驗，我寫了四個版本 (gcd1 .. gcd4)：
+object GCD { def main(args: Array[String]) { def gcd1(m: Int, n: Int):Int = { if (n == 0) { return m } else { return gcd1(n, m % n) } } def gcd2(m: Int, n: Int):Int = { if (n == 0) { m } else { gcd2(n, m % n) } } def gcd3(m: Int, n: Int):Int = if (n == 0) m else gcd3(n, m % n) var gcd4: (Int,Int) =&amp;gt; Int = null gcd4 = (m: Int, n: Int) =&amp;gt; if (n == 0) m else gcd4(n, m % n) val Array(m, n) = args.</description>
+    </item>
+    
+    <item>
+      <title>Trying Scala on Android</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-08-trying-scala-on-android/</link>
+      <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-08-trying-scala-on-android/</guid>
+      <description>Scala 是基於 Java 平台的多範式程式語言，最著名的使用者就是原本從 Ruby 起家的 Twitter。由於 Java 平台賦予的可攜性，除了應用於各式各樣的後端程式，Scala 也能用來撰寫 Android 的 app。
+我嘗試的環境如下：
+ Mac OS X 10.8.2 Android 4.2 SDK Scala 2.9.2  由於我習慣用 ant 來建置，需要先做的就是修改 build.xml 加入以下步驟：
+&amp;lt;import file=&amp;quot;mac-shim.xml&amp;quot; /&amp;gt; &amp;lt;import file=&amp;quot;build-scala.xml&amp;quot; /&amp;gt; &amp;lt;target name=&amp;quot;-post-compile&amp;quot; depends=&amp;quot;-post-compile-scala&amp;quot; /&amp;gt; 重點在於加入 -post-compile-scala 這個步驟來編譯 src/ 下的 .scala 檔案。mac-shim.xml 是為了解決 Android SDK 的 ant script 在 Linux/MacOS 下的差異；build-scala.xml 則是包含可重複使用的 Scala 建置規則。
+另外執行 ant 前要先用 android update project 把 local.properties 產生出來，並把 scala.dir 指向 Scala 的安裝位置：</description>
+    </item>
+    
+  </channel>
+</rss>

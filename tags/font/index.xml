@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>font on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/font/</link>
+    <description>Recent content in font on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 27 Sep 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/font/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inconsolata and Source Code Pro</title>
+      <link>https://blog.simplypatrick.com/posts/2012/09-27-inconsolata-and-source-code-pro/</link>
+      <pubDate>Thu, 27 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/09-27-inconsolata-and-source-code-pro/</guid>
+      <description>Source Code Pro 是 Adobe 近日釋出的 open-source font:
+跟我目前的最愛 Inconsolata：
+比較一下：
+兩個的設計其實很接近，但基於以下幾個原因我還是比較喜歡 Inconsolata：
+ Source Code Pro 比例上比較寬，實際顯示字有點太胖 我比較喜歡加斜線的 0 Inconsolata 的符號稍微大了一點 不喜歡 Source Code Pro 的小寫 i 及 k  </description>
+    </item>
+    
+    <item>
+      <title>My preferred programming fonts on Mac OS X</title>
+      <link>https://blog.simplypatrick.com/posts/2011/02-19-programming-fonts-on-mac-osx/</link>
+      <pubDate>Sat, 19 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/02-19-programming-fonts-on-mac-osx/</guid>
+      <description>Mac OS X 是非常棒的程式開發平台，有非常強的 CLI，也有非常漂亮的 GUI。
+我個人對於程式字型的選擇頗為堅持，例如在使用較暗的背景下，我偏好使用 Menlo：
+
+但如果是在白色的背景下，我覺得 Consolas 比較好看些：
+
+關於怎麼在 Mac OS X 下安裝 Consolas 字型，Google 就能找到一堆。</description>
+    </item>
+    
+    <item>
+      <title>Programmer&#39;s Font</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-09-03-337/</link>
+      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-09-03-337/</guid>
+      <description>我一直是那種對於程式碼字型很挑剔的那種人，因此這幾年都是 Courier New 的愛用者，因為它在不開 ClearType 的情況下還是能顯示非常清晰的程式碼，雖然ㄧ直覺得它給人的感覺硬了一點：
+當然程式碼字型的美醜是有點見仁見智的問題，我甚至也看過用非固定寬度字型的 programmer，他說這樣同一行就可以顯示更多的程式碼。不過我還是喜歡傳統固定寬度的字型，程式排列起來比較有條理也容易看清楚。Courier New 好是好，但我總想找一個更漂亮的程式碼字型。直到有次到某家合作夥伴去討論一些技術細節，發現他用的程式碼字型非常好看，我也就跟著變心用起 Bitstream Vera Sans Mono 這個字型了：
+但是 Bitstream Vera Sans Mono 唯一的缺點是必須在打開 ClearType 的狀況下才會漂亮。
+另外一個值得推薦的是 Microsoft 即將於 Vista 中提供的 Consolas。</description>
+    </item>
+    
+  </channel>
+</rss>

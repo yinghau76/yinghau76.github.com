@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>osx on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/osx/</link>
+    <description>Recent content in osx on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 16 Jan 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/osx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using OpenGrok on Mac OS X</title>
+      <link>https://blog.simplypatrick.com/posts/2015/01-16-opengrok-on-mac-osx/</link>
+      <pubDate>Fri, 16 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2015/01-16-opengrok-on-mac-osx/</guid>
+      <description>OpenGrok is Awesome OpenGrok is an awesome and handy tool for analyzing complex software system. As it claims, it is a fast source code search and cross reference engine using famous Lucene. For Android developers, you may have known AndroidXref which is built using OpenGrok.
+This short guide shows a minimized steps to get OpenGrok up and running on Mac OS X. I prefers this kind of quick-and-dirty way for browsing source code on my desktop or laptop.</description>
+    </item>
+    
+    <item>
+      <title>My Go Development Environment</title>
+      <link>https://blog.simplypatrick.com/posts/2013/12-14-my-go-development-environment/</link>
+      <pubDate>Sat, 14 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2013/12-14-my-go-development-environment/</guid>
+      <description>分享一下我的 Go 開發環境。
+作業系統: Mac OS X 10.9 在 Mac 上要使用 Go 的最簡單方式是用 Homebrew 來安裝:
+$ brew install go 安裝成功後，查看一下注意事項：
+$ brew info go go: stable 1.2 (bottled), HEAD http://golang.org /usr/local/Cellar/go/1.2 (3980 files, 115M) * Poured from bottle From: https://github.com/mxcl/homebrew/commits/master/Library/Formula/go.rb ==&amp;gt; Options --cross-compile-all Build the cross-compilers and runtime support for all supported platforms --cross-compile-common Build the cross-compilers and runtime support for darwin, linux and windows --without-cgo Build without cgo ==&amp;gt; Caveats As of go 1.</description>
+    </item>
+    
+    <item>
+      <title>rb-appscript and iTunes</title>
+      <link>https://blog.simplypatrick.com/posts/2012/12-02-rb-appscript-and-itunes/</link>
+      <pubDate>Sun, 02 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2012/12-02-rb-appscript-and-itunes/</guid>
+      <description>iTunes 11 出來了，界面變簡潔漂亮了，所以就比較有把音樂資料庫整理一下的動力。手上有很久以前下載的 Rolling Stone Magazine&amp;rsquo;s Top 500 Songs，可惜的是加入 iTunes 資料庫後由於沒有音軌數字的資訊，整個次序都不大對：
+手動一個一個改對我來說是不可能的，於是想到了 iTunes 似乎是有提供 AppleScript API 界面的，但第一個問題就是我跟 AppleScript 不熟，於是在網路上搜尋發現有個 Ruby gem 叫 rb-appscript 可以用 Ruby 來做類似的功能，二話不說就 gem install rb-appscript 下來用了。
+但接著第二個問題是我跟 iTunes 的 AppleScript API 也不熟，但也很快地發現可以從 AppleScript editor 裡面查到：
+於是在 irb 裡小試了一下發現可以成功運作後，就直接動手寫了：
+require &amp;#39;appscript&amp;#39; Appscript.app.by_name(&amp;#34;iTunes&amp;#34;).selection.get.each do |t| t.track_number.set $1 if t.name.get =~ /^(\d+)/ end 哈，大功告成。</description>
+    </item>
+    
+    <item>
+      <title>My preferred programming fonts on Mac OS X</title>
+      <link>https://blog.simplypatrick.com/posts/2011/02-19-programming-fonts-on-mac-osx/</link>
+      <pubDate>Sat, 19 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/02-19-programming-fonts-on-mac-osx/</guid>
+      <description>Mac OS X 是非常棒的程式開發平台，有非常強的 CLI，也有非常漂亮的 GUI。
+我個人對於程式字型的選擇頗為堅持，例如在使用較暗的背景下，我偏好使用 Menlo：
+
+但如果是在白色的背景下，我覺得 Consolas 比較好看些：
+
+關於怎麼在 Mac OS X 下安裝 Consolas 字型，Google 就能找到一堆。</description>
+    </item>
+    
+  </channel>
+</rss>

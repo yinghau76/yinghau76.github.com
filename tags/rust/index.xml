@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/rust/</link>
+    <description>Recent content in rust on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 02 Jan 2021 18:42:35 -0800</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>建置 Jupyter Notebook 的 Rust 運作環境</title>
+      <link>https://blog.simplypatrick.com/posts/2021/01-02-rust-jupyter-notebook/</link>
+      <pubDate>Sat, 02 Jan 2021 18:42:35 -0800</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2021/01-02-rust-jupyter-notebook/</guid>
+      <description>最近重新安裝了 macOS Big Sur，也順便想試試 Jupyter Notebook 的 Rust 運作環境，再加上這幾天放假比較有時間，就把安裝的過程記錄下來。
+安裝 Miniconda 過去一直覺得 Anaconda 有點肥大，所以這次決定先從安裝比較精簡的 miniconda 開始:
+$ brew install --cask miniconda 新增 conda-forge channel 等下才能安裝一些需要的套件如 jupyterlab:
+$ conda config --add channels conda-forge $ conda config --set channel_priority strict 然後需要初始化 conda 的 base 環境，一般都是跑 conda init，但它會加一段不是很通用的設定到我個人的 .zshrc，我不是很喜歡這種做法，所以就先只套用在目前的 shell 裡:
+$ eval `conda shell.zsh hook` 創建新的 conda 環境 創建一個新的環境叫 rust-notebook:
+(base) $ conda create -n rust-notebook python=3 (base) $ conda activate rust-notebook 安裝 JupyterLab 在新的環境指定安裝 jupyterlab 版本 2.</description>
+    </item>
+    
+    <item>
+      <title>Setup Fuchsia Rust Development on macOS</title>
+      <link>https://blog.simplypatrick.com/posts/2019/06-06-setup-fuchsia-rust-dev/</link>
+      <pubDate>Thu, 06 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2019/06-06-setup-fuchsia-rust-dev/</guid>
+      <description>基本上照著官方的指引 Rust Editor Configuration，設置 Fuchsia OS 開發的 Rust 開發環境主要就兩個步驟:
+ 產生 Cargo.toml 設定編輯器使用 Rust 的 Language Server (RLS)  產生 Cargo.toml 很簡單，就是用 fx gen-cargo //garnet/foo/path/to/target:label 產生對應的 Cargo.toml。例如 fx gen-cargo //garnet/bin/log_listener:bin 會產生 /garnet/bin/log_listener/Cargo.toml。
+設定 RLS 官方文檔提到要先把 Fuchsia 自帶的 Rust 連結到 rustup，並且設成預設的 toolchain:
+$ rustup toolchain link fuchsia /&amp;lt;your Fuchsia root&amp;gt;/buildtools/&amp;lt;platform&amp;gt;/rust $ rustup default fuchsia 我是有做第一步，但第二步我比較持保留態度，之後試過似乎不做也沒影響，我會建議跳過這一步。
+Vim 跟 C++ 類似，只是 Language Server 我們必須從 clangd 換成 RLS，所以可以在 Vim 裡用 :CocInstall coc-rls 來安裝 coc-rls extension，如果你系統之前就有裝過 RLS 的話，在 Vim 裡打開對應的目錄就會有 code completion 的功能了。</description>
+    </item>
+    
+    <item>
+      <title>Learning Rust</title>
+      <link>https://blog.simplypatrick.com/posts/2019/04-08-learning-rust/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2019/04-08-learning-rust/</guid>
+      <description>關於 Rust 會知道 Rust 是因為之前公司團隊的工作是跟瀏覽器引擎 (Webkit/Blink) 的優化有關，那時只知道 Mozilla 正在用 Rust 這個新的程式語言實驗性地開發 Servo 引擎。同時間 Go 已經到達 1.0 的里程碑，同時有著優異的編譯及執行效能，很快地 Go 就變成我個人主要使用的程式語言，工作上需要的一些小工具也都是用 Go 來實現。
+開始對 Rust 重新關注大概是它在 2015 年釋放 1.0 版本後，那時只稍微了解一下語法及主要的語言特性，當時覺得這程式語言的學習曲線蠻陡峭的，必須全面地對所有的語言特性有一定了解後才能駕馭它。那時 Go 用的正是順手，所以就沒什麼動力把 Rust 完整學起來。
+去年開始工作上需要了解 Fuchsia OS 的實作，赫然發現裡面蠻多系統服務都是用 Rust 開發的，數量上甚至比 Google 自家的 Go 還多，這也是我決定多投入時間學習 Rust 的轉捩點。
+學習資源 我主要使用下列幾本書來學習 Rust：
+ 深入浅出 Rust 這本書的電子版: 它的特色是側重於解釋 Rust 主要概念的設計思想，而不只是單純語法或用法的說明；且因為是中文的緣故，讀起來速度還是比較快，比較像是 Rust 的內功心法入門。 30 天深入淺出 Rust 系列 則是以淺顯易懂的範例把 Rust 主要的特色講解了一遍，內容適合對於想要快速地對 Rust 有個全面性的概觀的人。 對 Rust 有了基本的了解後，A Gentle Introduction to Rust 則是適合有 C/C++ 經驗的開發者來學習如何寫 idiomatic Rust。  至於最經典的 The Rust Programming Language 呢?</description>
+    </item>
+    
+  </channel>
+</rss>

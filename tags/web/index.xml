@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/web/</link>
+    <description>Recent content in web on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 03 Dec 2011 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LiveReload and Octopress</title>
+      <link>https://blog.simplypatrick.com/posts/2011/12-03-livereload/</link>
+      <pubDate>Sat, 03 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2011/12-03-livereload/</guid>
+      <description>雖然平常沒什麼時間寫 blog，但總是希望寫的時候能夠專注在所寫的內容，而不必被發佈 blog 的一些瑣事而干擾，例如現在雖然已經習慣用 Pow 了，然後把 rake watch 開著，但要預覽時還是要回 Chrome 按一下 Reload 才能預覽目前的內容，有點小煩，所以看到有 LiveReload 這種好東西當然要拿來用啊。
+簡單描述一下安裝的步驟:
+ 安裝 guard-livereload:  $ gem install guard-livereload  修改 Gemfile 把下列這一行加進去 &amp;lsquo;guard-livereload&amp;rsquo;:  $ gem &amp;#39;guard-livereload&amp;#39;  再來是改完 Gemfile 後的標準步驟:  $ bundle install  產生一份基本的 Guardfile:  $ guard init livereload  再來要修改 Rakefile 把啟動 guard 的動作放到 rake watch 裡面:  desc &amp;#34;Watch the site and regenerate when it changes&amp;#34; task :watch do raise &amp;#34;### You haven&amp;#39;t set anything up yet.</description>
+    </item>
+    
+    <item>
+      <title>On New Web Applications...</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-08-21-336/</link>
+      <pubDate>Mon, 21 Aug 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-08-21-336/</guid>
+      <description>Joel 跟 Paul Graham 分別對一些新興 web application 的看法：
+Joel on Software - Too Many Ajax Calendars
+ They&#39;re building calendar companies to sell to Yahoo!, which, for some reason, has given up on the old concept of hiring programmers to write code, and is going with this new age concept of buying entire companies on the hopes that they might contain a good programmer or two, which, by the way, is a sure sign of trouble for a technology company.</description>
+    </item>
+    
+  </channel>
+</rss>

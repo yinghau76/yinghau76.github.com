@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>book on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/book/</link>
+    <description>Recent content in book on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 19 Mar 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Book for Golang Learning</title>
+      <link>https://blog.simplypatrick.com/posts/2014/03-19-go-book/</link>
+      <pubDate>Wed, 19 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/03-19-go-book/</guid>
+      <description>學習一個新的程式語言我習慣先看網路上的 tutorial 或 get started guide 入門，然後用看官方文件或是搜索網路資源的方式來學習，等到有了手感後，就會找本好的書來進一步提昇自己的程度，用畫的來表示大概是這樣：
+就學習 Go 而言，我認爲那本書就是 Mark Summerfield 的 Programming in Go: Creating Applications for the 21st Century:
+這本書不適合程式設計的初學者，而是適合已經精通其它程式語言的開發者。例如一般的 if 及 for 的用法直到第五章才有詳細介紹，但對有經驗的開發者絕對是 OK 的。
+我推薦的原因是書中的範例程式都很高水準，看得出來是作者精心設計過的，示範如何用 Go 來解決實際會遇到的問題，解法都很漂亮並符合 Go 的風格。這種採用最佳示範的方法可以讓你快速學會 Go 的精華而不是一直停留在初學者階段。
+另外書中也有提供了不少有用的建議做法：
+ 實現可選參數的推薦做法 實現泛型的替代做法 常用的並發模式  這本書也有簡中翻譯版本可以買，有一些翻譯、排版、拼字錯誤，但整體來說翻譯品質還不錯，不會影響你對 Go 的學習。</description>
+    </item>
+    
+    <item>
+      <title>第一次在淘寶上買書</title>
+      <link>https://blog.simplypatrick.com/posts/2014/03-18-buying-books-in-taobao/</link>
+      <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2014/03-18-buying-books-in-taobao/</guid>
+      <description>分享一下在淘寶買書寄回臺灣的經驗。
+之前到大陸出差就有到當當網買書的經驗，都是用貨到付款的方式。這次想寄回台灣，但當當網只有大陸當地的支付方式，所以就想試試看淘寶，因爲淘寶使用的支付寶是支援海外信用卡交易的，只是好像會被銀行收取海外交易手續費。
+我想買的書主要是軟體開發相關技術書籍的中譯本，一來是比原文便宜，二來現在簡中翻譯的質量也都不錯，缺點就是書的用紙都是比較差的。
+怎麼買呢？先上淘寶旗下的天貓直接搜尋你想買的書，我是選有包郵然後價格最低的：
+這次我選了六本書，有一家因爲只剩一本但是破損了，經過用阿里旺旺聯繫後就取消交易：
+選完書後結帳時，淘寶有個很貼心的功能就是合併快遞，貨物可以通通寄到轉運商那裡再一起轉運回臺灣。 我選擇的轉運商全家 PRoute，算算平均一本書運回台灣的成本是台幣 50 元：
+所以這些包裹就會從大陸各地寄到深圳：
+然後坐船到台灣，整個過程看起來可以在一到兩周內完成。：
+收貨時全家送了一杯咖啡：</description>
+    </item>
+    
+    <item>
+      <title>Beautiful Code</title>
+      <link>https://blog.simplypatrick.com/posts/2007/2007-08-18-394/</link>
+      <pubDate>Sat, 18 Aug 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2007/2007-08-18-394/</guid>
+      <description>我想我最近這幾個月遇到人，大概第一件想做的事就是問他：『喂，你看了那本書了嗎？』 (路人：關我什麼事啊？)
+看起來這本書在 Amazon.com 上蠻熱銷的，目前在 Software Development 類別的銷售排行榜上是第一名的，或許跟它的書名有些關係，這本書叫 &amp;ldquo;Beautiful Code&amp;rdquo;，畢竟 programmers 都忍不住會幻想讀了這本書後，功力大進，被人家稱讚 &amp;ldquo;Oh! Your code is beautiful.&amp;quot;。話說回來，這當然是不可能的事，programming 這件事雖然稱不上是藝術，但要達到一定的境界也需要一些天份、知識、經驗、與技巧，做的好的人當然夠資格被稱為大師或是達人。這本書基本上就是這些達人們描述他們遇到的問題，以及如何構思 beautiful code來解決這些問題。
+另外一個吸引我的地方就是本書的作者群實力堅強，例如有大家熟悉的老牌技術作家如 Brian Kernighan, Jon Bentley, 及 Charles Petzold，也有 XML 的專家 Time Bray，Ruby 的作者 Yukihiro Matsumoto, Perforce 的 Laura Wingerd 及 Christopher Seiwald, Subversion 的 Karl Fogel, 推廣 JSON 的 Douglas Crockford, Greg Kroah-Hartman 是著名的 Linux kernel hacker，以及其他在不同領域有名的技術人員。
+這本書雖然講的都是 coding，但是涵蓋的主體很廣，也是我這覺得這本書最獨特的地方，因為唯有從不同的角度來印證，你才能真正地了解什麼是 beautiful code。學校不會教你怎麼去欣賞好的 code，但是要成為一個好的 programmer，我認為這是必要的能力，畢竟我們不是天才，我們都是站在巨人的肩膀上看這世界。
+不過別期待能很快看完這本書，每篇文章都需要蠻多時間去細讀及思考的 (我也只讀完幾篇而已)。</description>
+    </item>
+    
+    <item>
+      <title>Books on Embedding System Programming</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-04-01-329/</link>
+      <pubDate>Sat, 01 Apr 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-04-01-329/</guid>
+      <description>在辭掉工作短暫休息的這段時間，我讀完了這本《MicroC OS II: The Real Time Kernel 》。會想要去讀它的原因是因為既然要做嵌入式系統的開發，那就必須對 RTOS 的特性有相當程度的掌握，而最快的方式莫過於直接去深入了解一個 RTOS 的實作，而短小精幹的 MicroC/OS-II 因為有原作者的詳細解說，當然是最適合學習的目標。老實說，讀這本書前，自己對於即時系統的一些概念是似懂非懂，但是看完這本書之後卻是豁然開朗。我覺得這本書更適合作為一般學校基礎 OS 的教材，之前大學上的 OS 課程都太理論性了，有點後悔當時沒有去修即時系統的課。強力推薦這本給想要自修學習 RTOS 的人。
+另外一本的入門好書則是 David E. Simon 寫的《An Embedded Software Primer》。這本書關於 RTOS 的部分我是覺得沒有前一本講的清楚，但是可讀性倒是高了些，畢竟這本書就是要給入門者看的。後面關於 embedded software design, development, 及 debugging 的觀念我覺得寫的相當不錯，一樣推薦給想要了解 embedded system programming 的人。</description>
+    </item>
+    
+    <item>
+      <title>在公牛身上擠奶</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-09-23-293/</link>
+      <pubDate>Fri, 23 Sep 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-09-23-293/</guid>
+      <description>咦？獨孤木出書了？《在公牛身上擠奶》？
+最近好像有點跟不上新消息，還是因為看到 CNET 的這篇文章才知道這件事。不過聽說出版社編輯水準很差，請自行判斷是否值得購買。</description>
+    </item>
+    
+    <item>
+      <title>Reading Joel on Software</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-08-16-280/</link>
+      <pubDate>Tue, 16 Aug 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-08-16-280/</guid>
+      <description>持續地閱讀 Joel on Software 應該也有兩年以上的時間了。雖然幾乎所有的文章我都已經在電腦螢幕前翻閱過了，但是當 Joel 將他的文章集結出書時，我還是忍不住買了一本，畢竟我還是很享受把書拿在手上翻了一遍又一遍的感覺。
+我將書裡面的內容歸納為『當你無可救藥地要創立自己的軟體公司前，你一定要知道的事』或是『除了你書架上那一拖拉庫關於程式設計的書外，你一定要讀的一本書』。然而我並不是要你去相信 Joel 講的每一件事，而是去學習他的思考方式，正如同書背上的這段介紹：
+He eduated us, he entertained us, and, yes, sometimes he infuriated us, but he has always made us think about what it is we are doing when we sit down in front of that blank computer screen&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Jack Welch - Winning</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-07-18-268/</link>
+      <pubDate>Mon, 18 Jul 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-07-18-268/</guid>
+      <description>颱風來了，躲在家裡看書倒也不賴，而《致勝》這本書就是我這個禮拜的選擇！不過我想在接下來的這一年，這本書應該會長期佔據我的床頭，因為它實在是太棒了，讓我忍不住想一讀再讀。事實上，我的書櫃並不乏其它關於威爾許的書，但只有《致勝》是讓我覺得受益最多的，而且我還只讀了前幾章而已。
+讀起這本書我的速度不快，原因是每讀一章就會引發我許多共鳴與想法，就會翻回去前面再讀一遍，跟著腦中這幾年的工作經驗比較及印證。威爾許真的是很有魅力的領導人，光是閱讀書中的文字就不禁讓人感受他的熱情，頓時熱血澎湃，忍不住想大喊『我們正應該這麼做』！</description>
+    </item>
+    
+    <item>
+      <title>The Best Software Writing I</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-21-256/</link>
+      <pubDate>Tue, 21 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-21-256/</guid>
+      <description>The Best Software Writing I: Selected and Introduced by Joel Spolsky 是 Joel 編輯的新書，書裡蒐集了許多很棒的文章，都是關於軟體開發的。這些文章很容易地都可以在作者的個人網站裡找到 (感謝這些樂於分享知識的 bloggers)：
+ Ken Arnold - Style Is Substance Leon Bambrick - Award for the Silliest User Interface: Windows Search Michael Bean - The Pitfalls of Outsourcing Programmers Rory Blyth - Excel as a Database Adam Bosworth - ICSOC04 Talk danah boyd - Autistic Social Software Raymond Chen - Why Not Just Block the Apps That Rely on Undocumented Behavior?</description>
+    </item>
+    
+    <item>
+      <title>Head First Design Patterns</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-09-241/</link>
+      <pubDate>Thu, 09 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-09-241/</guid>
+      <description>蔡學鏞要翻譯《Head First Design Patterns》這本近來熱賣到不行的書。
+翻譯這本書跟翻譯一般的技術書籍有點不一樣，相對地也比較難，就看蔡學鏞能否一戰成名或是砸了自己的招牌囉。目前網站上沒提供試讀的章節，所以不曉得翻譯的品質如何。但如果翻譯的品質不錯，我肯定會掏腰包去買。</description>
+    </item>
+    
+    <item>
+      <title>Knuth &amp; TAOCP</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-02-15-220/</link>
+      <pubDate>Tue, 15 Feb 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-02-15-220/</guid>
+      <description>唸過 computer science 的人大多對 Knuth 有份莫名的崇敬，而大多數人的崇敬源自於 The Art of Computer Programming 這部不知何時才能全部完成的巨著，而大家最常開的笑話就是『 Knuth 能在有生之年把七大冊全部寫完嗎？』。但對我而言，Knuth 這名字卻有著更不同的意義：他是我的師祖，也就是老師的老師的老師。
+我自己幾年前買下 vol.1-3 這一套供在書架上，卻從來沒能夠把這幾本書看完，畢竟自己的數學基礎不夠扎實，出來工作後也沒有時間及熱情來研讀了。有時候覺得愧對師祖時就會拿出來翻一翻再放回架上去。 XD
+師祖預計於 2007 年完成 vol.4，在這之前，將先出版一系列的 fascicle 為它鋪路：
+ Volume 1, Fascicle 1: MMIX &amp;ndash; A RISC Computer for the New Millennium Volume 4, Fascicle 2: Generating All Tuples and Permutations Volume 4, Fascicle 3: Generating All Combinations and Partitions  不熟悉 Knuth 的人可以看看這篇簡介《高德納的二十年計畫》。</description>
+    </item>
+    
+    <item>
+      <title>New Books about Agile Development</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-12-10-208/</link>
+      <pubDate>Fri, 10 Dec 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-12-10-208/</guid>
+      <description>似乎是兩本很有趣的書:
+Agile and Iterative Development: A Manager&amp;rsquo;s Guide by Craig Larman
+Balancing Agility and Discipline: A Guide for the Perplexed by Barry Boehm, Richard Turner
+Agile Methodology 近年來已經成為軟體開發的顯學，每個人都在討論，確實對傳統軟體開發的觀念有許多衝擊。但是改變個人的觀念容易，改變一個團隊的觀念難，改變整個公司的觀 念更難，如何導入 Agile Methodology 將考驗決策者的智慧。問題是這種開發流程的改造能夠由下而上地進行嗎？或者是需要高層主管的支持才行？思考中&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>My Shopping Cart for Technical Books</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-08-30-176/</link>
+      <pubDate>Mon, 30 Aug 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-08-30-176/</guid>
+      <description>下面是這次美國行要採購的書籍清單:
+  Pragmatic ADO.NET: Data Access for the Internet World by Shawn Wildermuth    Design Patterns C# by Steven John Metsker    Coder to Developer: Tools and Strategies for Delivering Your Software by Mike Gunderloy, Sybex    Code Complete, Second Edition by Steve McConnell    Pragmatic Project Automation: How to Build, Deploy, and Monitor Java Apps by Mike Clark    Code Generation in Microsoft .</description>
+    </item>
+    
+    <item>
+      <title>Streamed Lines</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-06-15-163/</link>
+      <pubDate>Tue, 15 Jun 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-06-15-163/</guid>
+      <description>軟體開發流程裡頗為複雜的一項工作就是 source code branching，也就是為了某個目的，將程式碼複製為數個分支，分別以不同的方式進行開發與維護。
+Streamed Lines: Branching Patterns for Parallel Software Development 是 Brad Appleton 等人為了實現平行開發而提出的 patterns。整篇文章有 67 頁之多，已經快要可以出一本書了，不過值得對 SCM 有興趣的人細讀。</description>
+    </item>
+    
+    <item>
+      <title>Coder To Developer</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-05-07-151/</link>
+      <pubDate>Fri, 07 May 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-05-07-151/</guid>
+      <description>Coder To Developer 是 Eric Sink 及 Joel 推薦的好書，網站上有完整的目錄及試讀的章節。
+你剛從學校畢業，苦惱於該選擇去「規模大而制度完整」或「規模小但正在起步」的軟體公司。作為你的第一份工作，我認為小軟體公司會是比較好的選擇，因為『你必須學會更多的東西』。在小軟體公司工作，programmer 除了基本的 coding 能力外，還得學會如何做需求分析 (requirement analysis)、架構設計 (architecture design)、時程控制 (scheduling)、選擇開發方式 (methodology)、程式碼版本控制 (source code version control)、錯誤追蹤 (bug tracking)、文件撰寫 (documentation) 等等。當然不是說大的軟體公司不做這些事，而是你會比較有機會親身參與並規劃這些事，從其中學到的東西絕對比在大公司來的多。
+如果你現在就在小軟體公司工作，我想《Coder To Developer》有一些實用的建議可以讓你把這些事情做的更好。</description>
+    </item>
+    
+    <item>
+      <title>Selected Software Engineering Books</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-01-28-118/</link>
+      <pubDate>Wed, 28 Jan 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-01-28-118/</guid>
+      <description>Jason Elliot Robbins 推薦的一些軟體技術書籍。Jason 同時也是 ReadySET 的作者。</description>
+    </item>
+    
+    <item>
+      <title>SCM 好書推薦</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-27-113/</link>
+      <pubDate>Sat, 27 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-27-113/</guid>
+      <description>講到 svn，順便推薦一本不錯的書《Software Configuration Management Patterns: Effective Teamwork, Practical Integration》，自己看 amazon.com 上面的評論吧。書中提到的 pattern 如 Integration Build, Task Level Commit, Codeline Policy, Release Line, Task Branch 等等在實務上都非常地有用。
+一家軟體公司的專業與否往往看他們怎麼管理程式碼就可以看出來。身為程式員，你服務的公司做到了多少？我想絕大多數的台灣軟體公司都不及格。&amp;lt;sigh&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>Pragmatic Starter Kit</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-26-111/</link>
+      <pubDate>Fri, 26 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-26-111/</guid>
+      <description>驚喜地發現 Andy 跟 Dave 出新書了，不需要多考慮，掏錢買就對了。
+看《Pragmatic Version Control using CVS》的目錄感覺內容有點單薄，當成入門書籍還說的過去。我個人比較期待《Pragmatic Unit Testing》及《Pragmatic Project Automation 》。
+ Software development is difficult enough; if you try to build on a shaky foundation it can make development almost impossible; (which might account for the fact that about 50% of software projects fail). The Starter Kit fixes that. It&amp;rsquo;s a set of three books covering basic practices that are applicable in all software development situations.</description>
+    </item>
+    
+    <item>
+      <title>學習 - 最值得投資的事</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-22-110/</link>
+      <pubDate>Mon, 22 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-22-110/</guid>
+      <description>身為一位 software engineer，你有多久沒有買書了？
+我尤其指跟 software development 有關的書。在軟體業已經工作了四年的我很訝異地發現：大部分的人投資在技術書籍上的錢真的少的可憐。許多人的藉口都是『原文書太貴了』、『英文看不懂或是閱讀英文速度很慢』、『網路上找方法就好了，何必買書？』、『下班回家後就已經很累了，根本不想看書』。但我認為這些都是推託的藉口：原文書太貴？也沒看到你買中文書來看；英文能力不好？那你可能不太適合這個行業；網路可以找到所有的答案？網路上的知識都太零散了，沒辦法提供完整而有組織的學習；加班太累，沒時間讀？早點回家唸書，想想該怎麼有效率的工作，你就會發現不用每天加班了。
+想要在這個產業成功，『積極學習』絶對是不二法門。我強力推薦 Eric 的短文《Career Calculus》。你也可以參考 How to Keep Your Job。</description>
+    </item>
+    
+    <item>
+      <title>Debugging</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-12-12-105/</link>
+      <pubDate>Fri, 12 Dec 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-12-12-105/</guid>
+      <description>最令程式員頭痛的莫過於各式各樣的 bug，它們也通常是讓程式員每天加班晚歸的最大兇手。程式新手通常缺乏 debug 的有效技巧，對於問題的應對方式不是瞎子摸象就是一籌莫展。然而你會發現老經驗的程式員總是能很快地把 bug 解決掉，差別就是聰明的他們會從過去的經驗累積一些經驗法則，運用這些法則往往能將 90% 的 bug 一網打盡。
+《Debugging》是一本奇特的書，David Agans 教導程式員如何使用系統化及科學化的方法來對付各種 bug。整本書的重點在於 David 提出的的九大原則：
+ Understand the system Make it fail Quit thinking and look Divide and conquer Change one thing at a time Keep an audit trail Check the plug Get a fresh view If you didn&amp;rsquo;t fix it, it ain&amp;rsquo;t fixed  不論你是新手或是老手，我相信你一定能在這本書中獲益良多。Don&amp;rsquo;t Debug Hard - Debug Smart.</description>
+    </item>
+    
+    <item>
+      <title>Beyond Chaos</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-11-24-95/</link>
+      <pubDate>Mon, 24 Nov 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-11-24-95/</guid>
+      <description>《Beyond Chaos: The Expert Edge in Managing Software Development》
+是我最近在 Amazon 買的一本二手書，請在美國出差的同事幫我帶回來。價錢 $4.14 加上運費 $3.49，折合台幣才兩百五十元，實在是非常划算。對於常買原文書的我，這樣的方式倒是能幫我省下不少錢。
+喜歡買原文技術書籍的人，可以試試看 AddALL 或是 Google 新的比價服務 Froogle。</description>
+    </item>
+    
+    <item>
+      <title>Programming Embedded Systems</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-11-24-94/</link>
+      <pubDate>Mon, 24 Nov 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-11-24-94/</guid>
+      <description>最近剛讀完《Programming Embedded Systems in C and C++》，讓完全不懂 embedded system 的我很快地就對嵌入式系統有了一定程度的了解。推薦給任何對 embedded system programming 有興趣的人。</description>
+    </item>
+    
+    <item>
+      <title>Leading a Software Development Team</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-09-15-73/</link>
+      <pubDate>Mon, 15 Sep 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-09-15-73/</guid>
+      <description>我非常喜歡 Richard Whitehead 的這本《Leading a Software Development Team》，書中教導如何有效地管理一個軟體團隊，內容相當地有趣及易懂。在軟體業界，許多人往往是因為優異的技術能力被提升為主管，完全沒有管理經驗的人往往會適應不良，便萌生“還是單純地搞技術比較輕鬆 ”這種想法，而這本書就是這些菜鳥主管的救星啦。整本書以一問一答的方式來組織，瞧瞧下列的這幾個是不是一直困擾你很久的問題：
+   I&amp;rsquo;ve just been made team leader of a new project. Where do I start?    I have to interview a job applicant. How do I go about it?    How do I earn the respect of my team?    How can I get a good job done when our procedures are so bad?</description>
+    </item>
+    
+    <item>
+      <title>Under Pressure and On Time</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-09-07-70/</link>
+      <pubDate>Sun, 07 Sep 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-09-07-70/</guid>
+      <description>最近逛書店時很驚訝地發現這本書的中文版《e世紀軟體開發術》(光看這書名我實在不大想買)，由於之前曾經在 amazon.com 看過它的簡介與評價，便順手買了下來。
+Numega 應該是大家耳熟能詳的一家公司，Windows Programming 領域中鼎鼎有名的 Matt Pietrek 及 John Robbins 都曾從事於該公司。Ed Sullivan 在這本書中所描述狀況，其實正是所有草創初期的軟體公司一定會遇到的問題，然而並不是每一家公司克服這些困難而存活下來，其中最大的關鍵點就是『持續地改進軟體開發的程序』。我常訝異於許多軟體公司居然能夠在沒有 source code control system 的環境下工作，難道他們不知道如何讓自己的工作更有效率嗎？
+Ed 在本書中提出了許多軟體開發的關鍵問題與答案，然而你不應該對 Ed 的標準答案期待太多，因為他的方法並不一定適用於你 (Ed 的答案也並不十分詳盡而完善)，正因為軟體開發沒有所謂的萬靈丹。然而 Ed 已經領你進門了，真正關心自己的工作並且要去思考的不就是你自己嗎?</description>
+    </item>
+    
+    <item>
+      <title>Gödel, Escher, Bach</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-02-10/</link>
+      <pubDate>Fri, 02 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-02-10/</guid>
+      <description>或許是今天太閒了吧，心血來潮地把 Douglas Hofstadter 的《Gödel, Escher, Bach - An Eternal Golden Braid》拿出來翻了一遍。
+如果要硬掰一個理由解釋為什麼買這本書以來從沒能夠好好地把它讀懂，我只能說 Escher 的版畫太迷人了。往往書一拿起來，就有一股衝動想把所有的畫看一遍。畢竟我對巴哈的音樂不熟悉，歌德爾的數學又太難懂了… :-)
+Escher 的數學藝術 Google 的相關連結</description>
+    </item>
+    
+    <item>
+      <title>Applied Microsoft .Net framework programming</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-05-01-9/</link>
+      <pubDate>Thu, 01 May 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-05-01-9/</guid>
+      <description>衝著 Jeffrey Richter 的名字，我還是買了這本由文魁出版的中譯本。看了三章後，我後悔了。
+這本書被翻的實在是慘不忍睹，不僅文義謬誤而且錯字連篇，專有名詞也翻得非常饒口，你能想像什麼是『資料名單中繼資料表格』嗎？最經典的例子是原文的：
+『You Can’t Have Too Many finally Blocks - I think finally blocks are awesome!』
+正確意思應該是：
+『finally 區塊再多也不為過 - 我覺得 finally 區塊實在是棒透了！』
+在中譯本的 18-26 頁居然被翻成：
+『不能使用太多 finally 區段 - 我認為 finally 區段式可怕的！』
+連續兩個句子都譯成相反的意思，而且還有錯字『是』=&amp;gt;『式』。
+為了省五百元，買了生平第一本文魁出版的書，現在只想『趕快把內容看完，然後把書丟掉』。
+在此向 Jeffrey 表達深深的懺悔。 Jeffrey, Your book is great but Kingsinfo sucks.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kuso on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/kuso/</link>
+    <description>Recent content in kuso on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 19 Jul 2008 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/kuso/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software Simian</title>
+      <link>https://blog.simplypatrick.com/posts/2008/2008-07-19-405/</link>
+      <pubDate>Sat, 19 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2008/2008-07-19-405/</guid>
+      <description>呆伯特漫畫裡頗為經典的一篇：
+如果現實裡能單純當個 Code Monkey 其實也不錯&amp;hellip; 呵&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft iPod</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-11-01-360/</link>
+      <pubDate>Wed, 01 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-11-01-360/</guid>
+      <description>從 Indigo 看來的：
+ 有夠好笑！</description>
+    </item>
+    
+    <item>
+      <title>Dilbert on Extreme Programming</title>
+      <link>https://blog.simplypatrick.com/posts/2004/2004-10-12-185/</link>
+      <pubDate>Tue, 12 Oct 2004 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2004/2004-10-12-185/</guid>
+      <description>註：原圖來自於 dilbert.com 於 2003/01/09 及 2003/01/10 刊載的漫畫，但原網站已經移除原圖的鏈結。</description>
+    </item>
+    
+  </channel>
+</rss>

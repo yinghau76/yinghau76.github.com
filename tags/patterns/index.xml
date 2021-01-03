@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>patterns on Simply Patrick</title>
+    <link>https://blog.simplypatrick.com/tags/patterns/</link>
+    <description>Recent content in patterns on Simply Patrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 25 Sep 2006 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tags/patterns/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Josh Bloch on Design</title>
+      <link>https://blog.simplypatrick.com/posts/2006/2006-09-25-342/</link>
+      <pubDate>Mon, 25 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2006/2006-09-25-342/</guid>
+      <description>不是什麼新的技術，Joshua Bloch 談的是更基本但也更重要的 API Design：How to Design a Good API and Why it Matters。
+其實軟體開發者的大部分工作就是和一大堆的 API 打交道，我是最討厭使用那種設計不良的 API，因為往往要用更多的 client code 來完成功能或者避過設計的缺陷。怎麼去設計“良好的 API”正是所有軟體開發者要必備的技巧，Joshua 所提出的這些設計準則，都是相當值得參考學習的。
+另一篇 Joshua 的訪談：Josh Bloch on Design。</description>
+    </item>
+    
+    <item>
+      <title>Erich Gamma on Design Patterns</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-11-245/</link>
+      <pubDate>Sat, 11 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-11-245/</guid>
+      <description>談到 Design Patterns，有興趣的人可以看看這一系列對 Erich Gamma 的訪談：
+ Part I: How to Use Design Patterns Part II: Erich Gamma on Flexibility and Reuse Part III: Design Principles from Design Patterns  Erich Gamma 談到如何使用 DP 以及經過這十年他想法的一些改變。DP 固然是 programmer 設計程式時的一大利器，然而水可載舟亦可覆舟，誤用 DP 往往會造成過度的設計以及沒有必要的彈性。例如下面這個我很久以前看過的一個實際例子：
+class Toy {}; class Barbie : public Toy {}; class Lego : public Toy {}; class ToyFactory { public: static ToyFactory* Instance(); virtual Toy* CreateToy(LPCTSTR id); protected: ToyFactory(); virtual ~ToyFactory(); private: static ToyFactory* m_pToyFactory; }; ToyFactory * ToyFactory::m_pToyFactory = NULL; ToyFactory::ToyFactory() {} ToyFactory::~ToyFactory() {} ToyFactory * ToyFactory::Instance() { if (!</description>
+    </item>
+    
+    <item>
+      <title>Head First Design Patterns</title>
+      <link>https://blog.simplypatrick.com/posts/2005/2005-06-09-241/</link>
+      <pubDate>Thu, 09 Jun 2005 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2005/2005-06-09-241/</guid>
+      <description>蔡學鏞要翻譯《Head First Design Patterns》這本近來熱賣到不行的書。
+翻譯這本書跟翻譯一般的技術書籍有點不一樣，相對地也比較難，就看蔡學鏞能否一戰成名或是砸了自己的招牌囉。目前網站上沒提供試讀的章節，所以不曉得翻譯的品質如何。但如果翻譯的品質不錯，我肯定會掏腰包去買。</description>
+    </item>
+    
+    <item>
+      <title>Refactoring &amp; Patterns</title>
+      <link>https://blog.simplypatrick.com/posts/2003/2003-07-03-62/</link>
+      <pubDate>Thu, 03 Jul 2003 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.simplypatrick.com/posts/2003/2003-07-03-62/</guid>
+      <description>《Refactoring To Patterns》提供了許多『經由 refactoring 的手法來改善物件導向程式架構的方法』，我個人認為相當地具有實用價值，值得一看。</description>
+    </item>
+    
+  </channel>
+</rss>
