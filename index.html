@@ -538,21 +538,6 @@ y = x^2
         <hr/>
       
                 <span class="post-title">
-          <a href="https://blog.simplypatrick.com/tils/2019/2019-12-25-clion-makefile-projects/" title="用 CLion 開發使用 Makefile 建置的專案">
-            <h2>用 CLion 開發使用 Makefile 建置的專案</h2>
-          </a>
-        </span>
-        <div class="post-meta">
-          <span class="post-date">December 25, 2019</span>
-          <a href="/til"><span class="label label-info">TIL</span></a>
-          
-        </div>
-        <div class="post-content"><p>目前 CLion 只支持使用 CMake 建置的專案，但對於使用 Makefile 的專案，官方其實也有提供稍微麻煩但還能用的解決辦法: <a href="https://www.jetbrains.com/help/clion/managing-makefile-projects.html">Managing Makefile Projects</a></p>
-</div>
-
-        <hr/>
-      
-                <span class="post-title">
           <a href="https://blog.simplypatrick.com/posts/2019/06-06-setup-fuchsia-rust-dev/" title="Setup Fuchsia Rust Development on macOS">
             <h2>Setup Fuchsia Rust Development on macOS</h2>
           </a>
@@ -677,6 +662,38 @@ export FUCHSIA_DIR<span style="color:#f92672">=</span><span style="color:#e6db74
 
         <hr/>
       
+                <span class="post-title">
+          <a href="https://blog.simplypatrick.com/posts/2019/04-08-learning-rust/" title="Learning Rust">
+            <h2>Learning Rust</h2>
+          </a>
+        </span>
+        <div class="post-meta">
+          <span class="post-date">April 8, 2019</span>
+          
+          <a href="/categories/programming"><span class="label label-info">programming</span></a>
+          
+          
+          <a href="/tags/rust"><span class="label label-primary">rust</span></a>
+          
+        </div>
+        <div class="post-content"><h2 id="關於-rust">關於 Rust</h2>
+<p>會知道 Rust 是因為之前公司團隊的工作是跟瀏覽器引擎 (Webkit/Blink) 的優化有關，那時只知道 Mozilla 正在用 Rust 這個新的程式語言實驗性地開發 Servo 引擎。同時間 Go 已經到達 1.0 的里程碑，同時有著優異的編譯及執行效能，很快地 Go 就變成我個人主要使用的程式語言，工作上需要的一些小工具也都是用 Go 來實現。</p>
+<p>開始對 Rust 重新關注大概是它在 2015 年釋放 1.0 版本後，那時只稍微了解一下語法及主要的語言特性，當時覺得這程式語言的學習曲線蠻陡峭的，必須全面地對所有的語言特性有一定了解後才能駕馭它。那時 Go 用的正是順手，所以就沒什麼動力把 Rust 完整學起來。</p>
+<p>去年開始工作上需要了解 Fuchsia OS 的實作，赫然發現裡面蠻多系統服務都是用 Rust 開發的，數量上甚至比 Google 自家的 Go 還多，這也是我決定多投入時間學習 Rust 的轉捩點。</p>
+<h2 id="學習資源">學習資源</h2>
+<p>我主要使用下列幾本書來學習 Rust：</p>
+<ul>
+<li><a href="https://www.amazon.cn/dp/B07GSRFG28">深入浅出 Rust</a> 這本書的電子版: 它的特色是側重於解釋 Rust 主要概念的設計思想，而不只是單純語法或用法的說明；且因為是中文的緣故，讀起來速度還是比較快，比較像是 Rust 的內功心法入門。</li>
+<li><a href="https://ithelp.ithome.com.tw/users/20111802/ironman/1742">30 天深入淺出 Rust 系列</a> 則是以淺顯易懂的範例把 Rust 主要的特色講解了一遍，內容適合對於想要快速地對 Rust 有個全面性的概觀的人。</li>
+<li>對 Rust 有了基本的了解後，<a href="https://stevedonovan.github.io/rust-gentle-intro/readme.html#a-gentle-introduction-to-rust">A Gentle Introduction to Rust</a> 則是適合有 C/C++ 經驗的開發者來學習如何寫 idiomatic Rust。</li>
+</ul>
+<p>至於最經典的 <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> 呢? 我只把了一些我覺得重要的章節看完，其他剩下的就直接動手實作，遇到有細節不清楚或是已經忘記時再花時間來看。</p>
+<h2 id="其他資源">其他資源</h2>
+<p>上面主要是比較完整的 Rust 學習資源，下一篇再分享一些我覺得不錯的 blog post，通常是針對某個特定主題或進階功能的解釋或教學。</p>
+</div>
+
+        <hr/>
+      
     </div>
     <div class="col-md-3 sidebar">
       <aside>
@@ -691,8 +708,6 @@ export FUCHSIA_DIR<span style="color:#f92672">=</span><span style="color:#e6db74
   
     <li class="list-group-item"><a href="https://blog.simplypatrick.com/posts/2019/12-25-klogg/">看 log 的好工具: klogg</a></li>
   
-    <li class="list-group-item"><a href="https://blog.simplypatrick.com/tils/2019/2019-12-25-clion-makefile-projects/">用 CLion 開發使用 Makefile 建置的專案</a></li>
-  
     <li class="list-group-item"><a href="https://blog.simplypatrick.com/posts/2019/06-06-setup-fuchsia-rust-dev/">Setup Fuchsia Rust Development on macOS</a></li>
   
     <li class="list-group-item"><a href="https://blog.simplypatrick.com/posts/2019/06-05-setup-fuchsia-c&#43;&#43;-dev/">Setup Fuchsia C&#43;&#43; Development on macOS</a></li>
@@ -706,6 +721,8 @@ export FUCHSIA_DIR<span style="color:#f92672">=</span><span style="color:#e6db74
     <li class="list-group-item"><a href="https://blog.simplypatrick.com/posts/2018/02-14-kotlin-coroutines-and-threads/">Kotlin Coroutines and Threads</a></li>
   
     <li class="list-group-item"><a href="https://blog.simplypatrick.com/posts/2018/02-13-kotlin-coroutines-api/">Kotlin Coroutine API</a></li>
+  
+    <li class="list-group-item"><a href="https://blog.simplypatrick.com/posts/2018/01-22-devdocs-desktop/">Devdocs Desktop</a></li>
   
   </ul>
 </section>

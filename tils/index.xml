@@ -5,16 +5,7 @@
     <link>https://blog.simplypatrick.com/tils/</link>
     <description>Recent content in Tils on Simply Patrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 25 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tils/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>用 CLion 開發使用 Makefile 建置的專案</title>
-      <link>https://blog.simplypatrick.com/tils/2019/2019-12-25-clion-makefile-projects/</link>
-      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.simplypatrick.com/tils/2019/2019-12-25-clion-makefile-projects/</guid>
-      <description>目前 CLion 只支持使用 CMake 建置的專案，但對於使用 Makefile 的專案，官方其實也有提供稍微麻煩但還能用的解決辦法: Managing Makefile Projects</description>
-    </item>
-    
+    <lastBuildDate>Fri, 15 Apr 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.simplypatrick.com/tils/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building AOSP on MacOS</title>
       <link>https://blog.simplypatrick.com/tils/2016/2016-04-15-building-aosp-on-mac/</link>

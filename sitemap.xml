@@ -43,16 +43,6 @@
   </url>
   
   <url>
-    <loc>https://blog.simplypatrick.com/tils/</loc>
-    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.simplypatrick.com/tils/2019/2019-12-25-clion-makefile-projects/</loc>
-    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.simplypatrick.com/posts/2019/12-25-klogg/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
   </url>
@@ -144,6 +134,11 @@
   
   <url>
     <loc>https://blog.simplypatrick.com/tils/2016/2016-04-15-building-aosp-on-mac/</loc>
+    <lastmod>2016-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.simplypatrick.com/tils/</loc>
     <lastmod>2016-04-15T00:00:00+00:00</lastmod>
   </url>
   
